@@ -1,3 +1,5 @@
+// filter property listing where status = leased
+
 const Leased = () => {
   return (
     <div className="flex items-center">

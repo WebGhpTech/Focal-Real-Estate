@@ -1,3 +1,5 @@
+// filter property listing where status = for sale
+
 const Buy = () => {
   return (
     <div className="flex items-center">

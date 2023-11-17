@@ -1,3 +1,5 @@
+// filter property listing where status = for rent
+
 const Rent = () => {
   return (
     <div className="flex items-center">

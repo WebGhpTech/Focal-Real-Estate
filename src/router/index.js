@@ -4,6 +4,7 @@ import Rent from '../pages/Rent';
 import Appraisal from '../pages/Appraisal';
 import Buy from '../pages/Buy';
 import Leased from '../pages/Leased';
+import Sold from '../pages/Sold';
 import Contact from '../pages/Contact';
 
 const routes = [
@@ -14,14 +15,14 @@ const routes = [
     component: Home,
   },
   {
-    path: '/about',
-    title: 'About',
-    component: About,
-  },
-  {
     path: '/buy',
     title: 'Buy',
     component: Buy,
+  },
+  {
+    path: '/appraisal',
+    title: 'Sell',
+    component: Appraisal,
   },
   {
     path: '/rent',
@@ -29,15 +30,20 @@ const routes = [
     component: Rent,
   },
   {
-    path: '/appraisal',
-    title: 'Appraisal',
-    component: Appraisal,
+    path: '/about',
+    title: 'About',
+    component: About,
   },
-  {
-    path: '/leased',
-    title: 'Leased',
-    component: Leased,
-  },
+  // {
+  //   path: '/leased',
+  //   title: 'Leased',
+  //   component: Leased,
+  // },
+  // {
+  //   path: '/sold',
+  //   title: 'Sold',
+  //   component: Sold,
+  // },
   {
     path: '/contact',
     title: 'Contact',
