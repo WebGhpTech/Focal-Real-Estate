@@ -1,7 +1,26 @@
+import { AboutFeature, AboutHero, AboutStaff, AboutTeam, AboutTestimonial, Footer } from './sections/About';
+
 const About = () => {
   return (
-    <div className="flex items-center">
-      <h1>This is about</h1>
+    <div>
+      <section>
+        <AboutHero />
+      </section>
+      <section>
+        <AboutFeature />
+      </section>
+      <section>
+        <AboutTeam />
+      </section>
+      <section>
+        <AboutStaff />
+      </section>
+      <section>
+        <AboutTestimonial />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 };

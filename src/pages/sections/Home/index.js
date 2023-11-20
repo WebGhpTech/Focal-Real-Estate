@@ -5,6 +5,6 @@ import About from './About';
 import Stats from './Stats';
 import Partners from './Partners';
 import Testimonial from './Testimonial';
-import Footer from './Footer';
+import Footer from '../../../components/Footer';
 
 export { Hero, Features, LatestListings, About, Stats, Partners, Testimonial, Footer };
