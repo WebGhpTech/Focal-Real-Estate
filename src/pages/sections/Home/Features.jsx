@@ -1,10 +1,18 @@
 const Features = () => {
   return (
-    <div className="section-bg-dark py-24 sm:py-32">
+    <div
+      className="section-bg-dark py-24 sm:py-32"
+      style={{
+        backgroundImage: `url('./src/assets/vector/dark_image_overlay.png')`,
+        backgroundPosition: 'bottom right',
+        backgroundSize: '90%',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-5xl font-bold text-white">The Best Real Estate Management in Brisbane</h1>
-          <p className="mt-6 text-sm leading-6 text-white">We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.</p>
+          <p className="mt-6 text-md leading-6 text-white">We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.</p>
         </div>
 
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

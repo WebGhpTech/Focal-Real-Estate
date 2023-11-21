@@ -1,7 +1,23 @@
+import { AppraisalHero, AppraisalFeature, AppraisalListing, Testimonials, Footer } from './sections/Appraisal';
+
 const Appraisal = () => {
   return (
-    <div className="flex items-center">
-      <h1>This is appraisal</h1>
+    <div>
+      <section>
+        <AppraisalHero />
+      </section>
+      <section>
+        <AppraisalFeature />
+      </section>
+      <section>
+        <AppraisalListing />
+      </section>
+      <section>
+        <Testimonials />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 };

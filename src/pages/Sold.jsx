@@ -1,9 +1,20 @@
-// filter property listing where status = sold
+import { SoldCTA, SoldHero, SoldListing, Footer } from './sections/Sold';
 
 const Sold = () => {
   return (
-    <div className="flex items-center">
-      <h1>This is Sold</h1>
+    <div>
+      <section>
+        <SoldHero />
+      </section>
+      <section>
+        <SoldListing />
+      </section>
+      <section>
+        <SoldCTA />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 };

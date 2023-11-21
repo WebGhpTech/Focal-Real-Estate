@@ -1,6 +1,14 @@
 const Footer = () => {
   return (
-    <footer className="section-bg-dark">
+    <footer
+      className="section-bg-dark relative"
+      style={{
+        backgroundImage: `url('./src/assets/vector/dark_image_overlay.png')`,
+        backgroundPosition: 'bottom right',
+        backgroundSize: '700px',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">

@@ -1,4 +1,4 @@
-import { AboutFeature, AboutHero, AboutStaff, AboutTeam, AboutTestimonial, Footer } from './sections/About';
+import { AboutFeature, AboutHero, AboutStaff, AboutTeam, Footer, Testimonials } from './sections/About';
 
 const About = () => {
   return (
@@ -16,7 +16,7 @@ const About = () => {
         <AboutStaff />
       </section>
       <section>
-        <AboutTestimonial />
+        <Testimonials />
       </section>
       <section>
         <Footer />

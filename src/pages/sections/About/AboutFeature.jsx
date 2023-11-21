@@ -1,6 +1,14 @@
 const AboutFeature = () => {
   return (
-    <div className="section-bg-dark py-24 sm:py-32">
+    <div
+      className="section-bg-dark py-24 sm:py-32"
+      style={{
+        backgroundImage: `url('./src/assets/vector/about_image_overlay.png')`,
+        backgroundPosition: 'top left',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-5xl font-bold text-white">

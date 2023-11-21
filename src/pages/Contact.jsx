@@ -1,8 +1,19 @@
+import { ContactHero, ContactForm, Footer } from './sections/Contact';
+
 const Contact = () => {
   return (
-    <div className="flex items-center">
-      <h1>This is contact</h1>
+    <div>
+      <section>
+        <ContactHero />
+      </section>
+      <section>
+        <ContactForm />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 };
+
 export default Contact;

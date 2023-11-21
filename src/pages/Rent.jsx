@@ -1,9 +1,20 @@
-// filter property listing where status = for rent
+import { RentCTA, RentHero, RentListing, Footer } from './sections/Rent';
 
 const Rent = () => {
   return (
-    <div className="flex items-center">
-      <h1>This is rent</h1>
+    <div>
+      <section>
+        <RentHero />
+      </section>
+      <section>
+        <RentListing />
+      </section>
+      <section>
+        <RentCTA />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </div>
   );
 };

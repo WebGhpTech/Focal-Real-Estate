@@ -22,8 +22,8 @@ const Navigation = () => {
         </ul>
 
         <div className="flex-shrink-0">
-          <a href="" className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
-            Call Us Now! (07) 3208 6222
+          <a href="/" className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
+            <img src="./src/assets/icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222
           </a>
         </div>
       </div>

@@ -85,6 +85,17 @@
   padding: 20px;
 }
 
+.btn-white {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+}
+
+.btn-filter {
+  border-radius: 30px;
+  margin-right: 10px;
+}
+
 .text-focal-blue {
   color: #0030d4;
 }
