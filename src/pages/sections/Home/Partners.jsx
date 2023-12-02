@@ -11,31 +11,31 @@ const Partners = () => {
           <div className="relative mt-5 xl:absolute xl:inset-0 xl:left-1/2">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10 xl:mt-20">
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-01.png" className="h-8" />
+                <img src="./fre-partner-01.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-02.png" className="h-8" />
+                <img src="./fre-partner-02.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-03.png" className="h-8" />
+                <img src="./fre-partner-03.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-04.png" className="h-8" />
+                <img src="./fre-partner-04.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-05.png" className="h-8" />
+                <img src="./fre-partner-05.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-06.png" className="h-8" />
+                <img src="./fre-partner-06.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-07.png" className="h-8" />
+                <img src="./fre-partner-07.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-08.png" className="h-8" />
+                <img src="./fre-partner-08.png" className="h-8" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="./src/assets/fre-partner-09.png" className="h-8" />
+                <img src="./fre-partner-09.png" className="h-8" />
               </div>
             </div>
           </div>

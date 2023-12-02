@@ -13,51 +13,51 @@ const AboutStaff = () => {
           <div className="mx-auto max-w-6xl items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-10 xl:mt-5">
               <div className="flex flex-col">
-                <img src="./src/assets/team/1.jpg" className="h-full" />
+                <img src="./team/1.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Jade Soong <br /> <span className="text-heading-blue">Principle</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/2.jpg" className="h-full" />
+                <img src="./team/2.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Serena Wang <br /> <span className="text-heading-blue">Admin</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/3.jpg" className="h-full" />
+                <img src="./team/3.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Philip Paznikov <br /> <span className="text-heading-blue">Sales Director</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/4.jpg" className="h-full" />
+                <img src="./team/4.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Alex Paznikov
                   <br /> <span className="text-heading-blue">Sales</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/5.jpg" className="h-full" />
+                <img src="./team/5.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Aline Harnchan
                   <br /> <span className="text-heading-blue">Marketing</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/6.jpg" className="h-full" />
+                <img src="./team/6.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Tatjana Shirzada <br /> <span className="text-heading-blue">Sales</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/7.jpg" className="h-full" />
+                <img src="./team/7.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Temujin Shirzada <br /> <span className="text-heading-blue">Sales</span>
                 </p>
               </div>
               <div className="flex flex-col">
-                <img src="./src/assets/team/8.jpg" className="h-full" />
+                <img src="./team/8.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">
                   Namuun Gangijuur <br /> <span className="text-heading-blue">Sales</span>
                 </p>

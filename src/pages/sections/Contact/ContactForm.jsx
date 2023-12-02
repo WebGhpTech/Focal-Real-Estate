@@ -69,22 +69,22 @@ const ContactForm = () => {
                     <div className="mt-4 flex">
                       <div className="mr-3">
                         <a href="https://www.facebook.com">
-                          <img src="./src/assets/icons/Facebook.svg" />
+                          <img src="./icons/Facebook.svg" />
                         </a>
                       </div>
                       <div className="mr-3">
                         <a href="https://www.twitter.com">
-                          <img src="./src/assets/icons/Twitter.svg" />
+                          <img src="./icons/Twitter.svg" />
                         </a>
                       </div>
                       <div className="mr-3">
                         <a href="https://www.instagram.com">
-                          <img src="./src/assets/icons/Instagram.svg" />
+                          <img src="./icons/Instagram.svg" />
                         </a>
                       </div>
                       <div className="mr-3">
                         <a href="https://www.linkedin.com">
-                          <img src="./src/assets/icons/LinkedIn.svg" />
+                          <img src="./icons/LinkedIn.svg" />
                         </a>
                       </div>
                     </div>

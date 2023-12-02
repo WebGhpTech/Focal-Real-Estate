@@ -1,7 +1,7 @@
 const ContactHero = () => {
   return (
     <div className="relative isolate overflow-hidden">
-      <img src="./src/assets/contact_header_image.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <img src="./contact_header_image.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-55">
         <div className="text-center">
@@ -9,7 +9,7 @@ const ContactHero = () => {
         </div>
       </div>
 
-      <img src="./src/assets/bg-graphic-01.png" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <img src="./bg-graphic-01.png" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
     </div>
   );
 };

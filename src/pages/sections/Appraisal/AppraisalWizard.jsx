@@ -134,7 +134,7 @@ const AppraisalWizard = () => {
           {step === 3 && (
             <div>
               <div className="mx-auto max-w-2xl items-center justify-center">
-                <img src="./src/assets/icons/check-icon-large.png" className="mx-auto w-14 h-14" />
+                <img src="./icons/check-icon-large.png" className="mx-auto w-14 h-14" />
                 <h2 className="mx-auto text-focal-blue text-xl font-bold text-center mt-3">Visit Scheduled!</h2>
                 <h3 className="text-lg font-semibold text-center mt-3 text-gray-700">We'll be in touch shortly with your current market value and property report.</h3>
                 <p className="text-md text-gray-700 text-center mt-2">

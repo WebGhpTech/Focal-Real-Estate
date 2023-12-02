@@ -3,7 +3,7 @@ const LeasedCTA = () => {
     <div
       className="bg-focal-blue relative isolate overflow-hidden pt-5"
       style={{
-        backgroundImage: `url('./src/assets/vector/blue_image_overlay.png')`,
+        backgroundImage: `url('./vector/blue_image_overlay.png')`,
         backgroundPosition: 'bottom right',
         backgroundSize: '80%',
         backgroundRepeat: 'no-repeat',

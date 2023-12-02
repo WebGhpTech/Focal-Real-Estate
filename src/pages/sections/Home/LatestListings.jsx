@@ -14,11 +14,11 @@ const LatestListings = () => {
             type="button"
             className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-focal-blue font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50"
           >
-            <img src="./src/assets/icons/dollar.png" className="inline" />
+            <img src="./icons/dollar.png" className="inline" />
             Buy
           </button>
           <button className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-gray-800 font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50">
-            <img src="./src/assets/icons/house.png" className="inline" />
+            <img src="./icons/house.png" className="inline" />
             Rent
           </button>
         </div>

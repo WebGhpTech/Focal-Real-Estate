@@ -3,7 +3,7 @@ const Features = () => {
     <div
       className="section-bg-dark py-24 sm:py-32"
       style={{
-        backgroundImage: `url('./src/assets/vector/dark_image_overlay.png')`,
+        backgroundImage: `url('./vector/dark_image_overlay.png')`,
         backgroundPosition: 'bottom right',
         backgroundSize: '90%',
         backgroundRepeat: 'no-repeat',
@@ -52,7 +52,7 @@ const Features = () => {
             </div>
 
             <div className="flex flex-col items-center max-sm:hidden">
-              <img src="./src/assets/fre-hero-02.jpg" className="rounded-lg" />
+              <img src="./fre-hero-02.jpg" className="rounded-lg" />
             </div>
 
             <div className="flex flex-col w-80 items-center mx-auto text-center">

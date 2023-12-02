@@ -3,7 +3,7 @@ const AboutFeature = () => {
     <div
       className="section-bg-dark py-24 sm:py-32"
       style={{
-        backgroundImage: `url('./src/assets/vector/about_image_overlay.png')`,
+        backgroundImage: `url('./vector/about_image_overlay.png')`,
         backgroundPosition: 'top left',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',

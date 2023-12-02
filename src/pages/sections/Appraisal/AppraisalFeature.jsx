@@ -11,7 +11,7 @@ const AppraisalFeature = () => {
             </p>
           </div>
           <div className="relative items-center py-10 max-sm:px-5 max-sm:py-10 mt-5 ml-5 xl:absolute xl:inset-0 xl:left-1/2">
-            <img src="./src/assets/appraisal_feature_image.jpg" className="mt-4 rounded-md" />
+            <img src="./appraisal_feature_image.jpg" className="mt-4 rounded-md" />
           </div>
         </div>
       </div>

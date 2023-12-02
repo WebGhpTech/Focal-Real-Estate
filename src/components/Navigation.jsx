@@ -34,7 +34,7 @@ const Navigation = () => {
         <div className="flex-shrink-0">
           <a href="/" className="-m-1.5 p-1">
             <span className="sr-only">FOCAL Real Estate</span>
-            <img className="h-10 w-auto" src="./src/assets/fre-logo-color.svg" alt="FOCAL Real Estate" />
+            <img className="h-10 w-auto" src="./fre-logo-color.svg" alt="FOCAL Real Estate" />
           </a>
         </div>
         <ul className="navmenu flex flex-1 justify-center">
@@ -60,7 +60,7 @@ const Navigation = () => {
 
         <div className="flex-shrink-0">
           <a href="/" className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
-            <img src="./src/assets/icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222
+            <img src="./icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222
           </a>
         </div>
       </div>

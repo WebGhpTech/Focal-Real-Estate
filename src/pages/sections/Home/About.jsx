@@ -86,10 +86,7 @@ const About = () => {
             </div>
           </div>
 
-          <img
-            src="./src/assets/fre-bg-02.png"
-            className="absolute top-0 right-0 mt-10 h-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 max-sm:hidden"
-          />
+          <img src="./fre-bg-02.png" className="absolute top-0 right-0 mt-10 h-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 max-sm:hidden" />
         </div>
       </div>
     </div>

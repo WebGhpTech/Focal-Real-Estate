@@ -3,7 +3,7 @@ const Testimonials = () => {
     <div
       className="relative overflow-hidden section-bg-slate-100"
       style={{
-        backgroundImage: `url('./src/assets/vector/light_image_overlay.png')`,
+        backgroundImage: `url('./vector/light_image_overlay.png')`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',

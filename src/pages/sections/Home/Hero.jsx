@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <div className="relative isolate overflow-hidden">
-      <img src="./src/assets/fre-hero-01.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+      <img src="./fre-hero-01.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
 
       <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-55">
         <div className="mt-10 py-10 text-center">
@@ -18,7 +18,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <img src="./src/assets/bg-graphic-01.png" alt="" className="absolute inset-0 -z-10 h-full object-cover" />
+      <img src="./bg-graphic-01.png" alt="" className="absolute inset-0 -z-10 h-full object-cover" />
     </div>
   );
 };
