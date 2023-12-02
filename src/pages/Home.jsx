@@ -1,6 +1,31 @@
+import { useEffect } from 'react';
 import { Hero, Features, LatestListings, About, Stats, Partners, Testimonial, Footer } from './sections/Home';
 
 const Home = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+
+      elements.forEach((element) => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const viewPortHeight = window.innerHeight;
+
+        if (elementPosition < viewPortHeight) {
+          element.classList.add('scroll-animation');
+        } else {
+          element.classList.remove('scroll-animation');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll;
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       <section>

@@ -4,13 +4,13 @@ const About = () => {
       <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 max-sm:mt-20">
           <div className="max-w-xl">
-            <span className="mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">About Us</span>
-            <h1 className="mb-6 text-5xl font-bold">We're the Easy Choice for Real Estate</h1>
-            <p className="text-lg leading-8 text-gray-600">We Make The Entire Process As Easy As Possible.</p>
+            <span className="mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">About Us</span>
+            <h1 className="mb-6 text-5xl font-bold animate-on-scroll">We're the Easy Choice for Real Estate</h1>
+            <p className="text-lg leading-8 text-gray-600 animate-on-scroll">We Make The Entire Process As Easy As Possible.</p>
             <div className="mx-auto">
               <div className="mx-auto mt-16">
                 <dl className="grid max-w-xl">
-                  <div className="mb-10 relative pl-16">
+                  <div className="mb-10 relative pl-16 animate-on-scroll">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-lg bg-focal-blue text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -28,7 +28,7 @@ const About = () => {
                     </dd>
                   </div>
 
-                  <div className="mb-10 relative pl-16">
+                  <div className="mb-10 relative pl-16 animate-on-scroll">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-lg bg-focal-blue text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -44,7 +44,7 @@ const About = () => {
                     <dd className="mt-2 text-base leading-7 text-gray-600">Whether you're looking for a new place to call home or a new focal point for your business, we've got you covered.</dd>
                   </div>
 
-                  <div className="mb-10 relative pl-16">
+                  <div className="mb-10 relative pl-16 animate-on-scroll">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-lg bg-focal-blue text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -63,7 +63,7 @@ const About = () => {
                     </dd>
                   </div>
 
-                  <div className="mb-10 relative pl-16">
+                  <div className="mb-10 relative pl-16 animate-on-scroll">
                     <dt className="text-base font-semibold leading-7 text-gray-900">
                       <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-lg bg-focal-blue text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -86,7 +86,10 @@ const About = () => {
             </div>
           </div>
 
-          <img src="./fre-bg-02.png" className="absolute top-0 right-0 mt-10 h-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 max-sm:hidden" />
+          <img
+            src="./fre-bg-02.png"
+            className="absolute animate-on-scroll top-0 right-0 mt-10 h-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 max-sm:hidden"
+          />
         </div>
       </div>
     </div>
