@@ -11,7 +11,7 @@ const Hero = () => {
           </h1>
           <p className="mt-6 text-2xl leading-8 sm:text-md  text-white">Find out how much your home is worth today</p>
           <div className="mt-10 flex items-center justify-center">
-            <a href="" className="rounded-md btn-focal-blue px-3.5 py2.5 text-sm font-semibold text-white shadow-sm">
+            <a href="/appraisal" className="rounded-md btn-focal-blue px-3.5 py2.5 text-sm font-semibold text-white shadow-sm">
               Book an Appraisal
             </a>
           </div>
