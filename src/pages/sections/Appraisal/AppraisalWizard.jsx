@@ -53,13 +53,13 @@ const AppraisalWizard = () => {
                 <label htmlFor="address" className="block text-sm text-gray-700">
                   Address
                 </label>
-                <input type="text" id="address" name="address" value={formData.address} placeholder="Start typing your property address..." className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="address" name="address" placeholder="Start typing your property address..." className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="bedrooms" className="block text-sm text-gray-700">
                   How many bedrooms does your property have?
                 </label>
-                <select id="bedrooms" name="bedrooms" value={formData.bedrooms} className="mt-1 p-2 w-full border rounded-md">
+                <select id="bedrooms" name="bedrooms" className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
                   <option value="1">1 Bedroom</option>
                   <option value="2">2 Bedrooms</option>
@@ -70,7 +70,7 @@ const AppraisalWizard = () => {
                 <label htmlFor="bathrooms" className="block text-sm text-gray-700">
                   How many bathrooms does your property have?
                 </label>
-                <select id="bathrooms" name="bathrooms" value={formData.bathrooms} className="mt-1 p-2 w-full border rounded-md">
+                <select id="bathrooms" name="bathrooms" className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
                   <option value="1">1 Bathroom</option>
                   <option value="2">2 Bathrooms</option>
@@ -82,7 +82,7 @@ const AppraisalWizard = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   {featureOptions.map((option, index) => (
                     <div key={index} className="flex items-center">
-                      <input type="checkbox" id={`checkbox-${index + 1}`} name="features" value={option} checked={formData.features.includes(option)} className="mr-2" />
+                      <input type="checkbox" id={`checkbox-${index + 1}`} name="features" checked={formData.features.includes(option)} className="mr-2" />
                       <label htmlFor={`checkbox-${index + 1}`}>{option}</label>
                     </div>
                   ))}
@@ -100,31 +100,31 @@ const AppraisalWizard = () => {
                 <label htmlFor="first_name" className="block text-sm text-gray-700">
                   First Name
                 </label>
-                <input type="text" id="first_name" name="first_name" value={formData.first_name} placeholder="First Name" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="first_name" name="first_name" placeholder="First Name" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="last_name" className="block text-sm text-gray-700">
                   Last Name
                 </label>
-                <input type="text" id="last_name" name="last_name" value={formData.last_name} placeholder="Last Name" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="email" className="block text-sm text-gray-700">
                   Email
                 </label>
-                <input type="email" id="email" name="email" value={formData.email} placeholder="Email" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="email" id="email" name="email" placeholder="Email" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="phone" className="block text-sm text-gray-700">
                   Phone
                 </label>
-                <input type="text" id="phone" name="phone" value={formData.phone} placeholder="Phone" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="phone" name="phone" placeholder="Phone" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="how_to_contact" className="block text-sm text-gray-700">
                   How should we contact you about your free appraisal?
                 </label>
-                <select id="how_to_contact" name="how_to_contact" value={formData.how_to_contact} className="mt-1 p-2 w-full border rounded-md">
+                <select id="how_to_contact" name="how_to_contact" className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
                 </select>
               </div>

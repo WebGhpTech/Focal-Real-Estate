@@ -1,4 +1,13 @@
+import { useState } from 'react';
+
 const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
   return (
     <div className="mb-10 relative isolate overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
@@ -100,22 +109,24 @@ const ContactForm = () => {
                     <input type="text" id="name" name="name" className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
                   </div>{' '}
                   <div className="mb-4">
-                    <label htmlFor="name" className="block text-sm">
+                    <label htmlFor="email" className="block text-sm">
                       Email
                     </label>
-                    <input type="text" id="name" name="name" className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
+                    <input type="email" id="email" name="email" className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
                   </div>{' '}
                   <div className="mb-4">
-                    <label htmlFor="name" className="block text-sm">
+                    <label htmlFor="phone" className="block text-sm">
                       Phone
                     </label>
-                    <input type="text" id="name" name="name" className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
+                    <input type="text" id="phone" name="phone" className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
                   </div>{' '}
                   <div className="mb-4">
-                    <label htmlFor="name" className="block text-sm">
+                    <label htmlFor="message" className="block text-sm">
                       Message
                     </label>
-                    <textarea id="message" name="message" rows="4" className="mt-2 rounded-md w-full border p-2"></textarea>
+                    <textarea id="message" name="message" rows="4" className="mt-2 rounded-md w-full border p-2">
+                      {formData.message}
+                    </textarea>
                   </div>
                   <div className="mb-4">
                     <button type="button" className="bg-focal-blue text-white rounded w-full py-2 px-4">
