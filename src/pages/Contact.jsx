@@ -1,4 +1,4 @@
-import { ContactHero, ContactForm, Footer } from './sections/Contact';
+import { ContactHero, ContactForm, Footer, ContactMap } from './sections/Contact';
 
 const Contact = () => {
   return (
@@ -8,6 +8,9 @@ const Contact = () => {
       </section>
       <section>
         <ContactForm />
+      </section>
+      <section>
+        <ContactMap />
       </section>
       <section>
         <Footer />

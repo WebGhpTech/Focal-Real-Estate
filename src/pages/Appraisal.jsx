@@ -1,4 +1,4 @@
-import { AppraisalHero, AppraisalFeature, AppraisalListing, Testimonials, Footer } from './sections/Appraisal';
+import { AppraisalHero, AppraisalFeature, AppraisalListing, Testimonials, Footer, AppraisalWizard } from './sections/Appraisal';
 
 const Appraisal = () => {
   return (
@@ -8,6 +8,9 @@ const Appraisal = () => {
       </section>
       <section>
         <AppraisalFeature />
+      </section>
+      <section>
+        <AppraisalWizard />
       </section>
       <section>
         <AppraisalListing />

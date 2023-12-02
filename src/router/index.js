@@ -23,30 +23,50 @@ const routes = [
     path: '/appraisal',
     title: 'Sell',
     component: Appraisal,
+    subRoutes: [
+      {
+        path: '/sold',
+        title: 'Sold Properties',
+      },
+      {
+        path: '/appraisal',
+        title: 'Book Appraisal',
+      },
+    ],
   },
   {
     path: '/rent',
     title: 'Rent',
     component: Rent,
+    subRoutes: [
+      {
+        path: '/rent',
+        title: 'Properties for Rent',
+      },
+      {
+        path: '/leased',
+        title: 'Leased Properties',
+      },
+    ],
   },
   {
     path: '/about',
-    title: 'About',
+    title: 'About Us',
     component: About,
   },
-  // {
-  //   path: '/leased',
-  //   title: 'Leased',
-  //   component: Leased,
-  // },
-  // {
-  //   path: '/sold',
-  //   title: 'Sold',
-  //   component: Sold,
-  // },
+  {
+    path: '/leased',
+    title: 'Leased',
+    component: Leased,
+  },
+  {
+    path: '/sold',
+    title: 'Sold',
+    component: Sold,
+  },
   {
     path: '/contact',
-    title: 'Contact',
+    title: 'Contact Us',
     component: Contact,
   },
 ];

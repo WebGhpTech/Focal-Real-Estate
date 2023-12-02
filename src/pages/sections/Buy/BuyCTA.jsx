@@ -18,9 +18,9 @@ const BuyCTA = () => {
                 <p className="text-md text-white max-sm:text-center max-sm:text-sm">You need to know the worth of your home, so get it from agents who know what they are doing</p>
               </div>
               <div className="lg:flex-1/3 flex flex-col max-sm:mt-4">
-                <button type="button" className="btn btn-white rounded mt-2 font-semibold">
+                <a href="/appraisal" className="btn btn-white rounded mt-2 font-semibold">
                   Get my appraisal
-                </button>
+                </a>
               </div>
             </div>
           </div>

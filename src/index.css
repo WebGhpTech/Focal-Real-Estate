@@ -111,3 +111,15 @@
 .bg-focal-blue {
   background-color: #0030d4;
 }
+
+.bg-active-step {
+  background-color: #003aff;
+  color: #ffffff;
+}
+
+.active-link {
+  background-color: #eff6ff;
+  color: #003aff;
+  padding: 15px 25px;
+  border-radius: 15px;
+}
