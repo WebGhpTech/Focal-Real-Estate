@@ -19,7 +19,7 @@ const MobileNavigation = () => {
         </div>
         <ul className="flex flex-col items-center">
           {routes
-            .filter((route) => route.title !== 'Home')
+            .filter((route) => route.title !== 'Home' && route.title !== 'Leased' && route.title !== 'Sold')
             .map((route, index) => (
               <li className="text-md leading-8" key={index}>
                 <Link to={route.path} onClick={handleMenuToggle}>
