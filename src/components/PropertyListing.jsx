@@ -1,33 +1,7 @@
-import { useEffect } from 'react';
-
 const PropertyListing = () => {
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-
-      elements.forEach((element) => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const viewPortHeight = window.innerHeight;
-
-        if (elementPosition < viewPortHeight) {
-          element.classList.add('scroll-animation');
-        } else {
-          element.classList.remove('scroll-animation');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll;
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
-      <div className="flex flex-col bg-white border shadow-sm rounded-xl animate-on-scroll">
+      <div className="flex flex-col bg-white border shadow-sm rounded-xl">
         <img className="w-full h-auto rounded-t-xl" src="./fre-property-01.jpg" alt="" />
         <div className="p-4 md:p-5">
           <h3 className="text-lg font-bold text-gray-800">Luxury 4 Bed 2 Bath Home in Pimpana</h3>
@@ -47,7 +21,7 @@ const PropertyListing = () => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white border shadow-sm rounded-xl animate-on-scroll">
+      <div className="flex flex-col bg-white border shadow-sm rounded-xl">
         <img className="w-full h-auto rounded-t-xl" src="./fre-property-01.jpg" alt="" />
         <div className="p-4 md:p-5">
           <h3 className="text-lg font-bold text-gray-800">Luxury 4 Bed 2 Bath Home in Pimpana</h3>
@@ -67,7 +41,7 @@ const PropertyListing = () => {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white border shadow-sm rounded-xl animate-on-scroll">
+      <div className="flex flex-col bg-white border shadow-sm rounded-xl">
         <img className="w-full h-auto rounded-t-xl" src="./fre-property-01.jpg" alt="" />
         <div className="p-4 md:p-5">
           <h3 className="text-lg font-bold text-gray-800">Luxury 4 Bed 2 Bath Home in Pimpana</h3>

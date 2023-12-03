@@ -6,17 +6,21 @@ import Buy from '../pages/Buy';
 import Leased from '../pages/Leased';
 import Sold from '../pages/Sold';
 import Contact from '../pages/Contact';
+import FAQ from '../pages/FAQ';
+import Terms from '../pages/Terms';
 
 const routes = [
   {
     path: '/',
     exact: true,
     title: 'Home',
+    main: false,
     component: Home,
   },
   {
     path: '/buy',
     title: 'Buy',
+    main: true,
     component: Buy,
   },
   {
@@ -37,6 +41,7 @@ const routes = [
   {
     path: '/rent',
     title: 'Rent',
+    main: true,
     component: Rent,
     subRoutes: [
       {
@@ -52,22 +57,38 @@ const routes = [
   {
     path: '/about',
     title: 'About Us',
+    main: true,
     component: About,
   },
   {
     path: '/leased',
     title: 'Leased',
+    main: false,
     component: Leased,
   },
   {
     path: '/sold',
     title: 'Sold',
+    main: false,
     component: Sold,
   },
   {
     path: '/contact',
     title: 'Contact Us',
+    main: true,
     component: Contact,
+  },
+  {
+    path: '/faq',
+    title: 'FAQ',
+    main: false,
+    component: FAQ,
+  },
+  {
+    path: '/terms-and-conditions',
+    title: 'Terms and Conditions',
+    main: false,
+    component: Terms,
   },
 ];
 

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer
@@ -14,7 +16,9 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <img src="./fre-logo-reverse.svg" className="pr-10" />
+                <Link to="/">
+                  <img src="./fre-logo-reverse.svg" className="pr-10" />
+                </Link>
                 <p className="mt-2 text-xs text-white leading-5">
                   10C/11-21 Kingston Rd, Underwood <br />
                   QLD 4119, Australia
@@ -27,14 +31,14 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold leading-6 text-white">For Sale</h3>
                 <ul role="list" className="mt-4 space-y-2">
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/buy" className="text-sm leading-6 text-gray-300">
                       Properties for Sale
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/" className="text-sm leading-6 text-gray-300">
                       Inspection Times
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -44,19 +48,19 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold leading-6 text-white">For Rent</h3>
                 <ul role="list" className="mt-4 space-y-2">
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/rent" className="text-sm leading-6 text-gray-300">
                       Homes for Rent
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/" className="text-sm leading-6 text-gray-300">
                       Inspection Times
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/" className="text-sm leading-6 text-gray-300">
                       Property Alerts
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -64,24 +68,24 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold leading-6 text-white">Quick Links</h3>
                 <ul role="list" className="mt-4 space-y-2">
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
-                      About Us
-                    </a>
+                    <Link to="/about" className="text-sm leading-6 text-gray-300">
+                      Property Alerts
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/faq" className="text-sm leading-6 text-gray-300">
                       Frequently Asked Questions
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/contact" className="text-sm leading-6 text-gray-300">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="" className="text-sm leading-6 text-gray-300">
+                    <Link to="/terms-and-conditions" className="text-sm leading-6 text-gray-300">
                       Terms & Conditions
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

@@ -39,7 +39,7 @@ const Navigation = () => {
         </div>
         <ul className="navmenu flex flex-1 justify-center">
           {routes
-            .filter((route) => route.title !== 'Home' && route.title !== 'Leased' && route.title !== 'Sold')
+            .filter((route) => route.main !== false)
             .map((route, index) => (
               <li className="mr-8 text-md leading-8" key={index}>
                 {route.subRoutes ? (
