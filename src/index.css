@@ -9,7 +9,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 32px;
+  padding-right: 32px;
   width: 80%;
   height: 80px;
   border-radius: 25px;
@@ -120,8 +123,8 @@
 .active-link {
   background-color: #eff6ff;
   color: #003aff;
-  padding: 15px 25px;
-  border-radius: 15px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .main {

@@ -44,8 +44,43 @@ const Navigation = () => {
               <li className="mr-8 text-md leading-8" key={index}>
                 {route.subRoutes ? (
                   <>
-                    <span onClick={() => handleSubMenuClick(index)} className={`cursor-pointer ${activeSubMenu === index ? 'active-link' : ''}`}>
-                      {route.title} {activeSubMenu === index ? <span className="text-xs">&#9650;</span> : <span className="text-xs">&#9660;</span>}
+                    <span onClick={() => handleSubMenuClick(index)} className="cursor-pointer">
+                      <span className="flex items-center">
+                        {route.title}
+                        <span className="text-xs ml-1">
+                          {activeSubMenu === index ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="lucide lucide-chevron-up"
+                            >
+                              <path d="m18 15-6-6-6 6" />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="lucide lucide-chevron-down"
+                            >
+                              <path d="m6 9 6 6 6-6" />
+                            </svg>
+                          )}
+                        </span>
+                      </span>
                     </span>
                     <SubMenu subRoutes={route.subRoutes} showSubMenu={activeSubMenu === index} closeSubMenu={closeSubMenu} />
                   </>
