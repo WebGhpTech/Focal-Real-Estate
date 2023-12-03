@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const BuyCTA = () => {
   return (
     <div
@@ -18,9 +20,9 @@ const BuyCTA = () => {
                 <p className="text-md text-white max-sm:text-center max-sm:text-sm">You need to know the worth of your home, so get it from agents who know what they are doing</p>
               </div>
               <div className="lg:flex-1/3 flex flex-col max-sm:mt-4">
-                <a href="appraisal" target="_self" className="btn btn-white rounded mt-2 font-semibold">
+                <Link to="/appraisal" className="btn btn-white rounded mt-2 font-semibold">
                   Get my appraisal
-                </a>
+                </Link>
               </div>
             </div>
           </div>

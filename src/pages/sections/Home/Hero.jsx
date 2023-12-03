@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heroVideo from '../../../../public/Focal Real Estate.mp4';
 
 const Hero = () => {
@@ -15,9 +16,9 @@ const Hero = () => {
             </h1>
             <p className="mt-6 text-2xl leading-8 sm:text-md  text-white ease-in-text">Find out how much your home is worth today</p>
             <div className="mt-10 flex items-center justify-center">
-              <a href="/appraisal" target="_self" className="rounded-md btn-focal-blue px-3.5 py2.5 text-sm font-semibold text-white shadow-sm ease-in-button">
+              <Link to="/appraisal" className="rounded-md btn-focal-blue px-3.5 py2.5 text-sm font-semibold text-white shadow-sm ease-in-button">
                 Book an Appraisal
-              </a>
+              </Link>
             </div>
           </div>
         </div>
