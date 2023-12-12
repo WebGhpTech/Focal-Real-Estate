@@ -41,7 +41,6 @@ const RentListing = () => {
         </div>
 
         <PropertyListing />
-        <PropertyListing />
       </div>
     </div>
   );

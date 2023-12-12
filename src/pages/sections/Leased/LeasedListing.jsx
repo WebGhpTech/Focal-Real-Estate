@@ -41,7 +41,6 @@ const LeasedListing = () => {
         </div>
 
         <PropertyListing />
-        <PropertyListing />
       </div>
     </div>
   );

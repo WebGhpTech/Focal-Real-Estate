@@ -8,6 +8,34 @@ const ContactForm = () => {
     message: '',
   });
 
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({...formData, [name]:value})
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form Data: ", formData);
+
+    try {
+      const response = fetch('https://focalrealestate.com.au/internal_api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if(response.ok) {
+        console.log('Data sent successfully!');
+      } else {
+        console.error('Failed to send data.');
+      }
+    } catch(error) {
+      console.error('Error: ',error);
+    }
+  }
+
   return (
     <div className="mb-10 relative isolate overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
@@ -106,30 +134,29 @@ const ContactForm = () => {
                     <label htmlFor="name" className="block text-sm">
                       Name
                     </label>
-                    <input type="text" id="name" name="name" className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
                   </div>{' '}
                   <div className="mb-4">
                     <label htmlFor="email" className="block text-sm">
                       Email
                     </label>
-                    <input type="email" id="email" name="email" className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
                   </div>{' '}
                   <div className="mb-4">
                     <label htmlFor="phone" className="block text-sm">
                       Phone
                     </label>
-                    <input type="text" id="phone" name="phone" className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
+                    <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
                   </div>{' '}
                   <div className="mb-4">
                     <label htmlFor="message" className="block text-sm">
                       Message
                     </label>
-                    <textarea id="message" name="message" rows="4" className="mt-2 rounded-md w-full border p-2">
-                      {formData.message}
+                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">
                     </textarea>
                   </div>
                   <div className="mb-4">
-                    <button type="button" className="bg-focal-blue text-white rounded w-full py-2 px-4">
+                    <button type="button" onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
                       Send
                     </button>
                   </div>

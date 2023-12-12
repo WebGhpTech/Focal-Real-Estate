@@ -41,7 +41,6 @@ const SoldListing = () => {
         </div>
 
         <PropertyListing />
-        <PropertyListing />
       </div>
     </div>
   );
