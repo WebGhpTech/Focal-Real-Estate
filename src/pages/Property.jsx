@@ -13,7 +13,7 @@ const Property = () => {
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports } = property;
+    const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
 
     const [title, setTitle] = useState('');
 
@@ -168,35 +168,45 @@ const Property = () => {
                             </div>
                         </div>
                         <form className="w-full p-0">
-                            <div className="mb-4">
-                                <label htmlFor="name" className="block text-sm">
-                                    Name
-                                </label>
-                                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
-                            </div>{' '}
-                            <div className="mb-4">
-                                <label htmlFor="email" className="block text-sm">
-                                    Email
-                                </label>
-                                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
-                            </div>{' '}
-                            <div className="mb-4">
-                                <label htmlFor="phone" className="block text-sm">
-                                    Phone
-                                </label>
-                                <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
-                            </div>{' '}
-                            <div className="mb-4">
-                                <label htmlFor="message" className="block text-sm">
-                                    Message
-                                </label>
-                                <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">
-                                </textarea>
-                            </div>
-                            <div className="mb-4">
-                                <button type="button" onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
-                                    Send
-                                </button>
+                            <div className="border p-5 rounded-md">
+                                <div className="mb-8">
+                                    <img src="/philip.jpeg" className='w-20 mb-2' />
+                                    <label className="block text-focal-blue font-semibold text-2xl">
+                                        {name}
+                                    </label><label className="block text-gray-600 font-light text-xl">
+                                        {telephone}
+                                    </label>
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="name" className="block text-sm">
+                                        Name
+                                    </label>
+                                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
+                                </div>{' '}
+                                <div className="mb-4">
+                                    <label htmlFor="email" className="block text-sm">
+                                        Email
+                                    </label>
+                                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
+                                </div>{' '}
+                                <div className="mb-4">
+                                    <label htmlFor="phone" className="block text-sm">
+                                        Phone
+                                    </label>
+                                    <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
+                                </div>{' '}
+                                <div className="mb-4">
+                                    <label htmlFor="message" className="block text-sm">
+                                        Message
+                                    </label>
+                                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">
+                                    </textarea>
+                                </div>
+                                <div className="mb-4">
+                                    <button type="button" onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
+                                        Send
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
