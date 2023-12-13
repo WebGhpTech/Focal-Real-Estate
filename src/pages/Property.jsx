@@ -11,6 +11,8 @@ const Property = () => {
         return <div>No property data available</div>;
     }
 
+    const [messageSent, setMessageSent] = useState('');
+
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
@@ -31,25 +33,28 @@ const Property = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Data: ", formData);
 
-        try {
-            const response = fetch('https://focalrealestate.com.au/internal_api/contact.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+        fetch('https://focalrealestate.com.au/internal_api/post.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => {
+                setMessageSent(true);
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to send data.');
+                }
+            })
+            .then(responseData => {
+                console.log('Data sent successfully!', responseData);
+            })
+            .catch(error => {
+                console.error('Error: ', error);
             });
-
-            if (response.ok) {
-                console.log('Data sent successfully!');
-            } else {
-                console.error('Failed to send data.');
-            }
-        } catch (error) {
-            console.error('Error: ', error);
-        }
     }
 
     const goToPreviousImage = () => {
@@ -122,7 +127,7 @@ const Property = () => {
                             </div>
                             <div className='mx-auto mt-5 max-w-4xl'>
                                 <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1>
-                                <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb},  {country} {postcode}</h3>
+                                <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3>
                                 <a href="#" className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
                                     {status}
                                 </a>
@@ -199,7 +204,7 @@ const Property = () => {
                                     <label htmlFor="message" className="block text-sm">
                                         Message
                                     </label>
-                                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">
+                                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">Hi, I'm interested in {streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}, Could you please contact me with more information.
                                     </textarea>
                                 </div>
                                 <div className="mb-4">
@@ -207,6 +212,11 @@ const Property = () => {
                                         Send
                                     </button>
                                 </div>
+                                {messageSent && (
+                                    <div className="mb-4">
+                                        <p className='text-focal-blue font-semibold text-md'>Your message has been sent successfully!</p>
+                                    </div>
+                                )}
                             </div>
                         </form>
                     </div>

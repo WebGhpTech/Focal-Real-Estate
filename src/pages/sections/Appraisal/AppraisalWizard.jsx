@@ -14,6 +14,38 @@ const AppraisalWizard = () => {
     features: [],
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    fetch('https://focalrealestate.com.au/internal_api/appraisal.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        nextStep();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Failed to send data.');
+        }
+      })
+      .then(responseData => {
+        console.log('Data sent successfully!', responseData);
+      })
+      .catch(error => {
+        console.error('Error: ', error);
+      });
+  }
+
   const steps = ['Let us know about your property', 'Schedule a visit', 'Receive your property appraisal'];
 
   const featureOptions = ['Swimming Pool', 'Fully Fenced', 'Indoor Fireplace', 'Newly Renovated', 'Backyard', 'Multi-Storey', 'Airconditioning', 'Other'];
@@ -53,13 +85,13 @@ const AppraisalWizard = () => {
                 <label htmlFor="address" className="block text-sm text-gray-700">
                   Address
                 </label>
-                <input type="text" id="address" name="address" placeholder="Start typing your property address..." className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="address" name="address" value={formData.address} onChange={handleChange} placeholder="Start typing your property address..." className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="bedrooms" className="block text-sm text-gray-700">
                   How many bedrooms does your property have?
                 </label>
-                <select id="bedrooms" name="bedrooms" className="mt-1 p-2 w-full border rounded-md">
+                <select id="bedrooms" name="bedrooms" value={formData.bedrooms} onChange={handleChange} className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
                   <option value="1">1 Bedroom</option>
                   <option value="2">2 Bedrooms</option>
@@ -70,7 +102,7 @@ const AppraisalWizard = () => {
                 <label htmlFor="bathrooms" className="block text-sm text-gray-700">
                   How many bathrooms does your property have?
                 </label>
-                <select id="bathrooms" name="bathrooms" className="mt-1 p-2 w-full border rounded-md">
+                <select id="bathrooms" name="bathrooms" value={formData.bathrooms} onChange={handleChange} className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
                   <option value="1">1 Bathroom</option>
                   <option value="2">2 Bathrooms</option>
@@ -82,7 +114,7 @@ const AppraisalWizard = () => {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   {featureOptions.map((option, index) => (
                     <div key={index} className="flex items-center">
-                      <input type="checkbox" id={`checkbox-${index + 1}`} name="features" checked={formData.features.includes(option)} className="mr-2" />
+                      <input type="checkbox" id={`checkbox-${index + 1}`} name="features[]" value={option} onChange={handleChange} className="mr-2" />
                       <label htmlFor={`checkbox-${index + 1}`}>{option}</label>
                     </div>
                   ))}
@@ -100,32 +132,35 @@ const AppraisalWizard = () => {
                 <label htmlFor="first_name" className="block text-sm text-gray-700">
                   First Name
                 </label>
-                <input type="text" id="first_name" name="first_name" placeholder="First Name" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="first_name" name="first_name" value={formData.first_name} onChange={handleChange} placeholder="First Name" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="last_name" className="block text-sm text-gray-700">
                   Last Name
                 </label>
-                <input type="text" id="last_name" name="last_name" placeholder="Last Name" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="last_name" name="last_name" value={formData.last_name} onChange={handleChange} placeholder="Last Name" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="email" className="block text-sm text-gray-700">
                   Email
                 </label>
-                <input type="email" id="email" name="email" placeholder="Email" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="phone" className="block text-sm text-gray-700">
                   Phone
                 </label>
-                <input type="text" id="phone" name="phone" placeholder="Phone" className="mt-1 p-2 w-full border rounded-md" />
+                <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone" className="mt-1 p-2 w-full border rounded-md" />
               </div>
               <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="how_to_contact" className="block text-sm text-gray-700">
                   How should we contact you about your free appraisal?
                 </label>
-                <select id="how_to_contact" name="how_to_contact" className="mt-1 p-2 w-full border rounded-md">
+                <select id="how_to_contact" name="how_to_contact" value={formData.how_to_contact} onChange={handleChange} className="mt-1 p-2 w-full border rounded-md">
                   <option>Select</option>
+                  <option value="E-mail">E-mail</option>
+                  <option value="Text">Text</option>
+                  <option value="Call">Call</option>
                 </select>
               </div>
             </div>
@@ -161,7 +196,7 @@ const AppraisalWizard = () => {
               </button>
             )}
             {step === 2 && (
-              <button onClick={nextStep} className="bg-focal-blue text-white rounded w-full py-2 px-4">
+              <button onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
                 Schedule Visit
               </button>
             )}

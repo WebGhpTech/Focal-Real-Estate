@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const ContactForm = () => {
+  const [messageSent, setMessageSent] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,25 +16,28 @@ const ContactForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data: ", formData);
 
-    try {
-      const response = fetch('https://focalrealestate.com.au/internal_api/contact.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+    fetch('https://focalrealestate.com.au/internal_api/post.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        setMessageSent(true);
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Failed to send data.');
+        }
+      })
+      .then(responseData => {
+        console.log('Data sent successfully!', responseData);
+      })
+      .catch(error => {
+        console.error('Error: ', error);
       });
-
-      if (response.ok) {
-        console.log('Data sent successfully!');
-      } else {
-        console.error('Failed to send data.');
-      }
-    } catch (error) {
-      console.error('Error: ', error);
-    }
   }
 
   return (
@@ -160,6 +164,11 @@ const ContactForm = () => {
                       Send
                     </button>
                   </div>
+                  {messageSent && (
+                    <div className="mb-4">
+                      <p className='text-focal-blue font-semibold text-md'>Your message has been sent successfully!</p>
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
