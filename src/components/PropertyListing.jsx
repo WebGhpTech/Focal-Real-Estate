@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const PropertyListing = ({type, status}) => {
+const PropertyListing = ({type, status, limit}) => {
   const [properties, setProperties] = useState([]);
   const navigate = useNavigate();
 
@@ -28,6 +28,10 @@ const PropertyListing = ({type, status}) => {
 
       if(status) {
         params.push(`status=${status}`);
+      }
+
+      if(limit) {
+        params.push(`limit=${limit}`);
       }
 
       if(params.length > 0) {
