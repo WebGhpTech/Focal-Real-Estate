@@ -7,7 +7,7 @@ const AppraisalListing = () => {
           <h2 className="text-4xl font-bold text-gray-900">Recently Sold Properties</h2>
         </div>
 
-        <PropertyListing />
+        <PropertyListing type="" status="offmarket" />
       </div>
     </div>
   );
