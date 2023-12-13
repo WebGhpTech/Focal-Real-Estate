@@ -7,5 +7,6 @@ import Buy from './Buy';
 import Appraisal from './Appraisal';
 import FAQ from './FAQ';
 import Terms from './Terms';
+import Property from './Property';
 
-export { Home, About, Rent, Appraisal, Leased, Contact, Buy, FAQ, Terms };
+export { Home, About, Rent, Appraisal, Leased, Contact, Buy, FAQ, Terms, Property };

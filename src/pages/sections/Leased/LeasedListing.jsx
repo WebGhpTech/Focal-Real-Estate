@@ -40,7 +40,7 @@ const LeasedListing = () => {
           </button>
         </div>
 
-        <PropertyListing />
+        <PropertyListing type="" status="leased" />
       </div>
     </div>
   );

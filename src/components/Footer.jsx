@@ -5,7 +5,7 @@ const Footer = () => {
     <footer
       className="section-bg-dark relative"
       style={{
-        backgroundImage: `url('./vector/dark_image_overlay.png')`,
+        backgroundImage: `url('/vector/dark_image_overlay.png')`,
         backgroundPosition: 'bottom right',
         backgroundSize: '700px',
         backgroundRepeat: 'no-repeat',
@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <Link to="/">
-                  <img src="./fre-logo-reverse.svg" className="pr-10" />
+                  <img src="/fre-logo-reverse.svg" className="pr-10" />
                 </Link>
                 <p className="mt-2 text-xs text-white leading-5">
                   10C/11-21 Kingston Rd, Underwood <br />

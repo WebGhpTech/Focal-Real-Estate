@@ -8,6 +8,7 @@ import Sold from '../pages/Sold';
 import Contact from '../pages/Contact';
 import FAQ from '../pages/FAQ';
 import Terms from '../pages/Terms';
+// import Property from '../pages/Property';
 
 const routes = [
   {
@@ -60,6 +61,12 @@ const routes = [
     main: true,
     component: About,
   },
+  // {
+  //   path: '/property/:id',
+  //   title: 'Property',
+  //   main: false,
+  //   component: Property,
+  // },
   {
     path: '/leased',
     title: 'Leased',

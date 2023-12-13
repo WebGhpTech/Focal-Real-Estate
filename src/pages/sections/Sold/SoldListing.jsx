@@ -40,7 +40,7 @@ const SoldListing = () => {
           </button>
         </div>
 
-        <PropertyListing />
+        <PropertyListing type="" status="offmarket" />
       </div>
     </div>
   );
