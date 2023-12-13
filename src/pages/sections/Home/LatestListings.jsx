@@ -19,14 +19,12 @@ const LatestListings = () => {
         </div>
 
         <div className="mb-6 mx-auto flex justify-center items-center animate-on-scroll">
-          <button
-            type="button"
-            className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-focal-blue font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50"
+          <button onClick={() => handleFilter('rent')} type="button" className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-focal-blue font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50"
           >
             <img src="./icons/dollar.png" className="inline" />
             Buy
           </button>
-          <button onClick={() => handleFilter('rent')} className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-gray-800 font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50">
+          <button onClick={() => handleFilter('rent')} type="button" className="py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm text-gray-800 font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50">
             <img src="./icons/house.png" className="inline" />
             Rent
           </button>

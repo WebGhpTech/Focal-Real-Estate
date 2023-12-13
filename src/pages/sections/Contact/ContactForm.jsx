@@ -9,8 +9,8 @@ const ContactForm = () => {
   });
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData({...formData, [name]:value})
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = async (e) => {
@@ -26,13 +26,13 @@ const ContactForm = () => {
         body: JSON.stringify(formData)
       });
 
-      if(response.ok) {
+      if (response.ok) {
         console.log('Data sent successfully!');
       } else {
         console.error('Failed to send data.');
       }
-    } catch(error) {
-      console.error('Error: ',error);
+    } catch (error) {
+      console.error('Error: ', error);
     }
   }
 
