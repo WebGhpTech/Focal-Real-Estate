@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const FilterBox = ({ onClose }) => {
-  const [priceRange, setPriceRange] = useState([0, 100000]);
+  const [priceRange, setPriceRange] = useState([0, 1000]);
   const [bedroomRange, setBedroomRange] = useState([0, 25]);
   const [bathroomRange, setBathroomRange] = useState([0, 25]);
   const [carportRange, setCarportRange] = useState([0, 5]);
