@@ -49,7 +49,7 @@ const FilterBox = ({ onClose }) => {
         <div className='mb-2'>
           <label className='block mb-2'>Price: </label>
           <div className='p-2'>
-            <input type="range" min="0" max="100000" step="1" value={priceRange[0]} onChange={(e) => setPriceRange(e.target.value.split(',').map(Number))} />
+            <input type="range" min="0" max="1000" step="1" value={priceRange[0]} onChange={(e) => setPriceRange(e.target.value.split(',').map(Number))} />
             <div className='text-xs'>
               <span>$0 - ${priceRange[0]}</span>
             </div>
