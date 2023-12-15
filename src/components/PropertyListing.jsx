@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const FilterBox = ({ onClose }) => {
-  const [priceRange, setPriceRange] = useState([0, 1000]);
+  // const [priceRange, setPriceRange] = useState([0, 1000]);
   const [bedroomRange, setBedroomRange] = useState([0, 25]);
   const [bathroomRange, setBathroomRange] = useState([0, 25]);
   const [carportRange, setCarportRange] = useState([0, 5]);
 
   const handleApplyFilter = () => {
     onClose({
-      price: priceRange[0],
+      // price: priceRange[0],
       bedrooms: bedroomRange[0],
       bathrooms: bathroomRange[0],
       carports: carportRange[0],
@@ -46,7 +46,7 @@ const FilterBox = ({ onClose }) => {
             </div>
           </div>
         </div>
-        <div className='mb-2'>
+        {/* <div className='mb-2'>
           <label className='block mb-2'>Price: </label>
           <div className='p-2'>
             <input type="range" min="0" max="1000" step="1" value={priceRange[0]} onChange={(e) => setPriceRange(e.target.value.split(',').map(Number))} />
@@ -54,7 +54,7 @@ const FilterBox = ({ onClose }) => {
               <span>$0 - ${priceRange[0]}</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <button className='bg-focal-blue text-white mb-4 p-2 w-full rounded sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
     </div>
@@ -65,7 +65,7 @@ const FilterBox = ({ onClose }) => {
 const PropertyListing = ({ page, type, status, limit }) => {
   const [propertyType, setPropertyType] = useState(type);
   const [properties, setProperties] = useState([]);
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
   const [bedrooms, setBedrooms] = useState(0);
   const [carports, setCarports] = useState(0);
@@ -74,7 +74,7 @@ const PropertyListing = ({ page, type, status, limit }) => {
 
   useEffect(() => {
     fetchData();
-  }, [propertyType, status, price, bathrooms, bedrooms, carports]);
+  }, [propertyType, status, bathrooms, bedrooms, carports]);
 
   const fetchData = async () => {
     try {
@@ -92,9 +92,9 @@ const PropertyListing = ({ page, type, status, limit }) => {
       }
 
       //filter
-      if (price) {
-        params.push(`price=${price}`);
-      }
+      // if (price) {
+      //   params.push(`price=${price}`);
+      // }
       if (bathrooms) {
         params.push(`bathrooms=${bathrooms}`);
       }
@@ -132,7 +132,7 @@ const PropertyListing = ({ page, type, status, limit }) => {
     setBathrooms(filterValues.bathrooms);
     setBedrooms(filterValues.bedrooms);
     setCarports(filterValues.carports);
-    setPrice(filterValues.price);
+    // setPrice(filterValues.price);
     setShowFilterBox(false);
   }
 
@@ -180,14 +180,14 @@ const PropertyListing = ({ page, type, status, limit }) => {
             <img src="./icons/car.png" className="inline" />
             {carports === 0 ? "" : carports} Car Spaces
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={handleFilter}
             className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
           >
             <img src="./icons/dollar.png" className="inline" />
             {price === 0 ? "" : price} Price
-          </button>
+          </button> */}
 
           {showFilterBox && <FilterBox onClose={handleFilterValues} />}
 
