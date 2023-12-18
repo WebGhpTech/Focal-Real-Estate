@@ -17,7 +17,7 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className='mx-auto rounded-lg w-full absolute mt-2 top-full left-1/2 transform -translate-x-1/2 bg-white border border-gray-300 shadow-md p-4 sm:w-auto max-sm:w-1/2 max-sm:text-center max-sm:p-0'>
+    <div className='mx-auto rounded-lg w-full absolute top-full -mt-8 left-1/2 transform -translate-x-1/2 bg-white border border-gray-300 shadow-md p-4 sm:w-auto max-sm:w-1/2 max-sm:text-center max-sm:p-0'>
       <div className='mx-auto flex max-sm:flex-col max-sm:m-5'>
         <div className='mb-6'>
           <label className='block mb-2'>Bedrooms: </label>
