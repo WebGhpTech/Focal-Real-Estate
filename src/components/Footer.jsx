@@ -1,6 +1,43 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [messageSent, setMessageSent] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    fetch('https://focalrealestate.com.au/internal_api/subscribe.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        setMessageSent(true);
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error('Failed to send data.');
+        }
+      })
+      .then(responseData => {
+        console.log('Data sent successfully!', responseData);
+      })
+      .catch(error => {
+        console.error('Error: ', error);
+      });
+  }
+
   return (
     <footer
       className="section-bg-dark relative"
@@ -24,7 +61,7 @@ const Footer = () => {
                   QLD 4119, Australia
                 </p>
                 <p className="mt-4 text-xs text-white leading-5">
-                  (07) 3208 6222 <br /> enquiries@focalrealestate.com.au
+                  <Link to="tel:0732086222">(07) 3208 6222</Link> <br /> <Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link>
                 </p>
               </div>
               <div className="mt-10 ml-3 md:mt-0">
@@ -36,7 +73,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="text-sm leading-6 text-gray-300">
+                    <Link to="/inspections" className="text-sm leading-6 text-gray-300">
                       Inspection Times
                     </Link>
                   </li>
@@ -53,12 +90,12 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="text-sm leading-6 text-gray-300">
+                    <Link to="/inspections" className="text-sm leading-6 text-gray-300">
                       Inspection Times
                     </Link>
                   </li>
                   <li>
-                    <Link to="/" className="text-sm leading-6 text-gray-300">
+                    <Link to="/alerts" className="text-sm leading-6 text-gray-300">
                       Property Alerts
                     </Link>
                   </li>
@@ -68,7 +105,7 @@ const Footer = () => {
                 <h3 className="text-sm font-semibold leading-6 text-white">Quick Links</h3>
                 <ul role="list" className="mt-4 space-y-2">
                   <li>
-                    <Link to="/about" className="text-sm leading-6 text-gray-300">
+                    <Link to="/alerts" className="text-sm leading-6 text-gray-300">
                       Property Alerts
                     </Link>
                   </li>
@@ -95,27 +132,35 @@ const Footer = () => {
             <h3 className="text-sm font-semibold leading-6 text-white">Subscribe</h3>
             <p className="mt-2 text-sm leading-6 text-gray-300">Don't Worry. We Don't Spam</p>
             <form className="mt-6 sm:flex sm:max-w-md">
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email Address
               </label>
               <input
                 type="email"
-                name="email_address"
-                id="email_address"
+                name="email"
+                id="email"
                 autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="w-full min-w-0 rounded-md appearance-none border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm placeholder:text-gray-500"
               />
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-                <button type="submit" className="flex w-full items-center justify-center rounded-md bg-focal-blue px-3 py-2 text-sm font-semibold text-white shadow-sm">
+                <button type="submit" onClick={handleSubmit} className="flex w-full items-center justify-center rounded-md bg-focal-blue px-3 py-2 text-sm font-semibold text-white shadow-sm">
                   Subscribe
                 </button>
               </div>
             </form>
+            {messageSent && (
+              <div className="mt-4">
+                <p className='text-white font-semibold text-md'>Thank you for subscribing!</p>
+              </div>
+            )}
           </div>
+
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 items-center justify-center sm:mt-20 md:flex md:items-center lg:mt-24">
-          <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">&copy; 2021 Focal Real Estate. All rights reserved.</p>
+          <p className="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">&copy; 2024 Focal Real Estate. All rights reserved. Website by <Link to="https://ghptech.com.au/">GHP Tech</Link></p>
         </div>
       </div>
     </footer>

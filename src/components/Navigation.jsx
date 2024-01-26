@@ -44,7 +44,7 @@ const Navigation = () => {
               <li className="mr-8 text-md leading-8" key={index}>
                 {route.subRoutes ? (
                   <>
-                    <span onClick={() => handleSubMenuClick(index)} className="cursor-pointer">
+                    <span onMouseOver={() => handleSubMenuClick(index)} className="cursor-pointer">
                       <span className="flex items-center">
                         {route.title}
                         <span className="text-xs ml-1">
@@ -94,9 +94,9 @@ const Navigation = () => {
         </ul>
 
         <div className="flex-shrink-0">
-          <a href="/" className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
+          <div className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
             <img src="/icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222
-          </a>
+          </div>
         </div>
       </div>
     </nav>

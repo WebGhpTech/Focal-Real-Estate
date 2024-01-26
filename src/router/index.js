@@ -9,6 +9,8 @@ import Contact from '../pages/Contact';
 import FAQ from '../pages/FAQ';
 import Terms from '../pages/Terms';
 import Property from '../pages/Property';
+import InspectionTimes from '../pages/InspectionTimes';
+import PropertyAlerts from '../pages/PropertyAlerts';
 
 const routes = [
   {
@@ -53,6 +55,10 @@ const routes = [
         path: '/leased',
         title: 'Leased Properties',
       },
+      {
+        path: '/alerts',
+        title: 'Property Alerts',
+      },
     ],
   },
   {
@@ -66,6 +72,12 @@ const routes = [
     title: 'Property',
     main: false,
     component: Property,
+  },
+  {
+    path: '/alerts',
+    title: 'Property Alerts',
+    main: false,
+    component: PropertyAlerts,
   },
   {
     path: '/leased',
@@ -90,6 +102,12 @@ const routes = [
     title: 'FAQ',
     main: false,
     component: FAQ,
+  },
+  {
+    path: '/inspections',
+    title: 'Inspection Times',
+    main: false,
+    component: InspectionTimes,
   },
   {
     path: '/terms-and-conditions',
