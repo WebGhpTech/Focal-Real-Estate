@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ContactForm = () => {
   const [messageSent, setMessageSent] = useState('');
@@ -64,7 +65,7 @@ const ContactForm = () => {
                     </div>
                     <p className="mt-2 font-bold text-2xl text-gray-900">Email</p>
                     <p className="text-gray-500">
-                      <a href="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</a>
+                      <Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link>
                     </p>
                   </dt>
                   <dt className="mt-4 ml-6 max-sm:ml-0">
@@ -78,7 +79,7 @@ const ContactForm = () => {
                       </svg>
                     </div>
                     <p className="mt-2 font-bold text-2xl text-gray-900">Phone</p>
-                    <p className="text-gray-500">(07) 3208 6222</p>
+                    <p className="text-gray-500"><Link to="tel:0732086222">(07) 3208 6222</Link></p>
                   </dt>
                 </div>
                 <div className="mx-auto flex justify-between w-50 mb-5">
@@ -109,24 +110,24 @@ const ContactForm = () => {
                     <p className="mt-2 font-bold text-2xl text-gray-900">Social</p>
                     <div className="mt-4 flex">
                       <div className="mr-3">
-                        <a href="https://www.facebook.com">
+                        <Link to="https://www.facebook.com">
                           <img src="./icons/Facebook.svg" />
-                        </a>
+                        </Link>
                       </div>
                       <div className="mr-3">
-                        <a href="https://www.twitter.com">
+                        <Link to="https://www.twitter.com">
                           <img src="./icons/Twitter.svg" />
-                        </a>
+                        </Link>
                       </div>
                       <div className="mr-3">
-                        <a href="https://www.instagram.com">
+                        <Link to="https://www.instagram.com">
                           <img src="./icons/Instagram.svg" />
-                        </a>
+                        </Link>
                       </div>
                       <div className="mr-3">
-                        <a href="https://www.linkedin.com">
+                        <Link to="https://www.linkedin.com">
                           <img src="./icons/LinkedIn.svg" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </dt>
