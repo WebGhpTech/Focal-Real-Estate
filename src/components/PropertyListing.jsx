@@ -17,46 +17,41 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className='mx-auto rounded-lg w-full absolute top-full -mt-8 left-1/2 transform -translate-x-1/2 bg-white border border-gray-300 shadow-md p-4 sm:w-auto max-sm:w-1/2 max-sm:text-center max-sm:p-0'>
-      <div className='mx-auto flex max-sm:flex-col max-sm:m-5'>
-        <div className='mb-6'>
-          <label className='block mb-2'>Bedrooms: </label>
-          <div className='p-2'>
-            <input type="range" min="0" max="25" step="1" value={bedroomRange[0]} onChange={(e) => setBedroomRange(e.target.value.split(',').map(Number))} />
-            <div className='text-xs'>
-              <span>0 - {bedroomRange[0]}</span>
+    <div className="mx-auto rounded-lg w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
+      <div className='mx-auto w-full flex flex-row'>
+        <div className='mx-auto flex max-sm:flex-col'>
+          <div className='mb-6'>
+            <label className='block mb-2'>Bedrooms: </label>
+            <div className='p-2'>
+              <input type="range" min="0" max="25" step="1" value={bedroomRange[0]} onChange={(e) => setBedroomRange(e.target.value.split(',').map(Number))} />
+              <div className='text-xs'>
+                <span>0 - {bedroomRange[0]}</span>
+              </div>
+            </div>
+          </div>
+          <div className='mb-6'>
+            <label className='block mb-2'>Bathrooms: </label>
+            <div className='p-2'>
+              <input type="range" min="0" max="25" step="1" value={bathroomRange[0]} onChange={(e) => setBathroomRange(e.target.value.split(',').map(Number))} />
+              <div className='text-xs'>
+                <span>0 - {bathroomRange[0]}</span>
+              </div>
+            </div>
+          </div>
+          <div className='mb-6'>
+            <label className='block mb-2'>Car Spaces: </label>
+            <div className='p-2'>
+              <input type="range" min="0" max="5" step="1" value={carportRange[0]} onChange={(e) => setCarportRange(e.target.value.split(',').map(Number))} />
+              <div className='text-xs'>
+                <span>0 - {carportRange[0]}</span>
+              </div>
             </div>
           </div>
         </div>
-        <div className='mb-6'>
-          <label className='block mb-2'>Bathrooms: </label>
-          <div className='p-2'>
-            <input type="range" min="0" max="25" step="1" value={bathroomRange[0]} onChange={(e) => setBathroomRange(e.target.value.split(',').map(Number))} />
-            <div className='text-xs'>
-              <span>0 - {bathroomRange[0]}</span>
-            </div>
-          </div>
-        </div>
-        <div className='mb-6'>
-          <label className='block mb-2'>Car Spaces: </label>
-          <div className='p-2'>
-            <input type="range" min="0" max="5" step="1" value={carportRange[0]} onChange={(e) => setCarportRange(e.target.value.split(',').map(Number))} />
-            <div className='text-xs'>
-              <span>0 - {carportRange[0]}</span>
-            </div>
-          </div>
-        </div>
-        {/* <div className='mb-2'>
-          <label className='block mb-2'>Price: </label>
-          <div className='p-2'>
-            <input type="range" min="0" max="1000" step="1" value={priceRange[0]} onChange={(e) => setPriceRange(e.target.value.split(',').map(Number))} />
-            <div className='text-xs'>
-              <span>$0 - ${priceRange[0]}</span>
-            </div>
-          </div>
-        </div> */}
       </div>
-      <button className='bg-focal-blue text-white mb-4 p-2 w-full rounded sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
+      <div className='mx-auto w-full'>
+        <button className='bg-focal-blue text-white p-2 rounded sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
+      </div>
     </div>
   )
 }
@@ -154,7 +149,7 @@ const PropertyListing = ({ page, type, status, limit }) => {
             Rent
           </button>
         </div>)
-        : (<div className="mb-8 mx-auto flex justify-center items-center max-sm:flex-col">
+        : (<div className="mb-8 mx-auto flex-row justify-center items-center max-sm:flex-col text-center">
           <p className="inline text-md font-semibold mr-4 max-sm:mb-2">Filters: </p>
           <button
             type="button"
