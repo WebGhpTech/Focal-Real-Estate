@@ -11,7 +11,7 @@ const Stats = () => {
             <div className="grid grid-cols-1 md:grid-cols-3">
               <div className="text-center mb-8 animate-on-scroll">
                 <h1 className="text-5xl font-bold text-white mb-2">
-                  <CountUpNumber end={300} />+
+                  <CountUpNumber end={2800} />+
                 </h1>
                 <p className="text-white">CLIENTS HELPED</p>
               </div>

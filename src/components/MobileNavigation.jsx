@@ -103,7 +103,7 @@ const MobileNavigation = () => {
       <div className="flex items-center justify-between p-6 pl-3 bg-white">
         <a href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">FOCAL Real Estate</span>
-          <img className="h-8 w-auto" src="/fre-logo-color.svg" alt="FOCAL Real Estate" />
+          <img className="h-10 w-auto" src="/fre-logo-color.svg" alt="FOCAL Real Estate" />
         </a>
         <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md text-gray-400" onClick={handleMenuToggle}>
           <span className="sr-only">Open menu</span>
