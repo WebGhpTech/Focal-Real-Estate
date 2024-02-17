@@ -22,7 +22,7 @@ const AboutFeature = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mx-auto mt-10 grid grid-cols-3 md:grid-cols-3 max-sm:grid-cols-1">
             <div className="mx-auto text-center mb-8">
-              <h1 className="text-5xl font-bold text-white mb-2">300+</h1>
+              <h1 className="text-5xl font-bold text-white mb-2">2800+</h1>
               <p className="text-white">CLIENTS HELPED</p>
             </div>
             <div className="mx-auto text-center mb-8">
