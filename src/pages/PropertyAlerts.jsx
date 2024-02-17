@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 
 const PropertyAlerts = () => {
@@ -19,6 +19,16 @@ const PropertyAlerts = () => {
         max_bathrooms: maxBathroomRange[0],
         cities_suburbs: '',
     });
+
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            min_bedrooms: minBedroomRange[0],
+            max_bedrooms: maxBedroomRange[0],
+            min_bathrooms: minBathroomRange[0],
+            max_bathrooms: maxBathroomRange[0],
+        });
+    }, [minBedroomRange[0], maxBedroomRange[0], minBathroomRange[0], maxBathroomRange[0]]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
