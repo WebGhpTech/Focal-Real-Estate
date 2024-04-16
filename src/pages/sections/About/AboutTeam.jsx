@@ -8,10 +8,10 @@ const AboutTeam = () => {
               <span className="text-heading-blue">40+ Years</span> in the real estate industry
             </h1>
             <p className="mx-auto mb-10 text-md leading-8 text-gray-600 max-sm:text-center">
-              You might not have header of Focal Real Estate before; however, we've been arounce since 1978. We have 40+ years in the real estate industry and serving our clients with realistic
+              You might not have heard of Focal Real Estate before; however, we've been arounce since 1978. We have 40+ years in the real estate industry and serving our clients with realistic
               appraisals, the best outcomes with our sales and diligent property management handling that keeps all of our clients happy & content knowing their properties businesses is being taken
               care of at the highest level ensuring certain satisfaction. We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.
-              We're not your average real estate agency - we take it upon ourselves to love your home just as much as you do and deliver noteworthy results. Client satisfaction us is positive,
+              We're not your average real estate agency - we take it upon ourselves to love your home just as much as you do and deliver noteworthy results. Client satisfaction is positive,
               stress-free and efficient. Our years of experience in different facets of the real estate industry such as sales, rentals, leases, and commercial inquiries allow us to consistently
               overachieve for our buying and selling clients.
             </p>

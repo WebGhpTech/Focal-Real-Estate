@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const Property = () => {
     const location = useLocation();
     const { state } = location;
-    const property = state?.property;
+    const [property, setState] = useState(state?.property);
 
     if (!property) {
         return <div>No property data available</div>;
@@ -107,7 +107,7 @@ const Property = () => {
                                     <span className="sr-only">Previous</span>
                                 </button>
                                 <img
-                                    src={images[currentImageIndex]}
+                                    src={images}
                                     style={{
                                         objectFit: 'cover',
                                         width: '100%',
@@ -128,9 +128,9 @@ const Property = () => {
                             <div className='mx-auto mt-5 max-w-4xl'>
                                 <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1>
                                 <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3>
-                                <a href="#" className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
+                                <buuton  className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
                                     {status}
-                                </a>
+                                </buuton>
                                 <hr />
                                 <div className="mt-4 mb-4 text-gray-500 font-light text-md">
                                     <img src="/icons/bed.png" className="inline mr-1" /> {bedrooms} Bed

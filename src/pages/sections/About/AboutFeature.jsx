@@ -16,7 +16,8 @@ const AboutFeature = () => {
           </h1>
           <p className="mt-10 text-2xl leading-8 text-white">We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.</p>
           <p className="mt-6 text-md leading-6 text-white">
-            Established in 1978. We are Queensland's boutique real estate agency providing unmatched client satisfaction. Find your next home with us today.
+            {/* Established in 1978. We are Queensland's boutique real estate agency providing unmatched client satisfaction. Find your next home with us today. */}
+            Established in 1978. We are Queensland's boutique real estate agency providing unmatched client satisfaction. Contact us if you are needing the best service for sales and property management today.
           </p>
         </div>
         <div className="mx-auto max-w-3xl text-center">

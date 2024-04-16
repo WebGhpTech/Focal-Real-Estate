@@ -8,7 +8,7 @@ const BuyListing = () => {
           <h2 className="text-4xl font-bold text-gray-900">Browse through our properties for sale</h2>
         </div>
 
-        <PropertyListing page="buy" type="buy" status="current" />
+        <PropertyListing page="buy" type="residential" status="listing" pg={1} limit={100} />
       </div>
     </div>
   );

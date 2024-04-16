@@ -110,22 +110,22 @@ const ContactForm = () => {
                     <p className="mt-2 font-bold text-2xl text-gray-900">Social</p>
                     <div className="mt-4 flex">
                       <div className="mr-3">
-                        <Link to="https://www.facebook.com">
+                        <Link to="https://facebook.com/focalrealestate">
                           <img src="./icons/Facebook.svg" />
                         </Link>
                       </div>
                       <div className="mr-3">
-                        <Link to="https://www.twitter.com">
-                          <img src="./icons/Twitter.svg" />
+                        <Link to="https://www.youtube.com/@focalrealestate6312">
+                          <img src="./icons/youtube-svgrepo-com.svg" className="h-6" />
                         </Link>
                       </div>
                       <div className="mr-3">
-                        <Link to="https://www.instagram.com">
+                        <Link to="https://www.instagram.com/focalrealestate/">
                           <img src="./icons/Instagram.svg" />
                         </Link>
                       </div>
                       <div className="mr-3">
-                        <Link to="https://www.linkedin.com">
+                        <Link to="https://www.linkedin.com/in/focal-real-estate-ab8799226/">
                           <img src="./icons/LinkedIn.svg" />
                         </Link>
                       </div>

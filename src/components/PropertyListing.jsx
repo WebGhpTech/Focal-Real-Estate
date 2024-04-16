@@ -1,5 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Card from './Card';
+
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 1 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 
 const FilterBox = ({ onClose }) => {
   // const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -57,8 +79,10 @@ const FilterBox = ({ onClose }) => {
 }
 
 
-const PropertyListing = ({ page, type, status, limit }) => {
+const PropertyListing = ({ pg, page, type, status, limit }) => {
   const [propertyType, setPropertyType] = useState(type);
+  const [listLimit, setListLimit] = useState(limit);
+  const [itemStatus, setItemStatus] = useState(status);
   const [properties, setProperties] = useState([]);
   // const [price, setPrice] = useState(0);
   const [bathrooms, setBathrooms] = useState(0);
@@ -74,17 +98,34 @@ const PropertyListing = ({ page, type, status, limit }) => {
   const fetchData = async () => {
     try {
       let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
+      // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
       let params = [];
 
+      // console.log(apiUrl)
       if (propertyType) {
-        params.push(`type=${propertyType}`);
+        if(propertyType=="residential")
+        {
+          params.push(`type=residential`);
+        }else if(propertyType=="rental"){
+          params.push(`type=residential`);
+        }else{
+          params.push(`type=${propertyType}`);
+        }
       }
       if (status) {
-        params.push(`status=${status}`);
+        // if(propertyType=="residential" && status != "settled")
+        // {
+        //   params.push(`status=buy`);
+        // }else
+         if(propertyType=="rental"){
+          params.push(`status=rental`);
+        }else{
+          params.push(`status=${itemStatus}`);
+        }
       }
-      if (limit) {
-        params.push(`limit=${limit}`);
-      }
+        params.push(`page=${pg?pg:"1"}`);
+        params.push(`limit=${listLimit?listLimit:"6"}`);
+
 
       //filter
       // if (price) {
@@ -99,18 +140,35 @@ const PropertyListing = ({ page, type, status, limit }) => {
       if (carports) {
         params.push(`carports=${carports}`);
       }
-
       if (params.length > 0) {
         apiUrl += `?${params.join('&')}`;
       }
-
-      const response = await fetch(apiUrl);
+      const response = await fetch(`${apiUrl}?${params.join('&')}`);
       const result = await response.json();
-
-      setProperties(result);
+      // console.log(result)
+      // if(propertyType == "rental")
+      // {
+      //   setProperties(result);
+      // }else{
+        setProperties(result.properties);
+      // }
     } catch (error) {
-      console.error('Error fetching data');
+      console.error('Error fetching data : ', error.message);
     }
+    //   const response = await fetch(apiUrl);
+    //   if (!response.ok) {
+    //     throw new Error('Failed to fetch data');
+    //   }
+    //   const contentType = response.headers.get('content-type');
+    //   if (contentType && contentType.indexOf('application/json') !== -1) {
+    //     const result = await response.json();
+    //     setProperties(result);
+    //   } else {
+    //     throw new Error('Invalid response format');
+    //   }
+    // } catch (error) {
+    //   console.error('Error fetching data:', error.message);
+    // }
   }
 
   const navigateToProperty = (property) => {
@@ -132,15 +190,23 @@ const PropertyListing = ({ page, type, status, limit }) => {
   }
 
   const handleTypeChange = (type) => {
-    setPropertyType(type)
+    
+    setPropertyType(type);
+    if (type === "residential") {
+      setItemStatus("listing");
+    }
+    if (type === "rental") {
+      setListLimit("6"); 
+      setItemStatus(type); 
+    } 
+    
   }
-
+  
   return (
     <div>
       {page === "home" ? (
         <div className="mb-6 mx-auto flex justify-center items-center animate-on-scroll">
-          <button type="button" onClick={() => handleTypeChange("buy")} className={`py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-lg ${propertyType === "buy" ? "text-focal-blue" : "text-gray-800"} font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50`}
-          >
+          <button type="button" onClick={() => handleTypeChange("residential")} className={`py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-lg ${propertyType === "residential" ? "text-focal-blue" : "text-gray-800"} font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50`} >
             <img src="./icons/dollar.png" className="inline" />
             Buy
           </button>
@@ -188,31 +254,90 @@ const PropertyListing = ({ page, type, status, limit }) => {
 
         </div>
         )}
-      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
-        {properties?.map((property, index) => (
-          <div key={index} className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-            <img className="w-full h-auto rounded-t-xl" src={property.images[0]} alt="" />
-            <div className="p-4 md:p-5">
-              <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
-              <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
-              {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
-              <a href="#" className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
-                {property.status}
-              </a>
-            </div>
-            <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
-              <img src="./icons/bed.png" className="inline" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
-              <img src="./icons/bath.png" className="inline" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
-              <img src="./icons/car.png" className="inline" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
-            </div>
+      {/* <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center"> */}
+        {page == "home" || page==="appraisal"  ? 
+
+
+
+
+    <Carousel
+      arrows={false}
+      swipeable={false}
+      draggable={false}
+      showDots={true}
+      responsive={responsive}
+      ssr={true} // means to render carousel on server-side.
+      infinite={true}
+      // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+      autoPlay={true}
+      autoPlaySpeed={2000}
+      keyBoardControl={true}
+      customTransition="transform 300ms ease-in-out"
+          transitionDuration={300}
+      containerClass="carousel-container"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      // deviceType={this.props.deviceType}
+      dotListClass="custom-dot-list-style"
+      itemClass="carousel-item-padding-40-px py-6"
+    >
+    {(Object.values(properties)?.map((property, index) => (
+      <div key={index} className="mx-2">
+        <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
+          {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
+          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images} alt="" />}
+          <div className="p-4 md:p-5 h-44">
+            <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
+            <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
+            {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
+            <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
+              {property.status}
+            </button>
           </div>
-        ))}
+          <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
+            <img src="./icons/bed.png" className="inline mx-2" />
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
+            <img src="./icons/bath.png" className="inline mx-2" />
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
+            <img src="./icons/car.png" className="inline mx-2" />
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
+          </div>
+        </div>
       </div>
+    )))}
+    </Carousel>:
+    <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">{
+      (
+      
+        properties?Object.values(properties)?.map((property, index) => (
+                
+                <div key={index} className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
+                  <img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images} alt="" />
+                  <div className="p-4 md:p-5 h-44">
+                    <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
+                    <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
+                    {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
+                    <button  className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
+                      {property.status}
+                    </button>
+                  </div>
+                  <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
+                    <img src="./icons/bed.png" className="inline" />
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
+                    <img src="./icons/bath.png" className="inline" />
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
+                    <img src="./icons/car.png" className="inline" />
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
+                  </div>
+                </div>
+                
+              )):""
+            )
+            }
+      </div>
+            }
     </div>
-  );
-};
+        // </div>
+      );
+    };
 
 export default PropertyListing;
