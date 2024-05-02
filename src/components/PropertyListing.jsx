@@ -145,7 +145,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
       }
       const response = await fetch(`${apiUrl}?${params.join('&')}`);
       const result = await response.json();
-      // console.log(result)
+      // console.log("Testing:", result)
       // if(propertyType == "rental")
       // {
       //   setProperties(result);
@@ -193,7 +193,9 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
     
     setPropertyType(type);
     if (type === "residential") {
-      setItemStatus("listing");
+      // console.log(type)
+      setListLimit("12"); 
+      setItemStatus("Listing");
     }
     if (type === "rental") {
       setListLimit("6"); 
@@ -284,7 +286,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
       <div key={index} className="mx-2">
         <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
           {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images} alt="" />}
+          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />}
           <div className="p-4 md:p-5 h-44">
             <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
             <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
@@ -311,7 +313,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
         properties?Object.values(properties)?.map((property, index) => (
                 
                 <div key={index} className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-                  <img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images} alt="" />
+                  <img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />
                   <div className="p-4 md:p-5 h-44">
                     <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
                     <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>

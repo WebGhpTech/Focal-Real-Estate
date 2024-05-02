@@ -28,10 +28,10 @@ const AboutStaff = () => {
                 <img src="./team/4.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Alex Paznikov</p>
               </div>
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <img src="./team/5.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Aline Harnchan</p>
-              </div>
+              </div> */}
               <div className="flex flex-col">
                 <img src="./team/6.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Tatjana Shirzada</p>

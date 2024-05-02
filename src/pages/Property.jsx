@@ -7,6 +7,7 @@ const Property = () => {
     const { state } = location;
     const [property, setState] = useState(state?.property);
 
+
     if (!property) {
         return <div>No property data available</div>;
     }
@@ -34,7 +35,8 @@ const Property = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        fetch('https://focalrealestate.com.au/internal_api/post.php', {
+        // fetch('http://localhost/auclient/quarantine/internal_api/properties.php', {
+        fetch('https://focalrealestate.com.au/internal_api/properties.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -107,7 +109,7 @@ const Property = () => {
                                     <span className="sr-only">Previous</span>
                                 </button>
                                 <img
-                                    src={images}
+                                    src={images[currentImageIndex]}
                                     style={{
                                         objectFit: 'cover',
                                         width: '100%',

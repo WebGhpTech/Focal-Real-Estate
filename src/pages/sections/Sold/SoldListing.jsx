@@ -80,6 +80,7 @@ const SoldListing = () => {
   const fetchProperties = async () => {
     try {
       let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
+      // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
       let params = [];
       // console.log(apiUrl)
       
@@ -188,7 +189,7 @@ const SoldListing = () => {
         <div key={index} className="mx-2">
           <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
             {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-            :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images} alt="" />}
+            :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />}
             <div className="p-4 md:p-5 h-44">
               <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
               <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>

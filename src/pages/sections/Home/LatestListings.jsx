@@ -12,7 +12,7 @@ const LatestListings = () => {
           <h1 className="text-5xl font-bold text-gray-600 animate-on-scroll">Check Out Latest Listings</h1>
         </div>
         
-        <PropertyListing page="home" type="residential" status="listing" pg={1} limit="6" />
+        <PropertyListing page="home" type="residential" status="listing" pg={1} limit="12" />
       </div>
     </div>
   );
