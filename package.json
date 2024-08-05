@@ -7,18 +7,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "sitemap": "vite build --mode=production && node ./sitemap.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "dotenv": "^16.4.4",
     "preline": "^2.0.0",
     "react": "^18.2.0",
     "react-countup": "^6.5.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-multi-carousel": "^2.8.4",
     "react-paginate": "^8.2.0",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "sitemap": "^8.0.0",
+    "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

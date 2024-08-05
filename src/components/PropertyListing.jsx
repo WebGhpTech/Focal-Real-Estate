@@ -97,7 +97,8 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
 
   const fetchData = async () => {
     try {
-      let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
+      let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
+      // let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
       // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
       let params = [];
 

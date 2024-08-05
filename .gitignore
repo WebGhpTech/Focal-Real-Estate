@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+src/pages/Testing.jsx
+src/sitemap.js
+sitemap.js
+dist.zip
+dist-pre.zip
+dist-last.zip
+dist-27.zip
 
 # Editor directories and files
 .vscode/*

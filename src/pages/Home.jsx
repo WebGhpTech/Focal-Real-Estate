@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { Hero, Features, LatestListings, About, Stats, Partners, Testimonial, Footer } from './sections/Home';
 
 const Home = () => {
@@ -24,8 +25,14 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+
   }, []);
 
+    
+    
+    // localStorage.setItem('items', JSON.stringify(items));
+
+  
   return (
     <div>
       <section>

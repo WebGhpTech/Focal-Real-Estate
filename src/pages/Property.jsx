@@ -1,11 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Property = () => {
     const location = useLocation();
     const { state } = location;
     const [property, setState] = useState(state?.property);
+    console.log(property);
 
 
     if (!property) {
@@ -19,6 +21,9 @@ const Property = () => {
     const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
 
     const [title, setTitle] = useState('');
+
+    const newDescription = description.replaceAll("&#x2022;", "•");
+    
 
     const [formData, setFormData] = useState({
         name: '',
@@ -36,7 +41,7 @@ const Property = () => {
         e.preventDefault();
 
         // fetch('http://localhost/auclient/quarantine/internal_api/properties.php', {
-        fetch('https://focalrealestate.com.au/internal_api/properties.php', {
+        fetch('https://focalrealestate.com.au/internal_api/framework/api/property-listing', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,6 +89,25 @@ const Property = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>{title}-Focal Real Estate</title>
+                <meta httpEquiv="content-language" content="en-us" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="title" content={headline??""} />
+                {/* <link rel="canonical" href={pageInformation?.canonical_tag} />  */}
+                <link rel="icon" type="image/png" href="" />
+                <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+                <meta name="generator" content="Focal Real Estate" />
+                <meta name="author" content="Focal Real Estate" />
+                <meta name="og:image" content={images?images[0]:''}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:title" content={headline}/>  
+                <meta name="twitter:image" content={images?images[0]:''}/>
+                <meta property="og:image:width" content="1200"/>
+                <meta property="og:image:height" content="630"/>
+                <meta property="og:site_name" content="Focal Real Estate"/>
+                <meta property="og:type" content="website"/>
+            </Helmet>
             <section>
                 <div className="relative isolate overflow-hidden">
                     <img src="/leased_header.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
@@ -97,7 +121,7 @@ const Property = () => {
             </section>
             <section>
                 <div className="mb-10 relative isolate overflow-hidden bg-white">
-                    <div className="mx-auto max-w-7xl flex px-6 sm:py-20 lg:px-8">
+                    <div className="mx-auto max-w-7xl flex flex-col sm:flex-row px-6 sm:py-20 lg:px-8 ">
                         <div className="mx-auto flex-grow flex-shrink-0 max-sm:flex-col max-sm:mx-auto mr-20">
                             <div className="relative mr-20 max-w-5xl">
                                 <button type="button" onClick={goToPreviousImage} className="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 bg-gray-200">
@@ -108,15 +132,22 @@ const Property = () => {
                                     </span>
                                     <span className="sr-only">Previous</span>
                                 </button>
-                                <img
+                                {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="h-[240px] sm:h-[300px] md:h-[500px] object-cover" style={{
+                                        objectFit: 'cover',
+                                        width: '100%',
+                                        // height: '500px',
+                                    }}
+                                     src="../no-image.jpg" alt="" />
+                                :<img
                                     src={images[currentImageIndex]}
+                                    className='h-[240px] sm:h-[300px] md:h-[500px]'
                                     style={{
                                         objectFit: 'cover',
                                         width: '100%',
-                                        height: '500px',
+                                        // height: '500px',
                                     }}
                                     alt={`Slide ${currentImageIndex + 1}`}
-                                />
+                                />}
 
                                 <button type="button" onClick={goToNextImage} className="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 bg-gray-200">
                                     <span className="sr-only">Next</span>
@@ -127,7 +158,7 @@ const Property = () => {
                                     </span>
                                 </button>
                             </div>
-                            <div className='mx-auto mt-5 max-w-4xl'>
+                            <div className='mt-5 w-[380px] sm:w-[500px] md:w-[800px]'>
                                 <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1>
                                 <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3>
                                 <buuton  className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
@@ -141,23 +172,28 @@ const Property = () => {
                                 </div>
                                 <hr />
                                 <p className="mt-10 mb-10 text-gray-500 font-light text-md">
-                                    {description}
+                                    {newDescription.replaceAll("&#xa3;","£").replaceAll("â‚¬", " ").replaceAll("&euro;","€").replaceAll("Ã"," ").replaceAll("¯¼â"," ")}
                                 </p>
                                 <div className="mt-5 flex flex-col">
                                     <div className="-m-1.5 overflow-x-auto">
                                         <div className="p-1.5 min-w-full inline-block align-middle">
                                             <div className="overflow-hidden">
+
                                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                                                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700 flex flex-col gap-3 sm:flex-row">
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Address</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{streetNumber} {street}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Suburb</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{suburb}</td>
                                                         </tr>
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Post Code</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{postcode}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">State</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{address_state}</td>
                                                         </tr>
@@ -174,6 +210,7 @@ const Property = () => {
                                 </div>
                             </div>
                         </div>
+                        <div>
                         <form className="w-full p-0">
                             <div className="border p-5 rounded-md">
                                 <div className="mb-8">
@@ -221,6 +258,7 @@ const Property = () => {
                                 )}
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
             </section>

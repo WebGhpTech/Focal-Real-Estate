@@ -49,8 +49,10 @@ const AboutStaff = () => {
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Donna Orel</p>
               </div>
               <div className="flex flex-col">
-                <img src="./team/Shelly-Huang.jpeg" className="h-full" />
-                <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Shelly Huang</p>
+                {/* <img src="./team/Shelly-Huang.jpeg" className="h-full" />
+                <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Shelly Huang</p> */}
+                <img src="./team/Tiresa.jpeg" className="h-full" />
+                <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Tiresa</p>
               </div>
             </div>
           </div>

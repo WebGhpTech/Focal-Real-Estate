@@ -3,6 +3,7 @@ import PropertyListing from '../../../components/PropertyListing';
 const LatestListings = () => {
 
   return (
+    <>
     <div className="bg-slate-100 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 items-center lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-6">
@@ -15,6 +16,7 @@ const LatestListings = () => {
         <PropertyListing page="home" type="residential" status="listing" pg={1} limit="12" />
       </div>
     </div>
+    </>
   );
 };
 

@@ -95,7 +95,9 @@ const Navigation = () => {
 
         <div className="flex-shrink-0">
           <div className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
+            <a href="tel:0732086222">
             <img src="/icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222
+            </a>
           </div>
         </div>
       </div>
