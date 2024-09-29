@@ -6,7 +6,8 @@ function Card({property}) {
               <img className="w-full h-auto rounded-t-xl" src={property.images[0]} alt="" />
               <div className="p-4 md:p-5">
                 <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
-                <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
+                {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
+                <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
                 {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
                 <a href="#" className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
                   {property.status}

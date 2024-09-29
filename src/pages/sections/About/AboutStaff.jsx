@@ -24,10 +24,10 @@ const AboutStaff = () => {
                 <img src="./team/3.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Philip Paznikov</p>
               </div>
-              <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                 <img src="./team/4.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Alex Paznikov</p>
-              </div>
+              </div> */}
               {/* <div className="flex flex-col">
                 <img src="./team/5.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Aline Harnchan</p>
@@ -51,7 +51,7 @@ const AboutStaff = () => {
               <div className="flex flex-col">
                 {/* <img src="./team/Shelly-Huang.jpeg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Shelly Huang</p> */}
-                <img src="./team/Tiresa.jpeg" className="h-full" />
+                <img src="./team/Tiresa.jpg" className="h-full" />
                 <p className="mt-2 py-4 text-xl text-gray-900 max-sm:text-center">Tiresa</p>
               </div>
             </div>

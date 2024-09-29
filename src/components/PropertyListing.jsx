@@ -205,6 +205,18 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
     
   }
   
+  
+  const extractFirstImage = (images) => {
+    if (!images) return null;
+    if (Array.isArray(images)) {
+      return images[0];
+    }
+    if (typeof images === 'string') {
+      const urls = images.split("https://").filter(Boolean).map(url => "https://" + url);
+      return urls[0];
+    }
+    return null;
+  };
   return (
     <div>
       {page === "home" ? (
@@ -287,10 +299,11 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
       <div key={index} className="mx-2">
         <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
           {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />}
+          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.images[0]} alt="" />}
           <div className="p-4 md:p-5 h-44">
             <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
-            <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
+            {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
+            <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
             {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
             <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
               {property.status}
@@ -314,10 +327,12 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
         properties?Object.values(properties)?.map((property, index) => (
                 
                 <div key={index} className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-                  <img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />
+                  {/* {property.images > 0 && <img className="w-full rounded-t-xl h-[250px] object-cover" src={extractFirstImage(property.images)} alt="" />} */}
+                  <img src={extractFirstImage(property.images)} className="w-full h-auto" alt={`Property image ${index + 1}`} />
                   <div className="p-4 md:p-5 h-44">
                     <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
-                    <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p>
+                    {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
+                    <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
                     {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
                     <button  className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
                       {property.status}

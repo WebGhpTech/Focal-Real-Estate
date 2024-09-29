@@ -24,14 +24,14 @@ const Testimonial = () => {
   return (
     <div className="bg-white max-sm:m-4 ">
       <div className="mx-auto block sm:hidden flex-col bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
-        <img className="h-100 w-full flex-none rounded object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm animate-on-scroll" src="./fre-team-01.jpg" />
+        <img className="h-100 w-full flex-none rounded object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm animate-on-scroll" src="./focal_real_estate.jpeg" />
         </div>
       <div className="mx-auto max-w-5xl flex items-center">
       <div className="hidden sm:w-1/2 sm:block">
       {/* <div className="relative isolate">
         <div className="mx-auto max-w-5xl"> */}
           <div className="mx-auto flex-col bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
-            <img className="h-100 w-full flex-none rounded object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm animate-on-scroll" src="./fre-team-01.jpg" />
+            <img className="h-100 w-full flex-none rounded object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm animate-on-scroll" src="./focal_real_estate.jpeg" />
         </div>
         {/* <img
           className="w-full h-auto"

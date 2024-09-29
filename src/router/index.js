@@ -8,7 +8,7 @@ import Sold from '../pages/Sold';
 import Contact from '../pages/Contact';
 import FAQ from '../pages/FAQ';
 import Terms from '../pages/Terms';
-// import Testing from '../pages/Testing';
+import Testing from '../pages/Testing';
 import Property from '../pages/Property';
 import InspectionTimes from '../pages/InspectionTimes';
 import PropertyAlerts from '../pages/PropertyAlerts';
@@ -116,12 +116,12 @@ const routes = [
     main: false,
     component: Terms,
   },
-  // {
-  //   path: '/testing',
-  //   title: 'Testing',
-  //   main: false,
-  //   component: Testing,
-  // },
+  {
+    path: '/testing',
+    title: 'Testing',
+    main: false,
+    component: Testing,
+  },
 ];
 
 const defaultRoute = [
