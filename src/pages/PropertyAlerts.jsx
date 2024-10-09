@@ -626,7 +626,7 @@ const PropertyAlerts = () => {
   };
   const [pageInformation, setPageInformation] = useState();
   const userdata = JSON.parse(localStorage.getItem("user_data"));
-  const page_slug = "buy";
+  const page_slug = "property-alerts";
   const BASE_URL = "https://focalrealestate.com.au";
   useEffect(() => {
     if (userdata) {
@@ -644,7 +644,7 @@ const PropertyAlerts = () => {
   return (
     <>
       <Helmet>
-        <title>Property Alerts-Focal Real Estate</title>
+        <title>{`${pageInformation?.meta_title}`}</title>
         <meta httpEquiv="content-language" content="en-us" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="title" content={pageInformation?.meta_title} />

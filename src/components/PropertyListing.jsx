@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from './Card';
@@ -80,6 +80,7 @@ const FilterBox = ({ onClose }) => {
 
 
 const PropertyListing = ({ pg, page, type, status, limit }) => {
+  const slug = useLocation();
   const [propertyType, setPropertyType] = useState(type);
   const [listLimit, setListLimit] = useState(limit);
   const [itemStatus, setItemStatus] = useState(status);
@@ -97,7 +98,8 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
 
   const fetchData = async () => {
     try {
-      let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
+      let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre';
+      // let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
       // let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
       // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
       let params = [];
@@ -145,13 +147,14 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
         apiUrl += `?${params.join('&')}`;
       }
       const response = await fetch(`${apiUrl}?${params.join('&')}`);
+      // console.log(response);
       const result = await response.json();
-      // console.log("Testing:", result)
+      console.log("Testing:", result)
       // if(propertyType == "rental")
       // {
       //   setProperties(result);
       // }else{
-        setProperties(result.properties);
+        setProperties(result?.items);
       // }
     } catch (error) {
       console.error('Error fetching data : ', error.message);
@@ -196,7 +199,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
     if (type === "residential") {
       // console.log(type)
       setListLimit("12"); 
-      setItemStatus("Listing");
+      setItemStatus("listing");
     }
     if (type === "rental") {
       setListLimit("6"); 
@@ -298,15 +301,16 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
     {(Object.values(properties)?.map((property, index) => (
       <div key={index} className="mx-2">
         <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-          {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.images[0]} alt="" />}
+          {property.photos === undefined || property.photos === null || property.photos === "" || !property.photos ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
+          :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
           <div className="p-4 md:p-5 h-44">
-            <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
+            <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
             {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
-            <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
+            <p className="mt-1 text-gray-500 text-sm">{property?.displayAddress}</p>
             {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
             <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
-              {property.status}
+              {/* {property.status} */}
+              {slug.pathname === "/" && property?.status === "management" ? "Rental" : property?.status}
             </button>
           </div>
           <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
@@ -327,24 +331,26 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
         properties?Object.values(properties)?.map((property, index) => (
                 
                 <div key={index} className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-                  {/* {property.images > 0 && <img className="w-full rounded-t-xl h-[250px] object-cover" src={extractFirstImage(property.images)} alt="" />} */}
-                  <img src={extractFirstImage(property.images)} className="w-full h-auto" alt={`Property image ${index + 1}`} />
+                  {property?.photos === undefined || property?.photos === null || property?.photos === "" || !property?.photos[0] ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
+              :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
+                  {/* <img src={extractFirstImage(property.images)} className="w-full h-auto" alt={`Property image ${index + 1}`} /> */}
                   <div className="p-4 md:p-5 h-44">
-                    <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
+                    <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
                     {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
-                    <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
+                    <p className="mt-1 text-gray-500 text-sm">{property?.displayAddress}</p>
                     {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
                     <button  className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
-                      {property.status}
+                      {/* {property?.status} */}
+                      {slug.pathname === "/" && property?.status === "management" ? "Rental" : property?.status}
                     </button>
                   </div>
                   <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
                     <img src="./icons/bed.png" className="inline" />
-                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bed} </p>
                     <img src="./icons/bath.png" className="inline" />
-                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bath} </p>
                     <img src="./icons/car.png" className="inline" />
-                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.carports} </p>
                   </div>
                 </div>
                 

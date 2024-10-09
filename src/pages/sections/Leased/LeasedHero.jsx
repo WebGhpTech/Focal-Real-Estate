@@ -6,7 +6,7 @@ const LeasedHero = () => {
   const [pageInformation, setPageInformation] = useState();
     const userdata = JSON.parse(localStorage.getItem('user_data'));
     const page_slug = "leased-properties";
-    const BASE_URL = "https://focalrealestate.com.au/"
+    const BASE_URL = "https://focalrealestate.com.au"
     useEffect(()=>{
       if(userdata){
         axios.post(`${BASE_URL}/internal_api/admin/api/v1/focal-data`,{page_slug:page_slug}).then(response => {
@@ -17,7 +17,7 @@ const LeasedHero = () => {
   return (
     <>
     <Helmet>
-      <title>Leased Property-Focal Real Estate</title>
+      <title>{`${pageInformation?.meta_title}`}</title>
       <meta httpEquiv="content-language" content="en-us" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="title" content={pageInformation?.meta_title} />

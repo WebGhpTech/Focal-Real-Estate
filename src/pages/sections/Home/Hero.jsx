@@ -19,7 +19,7 @@ const Hero = () => {
   return (
     <>
     <Helmet>
-      <title>Home-Focal Real Estate</title>
+      <title>{`${pageInformation?.meta_title}`} </title>
       <meta httpEquiv="content-language" content="en-us" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="title" content={pageInformation?.meta_title} />

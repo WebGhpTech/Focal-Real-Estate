@@ -18,7 +18,10 @@ const Property = () => {
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
+    // const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
+    const { type, status, heading, streetNumber, street, postcode, suburb, address_state, country, description, bed, bath, carports, name, telephone } = property;
+
+    const images = property?.photos;
 
     const [title, setTitle] = useState('');
 
@@ -65,11 +68,11 @@ const Property = () => {
     }
 
     const goToPreviousImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images?.length - 1 : prevIndex - 1));
     };
 
     const goToNextImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        setCurrentImageIndex((prevIndex) => (prevIndex === images?.length - 1 ? 0 : prevIndex + 1));
     };
 
     useEffect(() => {
@@ -93,16 +96,16 @@ const Property = () => {
                 <title>{title}-Focal Real Estate</title>
                 <meta httpEquiv="content-language" content="en-us" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="title" content={headline??""} />
+                <meta name="title" content={heading??""} />
                 {/* <link rel="canonical" href={pageInformation?.canonical_tag} />  */}
                 <link rel="icon" type="image/png" href="" />
                 <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
                 <meta name="generator" content="Focal Real Estate" />
                 <meta name="author" content="Focal Real Estate" />
-                <meta name="og:image" content={images?images[0]:''}/>
+                {/* <meta name="og:image" content={images?images[0]:''}/> */}
                 <meta name="twitter:card" content="summary_large_image"/>
-                <meta name="twitter:title" content={headline}/>  
-                <meta name="twitter:image" content={images?images[0]:''}/>
+                <meta name="twitter:title" content={heading}/>  
+                {/* <meta name="twitter:image" content={images?images[0]:''}/> */}
                 <meta property="og:image:width" content="1200"/>
                 <meta property="og:image:height" content="630"/>
                 <meta property="og:site_name" content="Focal Real Estate"/>
@@ -132,14 +135,14 @@ const Property = () => {
                                     </span>
                                     <span className="sr-only">Previous</span>
                                 </button>
-                                {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="h-[240px] sm:h-[300px] md:h-[500px] object-cover" style={{
+                                {property?.photos === undefined || property?.photos === null || property?.photos === "" || !property?.photos ? <img className="h-[240px] sm:h-[300px] md:h-[500px] object-cover" style={{
                                         objectFit: 'cover',
                                         width: '100%',
                                         // height: '500px',
                                     }}
                                      src="../no-image.jpg" alt="" />
                                 :<img
-                                    src={images[currentImageIndex]}
+                                    src={images[currentImageIndex]?.url}
                                     className='h-[240px] sm:h-[300px] md:h-[500px]'
                                     style={{
                                         objectFit: 'cover',
@@ -159,15 +162,19 @@ const Property = () => {
                                 </button>
                             </div>
                             <div className='mt-5 w-[380px] sm:w-[500px] md:w-[800px]'>
-                                <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1>
-                                <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3>
+                                <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{heading}</h1>
+                                {/* <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1> */}
+                                {/* <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3> */}
+                                <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{property?.address?.streetNumber} {property?.address?.street}, {property?.address?.state?.name}, {property?.address?.suburb?.name}, {property?.address?.country?.name} {property?.address?.suburb?.postcode}</h3>
                                 <buuton  className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
                                     {status}
                                 </buuton>
                                 <hr />
                                 <div className="mt-4 mb-4 text-gray-500 font-light text-md">
-                                    <img src="/icons/bed.png" className="inline mr-1" /> {bedrooms} Bed
-                                    <img src="/icons/bath.png" className="inline mr-1 ml-3" /> {bathrooms} Bath
+                                    <img src="/icons/bed.png" className="inline mr-1" /> {bed} Bed
+                                    {/* <img src="/icons/bed.png" className="inline mr-1" /> {bedrooms} Bed */}
+                                    <img src="/icons/bath.png" className="inline mr-1 ml-3" /> {bath} Bath
+                                    {/* <img src="/icons/bath.png" className="inline mr-1 ml-3" /> {bathrooms} Bath */}
                                     <img src="/icons/car.png" className="inline mr-1 ml-3" /> {carports} Garage
                                 </div>
                                 <hr />
@@ -183,19 +190,19 @@ const Property = () => {
                                                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700 flex flex-col gap-3 sm:flex-row">
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Address</td>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{streetNumber} {street}</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.streetNumber} {property?.address?.street}</td>
                                                         </tr>
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Suburb</td>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{suburb}</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.suburb?.name}</td>
                                                         </tr>
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Post Code</td>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{postcode}</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.suburb?.postcode}</td>
                                                         </tr>
                                                         <tr>
                                                             <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">State</td>
-                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{address_state}</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.country?.name}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
