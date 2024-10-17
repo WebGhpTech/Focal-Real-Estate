@@ -149,7 +149,6 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
       const response = await fetch(`${apiUrl}?${params.join('&')}`);
       // console.log(response);
       const result = await response.json();
-      console.log("Testing:", result)
       // if(propertyType == "rental")
       // {
       //   setProperties(result);
@@ -176,8 +175,11 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
   }
 
   const navigateToProperty = (property) => {
+    const a = property?.heading?.trim().replace(/\s+/g, " ");
+    const slug = a.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     if (property) {
-      navigate(`/property/${property.id}`, { state: { property } });
+      navigate(`/property/${slug}`, { state: { property } });
+      // navigate(`/property/${property.id}`, { state: { property } });
     }
   }
 

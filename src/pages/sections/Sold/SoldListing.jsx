@@ -104,7 +104,7 @@ const SoldListing = () => {
       }
 
       const response = await fetch(`${apiUrl}?${params.join('&')}`); 
-      console.log(response);
+
       if (!response.ok) {
         throw new Error('Failed to fetch properties');
       }
@@ -137,8 +137,11 @@ const SoldListing = () => {
 
 
   const navigateToProperty = (property) => {
+    const a = property?.heading?.trim().replace(/\s+/g, " ");
+    const slug = a.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     if (property) {
-      navigate(`/property/${property.id}`, { state: { property } });
+      navigate(`/property/${slug}`, { state: { property } });
+      // navigate(`/property/${property.id}`, { state: { property } });
     }
   }
   return (

@@ -69,7 +69,8 @@ const routes = [
     component: About,
   },
   {
-    path: '/property/:id',
+    path: '/property/:slug',
+    // path: '/property/:id',
     title: 'Property',
     main: false,
     component: Property,
