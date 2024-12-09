@@ -118,11 +118,16 @@ const routes = [
     component: Terms,
   },
   {
-    path: '/testing',
-    title: 'Testing',
-    main: false,
-    component: Testing,
+    path: '/blog',
+    title: 'Blog',
+    main: true,
   },
+  // {
+  //   path: '/testing',
+  //   title: 'Testing',
+  //   main: false,
+  //   component: Testing,
+  // },
 ];
 
 const defaultRoute = [

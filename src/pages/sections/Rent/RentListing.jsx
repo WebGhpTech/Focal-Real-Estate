@@ -19,7 +19,7 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className="mx-auto rounded-lg w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
+    <div className="mx-auto rounded-lg w-full md:w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
       <div className='mx-auto w-full flex flex-row'>
         <div className='mx-auto flex max-sm:flex-col'>
           <div className='mb-6'>
@@ -104,7 +104,7 @@ const RentListing = () => {
     }
 
     const response = await fetch(`${apiUrl}?${params.join('&')}`); 
-    console.log(response);
+    // console.log(response);
     if (!response.ok) {
       throw new Error('Failed to fetch properties');
     }
@@ -209,11 +209,8 @@ const navigateToProperty = (property) => {
             :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
             <div className="p-4 md:p-5 h-44">
               <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
-              {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
               <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
-              {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
               <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
-                {/* {property?.status} */}
                 {slug.pathname === "/rent" ? "Rental" : property?.status}
                 {/* Rental */}
               </button>

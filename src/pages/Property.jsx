@@ -7,7 +7,7 @@ const Property = () => {
     const location = useLocation();
     const { state } = location;
     const [property, setState] = useState(state?.property);
-    console.log(property);
+    // console.log(property);
 
 
     if (!property) {
@@ -60,7 +60,7 @@ const Property = () => {
                 }
             })
             .then(responseData => {
-                console.log('Data sent successfully!', responseData);
+                // console.log('Data sent successfully!', responseData);
             })
             .catch(error => {
                 console.error('Error: ', error);

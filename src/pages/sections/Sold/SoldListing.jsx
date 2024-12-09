@@ -19,7 +19,7 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className="mx-auto rounded-lg w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
+    <div className="mx-auto rounded-lg w-full md:w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
       <div className='mx-auto w-full flex flex-row'>
         <div className='mx-auto flex max-sm:flex-col'>
           <div className='mb-6'>

@@ -11,9 +11,10 @@ const Features = () => {
         backgroundRepeat: 'no-repeat',
       }}
     >
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-5xl font-bold text-white animate-on-scroll">What Can We Do For You?</h1>
+          <h1 className="text-3xl lg:text-5xl font-bold text-white animate-on-scroll">What Can We Do For You?</h1>
           <p className="mt-6 text-md leading-6 text-white animate-on-scroll">
             We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.
           </p>
