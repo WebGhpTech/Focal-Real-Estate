@@ -11,16 +11,18 @@ export default function Property() {
     // console.log(property);
     console.log(slug);
 
+    const searchParams = new URLSearchParams(location.search);
+    const id = searchParams.get("id");
+    console.log(id);
     useEffect(() => {
         const fetchProperty = async () => {
             fetch(`https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre?status=settled`)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('here 1',data);
-                    const slugModified = slug.replaceAll('-', ' ').toUpperCase();
-                    const property = data.items.find((property) => property.heading === slugModified);
-                    console.log('here 2',property);
-                    setState(property);
+                    console.log(data.items);
+                    const property = data.items.filter((property) => property.id == id);
+                    console.log('property data',property);
+                    setState(...property);
                 });
         };
         if (!property) {
