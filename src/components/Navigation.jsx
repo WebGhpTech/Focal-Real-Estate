@@ -2,9 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { routes } from '../router';
 
-const SubMenu = ({ subRoutes, showSubMenu, closeSubMenu }) => {
+const SubMenu = ({ handleSubMenuClick, subRoutes, showSubMenu, closeSubMenu }) => {
   return (
-    <ul className={`submenu absolute bg-white mt-2 p-4 rounded shadow-lg ${showSubMenu ? 'block' : 'hidden'}`}>
+    <ul onMouseLeave={handleSubMenuClick} className={`submenu absolute bg-white mt-2 p-4 rounded shadow-lg ${showSubMenu ? 'block' : 'hidden'}`}>
       {subRoutes.map((subRoute, index) => (
         <li key={index} className="text-md leading-8 hover:text-blue-700">
           <Link to={subRoute.path} onClick={closeSubMenu}>
@@ -30,7 +30,7 @@ const Navigation = () => {
 
   return (
     <nav className="flex items-center justify-between p-6 lg:px-8">
-      <div className="navbar flex items-center justify-between">
+      <div className="navbar w-[95%] lg:w-[85%] flex items-center justify-between">
         <div className="flex-shrink-0">
           <a href="/" className="-m-1.5 p-1">
             <span className="sr-only">FOCAL Real Estate</span>
@@ -44,7 +44,7 @@ const Navigation = () => {
               <li className="mr-8 text-lg leading-8" key={index}>
                 {route.subRoutes ? (
                   <>
-                    <span onMouseOver={() => handleSubMenuClick(index)} className="cursor-pointer">
+                    <span onMouseOver={() => handleSubMenuClick(index)}  className="cursor-pointer">
                       <span className="flex items-center">
                         {route.title}
                         <span className="text-xs ml-1">
@@ -82,18 +82,26 @@ const Navigation = () => {
                         </span>
                       </span>
                     </span>
-                    <SubMenu subRoutes={route.subRoutes} showSubMenu={activeSubMenu === index} closeSubMenu={closeSubMenu} />
+                    <SubMenu handleSubMenuClick={handleSubMenuClick} subRoutes={route.subRoutes} showSubMenu={activeSubMenu === index} closeSubMenu={closeSubMenu} />
                   </>
                 ) : (
-                  <Link to={route.path} className={`${location.pathname === route.path ? 'active-link' : ''}`}>
+                  <>
+                  
+                  {route.path === "/blog"?
+                    <a href='https://focalrealestate.com.au/blog'>
+                      Blog
+                    </a>:
+                    <Link to={route.path} className={`${location.pathname === route.path ? 'active-link' : ''}`}>
                     {route.title}
                   </Link>
+                  }
+                  </>
                 )}
               </li>
             ))}
         </ul>
 
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 hidden lg:block">
           <div className="rounded-md p-3 text-sm font-semibold text-focal-blue border border-gray-300">
             <a href="tel:0732086222">
               <img src="/icons/telephone.png" className="inline mr-2" /> Call Us Now! (07) 3208 6222

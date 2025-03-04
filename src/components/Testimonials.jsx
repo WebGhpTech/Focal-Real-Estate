@@ -32,10 +32,10 @@ const Testimonials = () => {
       }}
     >
       <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-3xl lg:mx-0 max-sm:mt-20">
+        <div className="mx-auto max-w-3xl lg:mx-0 max-sm:mt-8">
           <div className="mx-auto max-w-2xl max-sm:text-center justify-center">
             <span className="mx-auto mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Testimonials</span>
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Don't just take our word for it, <span className="text-heading-blue">see what others have to say...</span>
             </h1>
           </div>

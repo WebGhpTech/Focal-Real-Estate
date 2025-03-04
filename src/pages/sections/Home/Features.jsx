@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Features = () => {
   return (
     <div
-      className="section-bg-dark py-24 sm:py-32"
+      className="py-24 section-bg-dark sm:py-32"
       style={{
         backgroundImage: `url('./vector/dark_image_overlay.png')`,
         backgroundPosition: 'bottom right',
@@ -11,19 +11,20 @@ const Features = () => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-5xl font-bold text-white animate-on-scroll">What Can We Do For You?</h1>
-          <p className="mt-6 text-md leading-6 text-white animate-on-scroll">
+      {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"> */}
+      <div className="px-6 mx-auto max-w-7xl lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-white lg:text-5xl animate-on-scroll">What Can We Do For You?</h2>
+          <p className="mt-6 leading-6 text-white text-md animate-on-scroll">
             We are an independent private real estate agency that truly believes everything we can achieve is defined by our character.
           </p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <div className="max-w-2xl mx-auto mt-16 sm:mt-20 lg:mt-24 lg:max-w-none">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            <div className="flex flex-col w-80 items-center mx-auto text-center">
+            <div className="flex flex-col items-center mx-auto text-center w-80">
               <dt className="mt-10 text-base font-semibold leading-7 text-white">
-                <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-lg bg-blue-600 text-white animate-on-scroll">
+                <div className="flex items-center justify-center w-20 h-20 mb-2 text-white bg-blue-600 rounded-lg animate-on-scroll">
                   <Link to="/buy">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path
@@ -34,14 +35,14 @@ const Features = () => {
                     </svg>
                   </Link>
                 </div>
-                <p className="flex-auto text-2xl text-center mb-3 animate-on-scroll">Buy</p>
+                <p className="flex-auto mb-3 text-2xl text-center animate-on-scroll">Buy</p>
               </dt>
-              <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-white animate-on-scroll">
+              <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-white animate-on-scroll">
                 <p className="flex-auto">We will help you find your dream home with our vast network</p>
               </dd>
 
               <dt className="mt-10 text-base font-semibold leading-7 text-white">
-                <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-lg bg-blue-600 text-white animate-on-scroll">
+                <div className="flex items-center justify-center w-20 h-20 mb-2 text-white bg-blue-600 rounded-lg animate-on-scroll">
                   <Link to="/rent">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path
@@ -52,20 +53,20 @@ const Features = () => {
                     </svg>
                   </Link>
                 </div>
-                <p className="flex-auto text-2xl text-center mb-3 animate-on-scroll">Rent</p>
+                <p className="flex-auto mb-3 text-2xl text-center animate-on-scroll">Rent</p>
               </dt>
-              <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-white animate-on-scroll">
+              <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-white animate-on-scroll">
                 <p className="flex-auto">We manage renters and rentees with a personal touch</p>
               </dd>
             </div>
 
             <div className="flex flex-col items-center max-sm:hidden">
-              <img src="./fre-hero-02.jpg" className="rounded-lg animate-on-scroll" />
+              <img src="./fre-hero-02.jpg" className="rounded-lg animate-on-scroll" alt="independent private real estate agency"/>
             </div>
 
-            <div className="flex flex-col w-80 items-center mx-auto text-center">
+            <div className="flex flex-col items-center mx-auto text-center w-80">
               <dt className="mt-10 text-base font-semibold leading-7 text-white">
-                <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-lg bg-blue-600 text-white animate-on-scroll">
+                <div className="flex items-center justify-center w-20 h-20 mb-2 text-white bg-blue-600 rounded-lg animate-on-scroll">
                   <Link to="/appraisal">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path
@@ -76,14 +77,14 @@ const Features = () => {
                     </svg>
                   </Link>
                 </div>
-                <p className="flex-auto text-2xl text-center mb-3 animate-on-scroll">Sell</p>
+                <p className="flex-auto mb-3 text-2xl text-center animate-on-scroll">Sell</p>
               </dt>
-              <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-white animate-on-scroll">
+              <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-white animate-on-scroll">
                 <p className="flex-auto">Need to know the worth of your home? Find out with agents who know what they're doing.</p>
               </dd>
 
               <dt className="mt-10 text-base font-semibold leading-7 text-white">
-                <div className="mb-2 flex h-20 w-20 items-center justify-center rounded-lg bg-blue-600 text-white animate-on-scroll">
+                <div className="flex items-center justify-center w-20 h-20 mb-2 text-white bg-blue-600 rounded-lg animate-on-scroll">
                   <Link to="/leased"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path
                       strokeLinecap="round"
@@ -93,9 +94,9 @@ const Features = () => {
                   </svg>
                   </Link>
                 </div>
-                <p className="flex-auto text-2xl text-center mb-3 animate-on-scroll">Services</p>
+                <p className="flex-auto mb-3 text-2xl text-center animate-on-scroll">Services</p>
               </dt>
-              <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-white animate-on-scroll">
+              <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-white animate-on-scroll">
                 <p className="flex-auto">Browse through our recently leased properties</p>
               </dd>
             </div>

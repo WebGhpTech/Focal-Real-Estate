@@ -12,8 +12,8 @@ const BuyCTA = () => {
       }}
     >
       <div className="mx-auto">
-        <div className="py-24">
-          <div className="mx-auto px-32">
+        <div className="py-10 md:py-24">
+          <div className="mx-auto px-10 md:px-32">
             <div className="mx-auto flex flex-col justify-between lg:flex-row">
               <div className="lg:flex-2/3">
                 <h1 className="text-white font-bold text-5xl mb-3 max-sm:text-4xl max-sm:text-center">Find out the price of your home</h1>

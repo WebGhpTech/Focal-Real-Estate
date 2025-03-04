@@ -15,7 +15,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  });
+  },[]);
 
   return (
     <div className="bg-gray-900">

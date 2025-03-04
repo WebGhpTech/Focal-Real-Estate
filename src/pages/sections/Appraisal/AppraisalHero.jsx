@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 const AppraisalHero = () => {
   const [pageInformation, setPageInformation] = useState();
     const userdata = JSON.parse(localStorage.getItem('user_data'));
-    const page_slug = "buy";
+    const page_slug = "book-appraisal";
     const BASE_URL = "https://focalrealestate.com.au";
     useEffect(()=>{
       if(userdata){
@@ -17,7 +17,7 @@ const AppraisalHero = () => {
   return (
     <>
     <Helmet>
-      <title>Appraisal-Focal Real Estate</title>
+      <title>{`${pageInformation?.meta_title}`}</title>
       <meta httpEquiv="content-language" content="en-us" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="title" content={pageInformation?.meta_title} />

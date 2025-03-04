@@ -69,7 +69,8 @@ const routes = [
     component: About,
   },
   {
-    path: '/property/:id',
+    path: '/property/:slug',
+    // path: '/property/:id',
     title: 'Property',
     main: false,
     component: Property,
@@ -115,6 +116,11 @@ const routes = [
     title: 'Terms and Conditions',
     main: false,
     component: Terms,
+  },
+  {
+    path: '/blog',
+    title: 'Blog',
+    main: true,
   },
   // {
   //   path: '/testing',

@@ -2,566 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
+import citiyList from "./cityList.json"
 
 const PropertyAlerts = () => {
-  const cities = [
-    "ACACIA RIDGE",
-    "ADVANCETOWN",
-    "AGNES WATER",
-    "ALBANY CREEK",
-    "ALDERLEY",
-    "ALEXANDRA HEADLAND",
-    "ALEXANDRA HILLS",
-    "ALGESTER",
-    "ALLORA",
-    "ALPHA",
-    "ANDERGROVE",
-    "ANNANDALE",
-    "ANNERLEY",
-    "ARANA HILLS",
-    "ARUNDEL",
-    "ASCOT",
-    "ASHMORE",
-    "ASPLEY",
-    "ATHERTON",
-    "AUCHENFLOWER",
-    "AURUKUN",
-    "AVENELL HEIGHTS",
-    "AVOCA",
-    "AYR",
-    "BABINDA",
-    "BALD HILLS",
-    "BANKSIA BEACH",
-    "BANYO",
-    "BARCALDINE",
-    "BARDON",
-    "BARGARA",
-    "BAYVIEW HEIGHTS",
-    "BEACHMERE",
-    "BEACONSFIELD",
-    "BEAUDESERT",
-    "BEENLEIGH",
-    "BEERWAH",
-    "BELLARA",
-    "BELLBIRD PARK",
-    "BELLBOWRIE",
-    "BELLMERE",
-    "BENOWA",
-    "BENTLEY PARK",
-    "BERSERKER",
-    "BETHANIA",
-    "BIGGENDEN",
-    "BIGGERA WATERS",
-    "BILOELA",
-    "BIRKDALE",
-    "BIRTINYA",
-    "BLACKALL",
-    "BLACKBUTT",
-    "BLACKWATER",
-    "BLI BLI",
-    "BOHLE PLAINS",
-    "BONGAREE",
-    "BOONAH",
-    "BOONDALL",
-    "BOORAL",
-    "BOOVAL",
-    "BORONIA HEIGHTS",
-    "BOWEN",
-    "BOWEN HILLS",
-    "BOYNE ISLAND",
-    "BRACKEN RIDGE",
-    "BRANYAN",
-    "BRASSALL",
-    "BRAY PARK",
-    "BRIDGEMAN DOWNS",
-    "BRIGHTON",
-    "BRISBANE",
-    "BROADBEACH",
-    "BROADBEACH WATERS",
-    "BROOKFIELD",
-    "BROWNS PLAINS",
-    "BUCASIA",
-    "BUDERIM",
-    "BULIMBA",
-    "BUNDABERG",
-    "BUNDABERG EAST",
-    "BUNDABERG NORTH",
-    "BUNDAMBA",
-    "BURDELL",
-    "BURLEIGH HEADS",
-    "BURLEIGH WATERS",
-    "BURNETT HEADS",
-    "BURNSIDE",
-    "BURPENGARY",
-    "BURPENGARY EAST",
-    "CABOOLTURE",
-    "CABOOLTURE SOUTH",
-    "CAIRNS",
-    "CAIRNS NORTH",
-    "CALAMVALE",
-    "CALOUNDRA",
-    "CALOUNDRA WEST",
-    "CAMIRA",
-    "CAMP HILL",
-    "CANNON HILL",
-    "CANNONVALE",
-    "CAPALABA",
-    "CARAVONICA",
-    "CARBROOK",
-    "CARDWELL",
-    "CARINA",
-    "CARINDALE",
-    "CARRARA",
-    "CARSELDINE",
-    "CASHMERE",
-    "CENTENARY HEIGHTS",
-    "CHAPEL HILL",
-    "CHARLEVILLE",
-    "CHARTERS TOWERS",
-    "CHELMER",
-    "CHERBOURG",
-    "CHERMSIDE",
-    "CHERMSIDE WEST",
-    "CHILDERS",
-    "CHINCHILLA",
-    "CLAYFIELD",
-    "CLEAR ISLAND WATERS",
-    "CLERMONT",
-    "CLEVELAND",
-    "CLIFTON",
-    "CLIFTON BEACH",
-    "CLONCURRY",
-    "CLONTARF",
-    "COLLINGWOOD PARK",
-    "COLLINSVILLE",
-    "CONDON",
-    "COOKTOWN",
-    "COOLANGATTA",
-    "COOLOOLA COVE",
-    "COOLUM BEACH",
-    "COOMBABAH",
-    "COOMERA",
-    "COOPERS PLAINS",
-    "COOROY",
-    "COORPAROO",
-    "CORINDA",
-    "CORNUBIA",
-    "CRAIGLIE",
-    "CRAIGNISH",
-    "CRANBROOK",
-    "CRESTMEAD",
-    "CROWS NEST",
-    "CUNNAMULLA",
-    "CURRIMUNDI",
-    "CURRUMBIN",
-    "CURRUMBIN WATERS",
-    "DAISY HILL",
-    "DALBY",
-    "DARRA",
-    "DAYBORO",
-    "DECEPTION BAY",
-    "DEERAGUN",
-    "DICKY BEACH",
-    "DIDDILLIBAH",
-    "DINMORE",
-    "DOONAN",
-    "DOUGLAS",
-    "DREWVALE",
-    "DUNWICH",
-    "DURACK",
-    "EAGLEBY",
-    "EARLVILLE",
-    "EAST BRISBANE",
-    "EAST MACKAY",
-    "EAST TOOWOOMBA",
-    "EASTERN HEIGHTS",
-    "EDENS LANDING",
-    "EDMONTON",
-    "EIDSVOLD",
-    "EIGHT MILE PLAINS",
-    "ELANORA",
-    "ELI WATERS",
-    "ELIMBAH",
-    "ELLEN GROVE",
-    "ELLIOTT HEADS",
-    "EMERALD",
-    "ENOGGERA",
-    "ESK",
-    "EVERTON PARK",
-    "FERNVALE",
-    "FERNY GROVE",
-    "FERNY HILLS",
-    "FITZGIBBON",
-    "FLINDERS VIEW",
-    "FOREST LAKE",
-    "FORTITUDE VALLEY",
-    "FRASER ISLAND",
-    "FRENCHVILLE",
-    "GARBUTT",
-    "GATTON",
-    "GAYNDAH",
-    "GEEBUNG",
-    "GIN GIN",
-    "GLADSTONE",
-    "GLASS HOUSE MOUNTAINS",
-    "GLEN EDEN",
-    "GLENELLA",
-    "GLENVALE",
-    "GLENWOOD",
-    "GOLDEN BEACH",
-    "GOODNA",
-    "GOONDIWINDI",
-    "GORDONVALE",
-    "GRACEMERE",
-    "GRACEVILLE",
-    "GRANVILLE",
-    "GREENBANK",
-    "GREENSLOPES",
-    "GRIFFIN",
-    "GULLIVER",
-    "GYMPIE",
-    "HAMILTON",
-    "HARLAXTON",
-    "HARRISTOWN",
-    "HAWTHORNE",
-    "HEATHWOOD",
-    "HEATLEY",
-    "HELENSVALE",
-    "HENDRA",
-    "HERBERTON",
-    "HERMIT PARK",
-    "HERSTON",
-    "HIDDEN VALLEY",
-    "HIGHFIELDS",
-    "HIGHGATE HILL",
-    "HIGHLAND PARK",
-    "HILLCREST",
-    "HOLLAND PARK",
-    "HOLLAND PARK WEST",
-    "HOME HILL",
-    "HOPE ISLAND",
-    "HUGHENDEN",
-    "HYDE PARK",
-    "IDALIA",
-    "INALA",
-    "INDOOROOPILLY",
-    "INGHAM",
-    "INGLEWOOD",
-    "INNES PARK",
-    "INNISFAIL",
-    "IPSWICH",
-    "JANDOWAE",
-    "JIMBOOMBA",
-    "JINDALEE",
-    "JOYNER",
-    "JULATTEN",
-    "KALKIE",
-    "KALLANGUR",
-    "KANGAROO POINT",
-    "KAWANA",
-    "KAWANA WATERS",
-    "KAWUNGAN",
-    "KEARNEYS SPRING",
-    "KEDRON",
-    "KELSO",
-    "KELVIN GROVE",
-    "KENMORE",
-    "KENMORE HILLS",
-    "KEPERRA",
-    "KEPNOCK",
-    "KEWARRA BEACH",
-    "KILCOY",
-    "KILLARNEY",
-    "KINGAROY",
-    "KINGSTON",
-    "KIPPA-RING",
-    "KIRRA",
-    "KIRWAN",
-    "KULUIN",
-    "KURABY",
-    "LABRADOR",
-    "LAIDLEY",
-    "LAWNTON",
-    "LEICHHARDT",
-    "LITTLE MOUNTAIN",
-    "LOGAN CENTRAL",
-    "LOGAN VILLAGE",
-    "LOGANHOLME",
-    "LOGANLEA",
-    "LONGREACH",
-    "LOTA",
-    "LOWOOD",
-    "LUTWYCHE",
-    "MACKAY",
-    "MACLEAY ISLAND",
-    "MAIN BEACH",
-    "MALANDA",
-    "MALENY",
-    "MANGO HILL",
-    "MANLY",
-    "MANLY WEST",
-    "MANOORA",
-    "MANSFIELD",
-    "MANUNDA",
-    "MAPLETON",
-    "MAREEBA",
-    "MARGATE",
-    "MAROOCHYDORE",
-    "MARSDEN",
-    "MARYBOROUGH",
-    "MCDOWALL",
-    "MEADOWBROOK",
-    "MERIDAN PLAINS",
-    "MERMAID BEACH",
-    "MERMAID WATERS",
-    "MERRIMAC",
-    "MIAMI",
-    "MIDDLE RIDGE",
-    "MILES",
-    "MILLBANK",
-    "MILLMERRAN",
-    "MINYAMA",
-    "MIRANI",
-    "MITCHELL",
-    "MITCHELTON",
-    "MOGGILL",
-    "MOLENDINAR",
-    "MONKLAND",
-    "MONTO",
-    "MOOLOOLABA",
-    "MOOLOOLAH VALLEY",
-    "MOORE PARK BEACH",
-    "MOOROOBOOL",
-    "MOOROOKA",
-    "MORAYFIELD",
-    "MORNINGSIDE",
-    "MORNINGTON ISLAND",
-    "MOSSMAN",
-    "MOUNT COOLUM",
-    "MOUNT GRAVATT",
-    "MOUNT GRAVATT EAST",
-    "MOUNT ISA",
-    "MOUNT LOFTY",
-    "MOUNT LOUISA",
-    "MOUNT MORGAN",
-    "MOUNT OMMANEY",
-    "MOUNT PLEASANT",
-    "MOUNT SHERIDAN",
-    "MOUNT TAMBORINE",
-    "MOUNT WARREN PARK",
-    "MOUNTAIN CREEK",
-    "MOURA",
-    "MUDGEERABA",
-    "MUNDINGBURRA",
-    "MUNDUBBERA",
-    "MURGON",
-    "MURRUMBA DOWNS",
-    "NAMBOUR",
-    "NANANGO",
-    "NARANGBA",
-    "NERANG",
-    "NEW AUCKLAND",
-    "NEW FARM",
-    "NEWMARKET",
-    "NEWPORT",
-    "NEWSTEAD",
-    "NEWTOWN",
-    "NINGI",
-    "NOOSA HEADS",
-    "NOOSAVILLE",
-    "NORMAN GARDENS",
-    "NORMAN PARK",
-    "NORMANTON",
-    "NORTH BOOVAL",
-    "NORTH IPSWICH",
-    "NORTH LAKES",
-    "NORTH MACKAY",
-    "NORTH ROCKHAMPTON",
-    "NORTH TAMBORINE",
-    "NORTH WARD",
-    "NUDGEE",
-    "NUNDAH",
-    "OAKEY",
-    "ORMEAU",
-    "ORMISTON",
-    "OXENFORD",
-    "OXLEY",
-    "PACIFIC PARADISE",
-    "PACIFIC PINES",
-    "PADDINGTON",
-    "PALM BEACH",
-    "PALM ISLAND",
-    "PALMWOODS",
-    "PARADISE POINT",
-    "PARK AVENUE",
-    "PARK RIDGE",
-    "PARKINSON",
-    "PARKWOOD",
-    "PARRAMATTA PARK",
-    "PELICAN WATERS",
-    "PEREGIAN SPRINGS",
-    "PETRIE",
-    "PIALBA",
-    "PIMLICO",
-    "PIMPAMA",
-    "PINJARRA HILLS",
-    "PITTSWORTH",
-    "POINT VERNON",
-    "POMONA",
-    "PORMPURAAW",
-    "PORT DOUGLAS",
-    "PROSERPINE",
-    "PULLENVALE",
-    "RACEVIEW",
-    "RAILWAY ESTATE",
-    "RANGEVILLE",
-    "RASMUSSEN",
-    "RAVENSHOE",
-    "RED HILL",
-    "REDBANK",
-    "REDBANK PLAINS",
-    "REDCLIFFE",
-    "REDLAND BAY",
-    "REDLYNCH",
-    "REGENTS PARK",
-    "RICHLANDS",
-    "RIVERVIEW",
-    "ROBINA",
-    "ROCHEDALE SOUTH",
-    "ROCKHAMPTON",
-    "ROCKLEA",
-    "ROCKVILLE",
-    "ROMA",
-    "ROSEWOOD",
-    "ROTHWELL",
-    "ROWES BAY",
-    "RUNAWAY BAY",
-    "RUNCORN",
-    "RUSSELL ISLAND",
-    "SALISBURY",
-    "SANDGATE",
-    "SARINA",
-    "SCARBOROUGH",
-    "SCARNESS",
-    "SEVENTEEN MILE ROCKS",
-    "SHAILER PARK",
-    "SHERWOOD",
-    "SHORNCLIFFE",
-    "SILKSTONE",
-    "SINNAMON PARK",
-    "SIPPY DOWNS",
-    "SLACKS CREEK",
-    "SMITHFIELD",
-    "SOUTH BRISBANE",
-    "SOUTH MACKAY",
-    "SOUTH TOOWOOMBA",
-    "SOUTH TOWNSVILLE",
-    "SOUTHPORT",
-    "SOUTHSIDE",
-    "SPRING HILL",
-    "SPRINGBROOK",
-    "SPRINGFIELD",
-    "SPRINGFIELD CENTRAL",
-    "SPRINGFIELD LAKES",
-    "SPRINGSURE",
-    "SPRINGWOOD",
-    "ST GEORGE",
-    "ST LUCIA",
-    "STAFFORD",
-    "STAFFORD HEIGHTS",
-    "STANTHORPE",
-    "STRATHPINE",
-    "SUNNYBANK",
-    "SUNNYBANK HILLS",
-    "SURFERS PARADISE",
-    "TAIGUM",
-    "TALLAI",
-    "TALLEBUDGERA",
-    "TANNUM SANDS",
-    "TARA",
-    "TARINGA",
-    "TAROOM",
-    "TARRAGINDI",
-    "TEWANTIN",
-    "TEXAS",
-    "THABEBAN",
-    "THE GAP",
-    "THE GEMFIELDS",
-    "THE RANGE",
-    "THEODORE",
-    "THORNESIDE",
-    "THORNLANDS",
-    "THURINGOWA CENTRAL",
-    "THURSDAY ISLAND",
-    "TIARO",
-    "TIN CAN BAY",
-    "TINANA",
-    "TINGALPA",
-    "TIVOLI",
-    "TOLGA",
-    "TOOGOOLAWAH",
-    "TOOGOOM",
-    "TOOWONG",
-    "TOOWOOMBA",
-    "TOOWOOMBA CITY",
-    "TORQUAY",
-    "TREBONNE",
-    "TRINITY BEACH",
-    "TUGUN",
-    "TULLY",
-    "TWIN WATERS",
-    "UNDERWOOD",
-    "UPPER CABOOLTURE",
-    "UPPER COOMERA",
-    "UPPER MOUNT GRAVATT",
-    "URANGAN",
-    "URRAWEEN",
-    "VARSITY LAKES",
-    "VICTORIA POINT",
-    "WACOL",
-    "WANDAL",
-    "WARANA",
-    "WARNER",
-    "WARWICK",
-    "WATERFORD",
-    "WATERFORD WEST",
-    "WAVELL HEIGHTS",
-    "WELLINGTON POINT",
-    "WEST END, BRISBANE",
-    "WEST END, TOWNSVILLE",
-    "WEST MACKAY",
-    "WESTCOURT",
-    "WHITE ROCK",
-    "WHITFIELD",
-    "WILSONTON",
-    "WILSONTON HEIGHTS",
-    "WINDSOR",
-    "WINTON",
-    "WISHART",
-    "WONDAI",
-    "WOODFORD",
-    "WOODRIDGE",
-    "WOODY POINT",
-    "WOOLLOONGABBA",
-    "WOOLOOWIN",
-    "WOOMBYE",
-    "WOORABINDA",
-    "WOORIM",
-    "WOREE",
-    "WORONGARY",
-    "WULGURU",
-    "WURTULLA",
-    "WYNNUM",
-    "WYNNUM NORTH",
-    "WYNNUM WEST",
-    "YARRABAH",
-    "YARRABILBA",
-    "YATALA",
-    "YEPPOON",
-    "YERONGA",
-    "ZILLMERE",
-    "ZILZIE",
-  ];
+  // const cities = []
   const [messageSent, setMessageSent] = useState("");
   const [minBedroomRange, setMinBedroomRange] = useState([0, 10]);
   const [maxBedroomRange, setMaxBedroomRange] = useState([0, 10]);
@@ -618,7 +62,7 @@ const PropertyAlerts = () => {
         }
       })
       .then((responseData) => {
-        console.log("Data sent successfully!", responseData);
+        // console.log("Data sent successfully!", responseData);
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -626,7 +70,7 @@ const PropertyAlerts = () => {
   };
   const [pageInformation, setPageInformation] = useState();
   const userdata = JSON.parse(localStorage.getItem("user_data"));
-  const page_slug = "buy";
+  const page_slug = "property-alerts";
   const BASE_URL = "https://focalrealestate.com.au";
   useEffect(() => {
     if (userdata) {
@@ -644,7 +88,7 @@ const PropertyAlerts = () => {
   return (
     <>
       <Helmet>
-        <title>Property Alerts-Focal Real Estate</title>
+        <title>{`${pageInformation?.meta_title}`}</title>
         <meta httpEquiv="content-language" content="en-us" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="title" content={pageInformation?.meta_title} />
@@ -667,17 +111,51 @@ const PropertyAlerts = () => {
         <meta property="og:url" content={BASE_URL}/>
         <meta property="og:site_name" content="Focal Real Estate"/>
         <meta property="og:type" content="website"/>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org/",
+              "@type": "BlogPosting",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://focalrealestate.com.au/"
+              },
+              "headline": "Latest Real Estate Insights for Underwood",
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://focalrealestate.com.au/images/blog-featured.jpg",
+                "width": "1200",
+                "height": "630"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Focal Real Estate Team"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Focal Real Estate",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://focalrealestate.com.au/images/logo.png",
+                  "width": "600",
+                  "height": "60"
+                }
+              },
+              "datePublished": "${new Date().toISOString().split('T')[0]}"
+            }
+          `}
+        </script>
       </Helmet>
       <div>
         <section>
-          <div className="relative isolate overflow-hidden">
+          <div className="relative overflow-hidden isolate">
             <img
               src="./5.png"
               alt=""
-              className="absolute inset-0 -z-10 h-full w-full object-cover"
+              className="absolute inset-0 object-cover w-full h-full -z-10"
             />
 
-            <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-55">
+            <div className="max-w-2xl py-32 mx-auto sm:py-48 lg:py-55">
               <div className="text-center">
                 <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-6xl">
                   Property Alerts
@@ -688,20 +166,20 @@ const PropertyAlerts = () => {
             <img
               src="./bg-graphic-01.png"
               alt=""
-              className="absolute inset-0 -z-10 h-full w-full object-cover"
+              className="absolute inset-0 object-cover w-full h-full -z-10"
             />
           </div>
         </section>
         <section>
-          <div className="mx-auto relative isolate p-10">
-            <div className="mx-auto mt-10 mb-10 items-center justify-center">
-              <h2 className="text-gray-700 text-center">
+          <div className="relative p-10 mx-auto isolate">
+            <div className="items-center justify-center mx-auto mt-10 mb-10">
+              <h2 className="text-center text-gray-700">
                 Simply enter your name and email address to receive property
                 alerts the moment they're available.
               </h2>
             </div>
             <form className="mx-auto">
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="first_name"
                   className="block text-sm text-gray-700"
@@ -715,10 +193,10 @@ const PropertyAlerts = () => {
                   value={formData.first_name}
                   onChange={handleChange}
                   placeholder="First Name"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="w-full p-2 mt-1 border rounded-md"
                 />
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="last_name"
                   className="block text-sm text-gray-700"
@@ -732,10 +210,10 @@ const PropertyAlerts = () => {
                   value={formData.last_name}
                   onChange={handleChange}
                   placeholder="Last Name"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="w-full p-2 mt-1 border rounded-md"
                 />
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label htmlFor="email" className="block text-sm text-gray-700">
                   Email
                 </label>
@@ -746,10 +224,10 @@ const PropertyAlerts = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="w-full p-2 mt-1 border rounded-md"
                 />
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label htmlFor="phone" className="block text-sm text-gray-700">
                   Phone
                 </label>
@@ -760,10 +238,10 @@ const PropertyAlerts = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="w-full p-2 mt-1 border rounded-md"
                 />
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="min_bedrooms"
                   className="block text-sm text-gray-700"
@@ -781,13 +259,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMinBedroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="mt-1 p-2 w-full"
+                  className="w-full p-2 mt-1"
                 />
                 <div className="text-xs">
                   <span>{minBedroomRange[0]} bedrooms</span>
                 </div>
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="max_bedrooms"
                   className="block text-sm text-gray-700"
@@ -805,13 +283,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMaxBedroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="mt-1 p-2 w-full"
+                  className="w-full p-2 mt-1"
                 />
                 <div className="text-xs">
                   <span>{maxBedroomRange[0]} bedrooms</span>
                 </div>
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="min_bathrooms"
                   className="block text-sm text-gray-700"
@@ -829,13 +307,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMinBathroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="mt-1 p-2 w-full"
+                  className="w-full p-2 mt-1"
                 />
                 <div className="text-xs">
                   <span>{minBathroomRange[0]} bathrooms</span>
                 </div>
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="max_bathrooms"
                   className="block text-sm text-gray-700"
@@ -853,13 +331,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMaxBathroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="mt-1 p-2 w-full"
+                  className="w-full p-2 mt-1"
                 />
                 <div className="text-xs">
                   <span>{maxBathroomRange[0]} bathrooms</span>
                 </div>
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <label
                   htmlFor="cities_suburbs"
                   className="block text-sm text-gray-700"
@@ -871,28 +349,33 @@ const PropertyAlerts = () => {
                   name="cities_suburbs"
                   value={formData.cities_suburbs}
                   onChange={handleChange}
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="w-full p-2 mt-1 border rounded-md"
                 >
                   <option>Select</option>
-                  {cities.map((city, index) => (
+                  {/* {cities.map((city, index) => (
+                    <option key={index} value={city}>
+                      {city}
+                    </option>
+                  ))} */}
+                  {citiyList?.cities?.map((city, index) => (
                     <option key={index} value={city}>
                       {city}
                     </option>
                   ))}
                 </select>
               </div>
-              <div className="mx-auto max-w-xl items-center justify-center mb-6">
+              <div className="items-center justify-center max-w-xl mx-auto mb-6">
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="bg-focal-blue text-white rounded w-full py-2 px-4"
+                  className="w-full px-4 py-2 text-white rounded bg-focal-blue"
                 >
                   Send
                 </button>
               </div>
               {messageSent && (
-                <div className="mx-auto max-w-xl items-center justify-center mb-6">
-                  <p className="text-focal-blue font-semibold text-md">
+                <div className="items-center justify-center max-w-xl mx-auto mb-6">
+                  <p className="font-semibold text-focal-blue text-md">
                     Thank you, you will receive property alerts the moment
                     they're available!
                   </p>

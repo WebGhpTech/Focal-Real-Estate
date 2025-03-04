@@ -39,7 +39,7 @@ const AppraisalWizard = () => {
         }
       })
       .then(responseData => {
-        console.log('Data sent successfully!', responseData);
+        // console.log('Data sent successfully!', responseData);
       })
       .catch(error => {
         console.error('Error: ', error);

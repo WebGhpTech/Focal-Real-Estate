@@ -63,7 +63,7 @@ const LeasedListing = () => {
   const [properties, setProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-  const itemsPerPage = 21; 
+  const itemsPerPage = 50; 
   const navigate = useNavigate();
   const [showFilterBox, setShowFilterBox] = useState(false);
   // const [price, setPrice] = useState(0);
@@ -82,7 +82,8 @@ const LeasedListing = () => {
 
   const fetchProperties = async () => {
     try {
-      let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
+      let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre';
+      // let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
       // let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
       // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
       let params = [];
@@ -110,9 +111,9 @@ const LeasedListing = () => {
         throw new Error('Failed to fetch properties');
       }
       const data = await response.json();
-      // console.log(data)
-      setProperties(data.properties);
-      setTotalItems(data.total); 
+      console.log(data)
+      setProperties(data?.items);
+      setTotalItems(data?.totalItems); 
       // console.log('Properties after update:', properties);
       // console.log('Total Items after update:', totalItems);
     } catch (error) {
@@ -138,8 +139,11 @@ const LeasedListing = () => {
 
 
   const navigateToProperty = (property) => {
+    const a = property?.heading?.trim().replace(/\s+/g, " ");
+    const slug = a.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     if (property) {
-      navigate(`/property/${property.id}`, { state: { property } });
+      navigate(`/property/${slug}`, { state: { property } });
+      // navigate(`/property/${property.id}`, { state: { property } });
     }
   }
   return (
@@ -189,15 +193,15 @@ const LeasedListing = () => {
 
         {/* <PropertyListing page="leased" type="" status="management" pg={1} limit={21} /> */}
         <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
-            {(Object.values(properties)?.map((property, index) => (
+            {(properties?.map((property, index) => (
           <div key={index} className="mx-2">
             <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-              {property.images === undefined || property.images === null || property.images === "" || !property.images ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-              :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property.images[0]} alt="" />}
+              {property?.photos === undefined || property?.photos === null || property?.photos === "" || !property?.photos[0] ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
+              :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
               <div className="p-4 md:p-5 h-44">
-                <h3 className="text-lg font-bold text-gray-800">{property.headline}</h3>
+                <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
                 {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
-                <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
+                <p className="mt-1 text-gray-500 text-sm">{property?.displayAddress}</p>
                 {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
                 <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
                   {property.status}
@@ -205,11 +209,11 @@ const LeasedListing = () => {
               </div>
               <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
                 <img src="./icons/bed.png" className="inline mx-2" />
-                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
+                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bed} </p>
                 <img src="./icons/bath.png" className="inline mx-2" />
-                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
+                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bath} </p>
                 <img src="./icons/car.png" className="inline mx-2" />
-                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
+                <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.carports} </p>
               </div>
             </div>
           </div>
