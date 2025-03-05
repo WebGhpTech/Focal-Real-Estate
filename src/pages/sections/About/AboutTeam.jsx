@@ -36,6 +36,7 @@ const AboutTeam = () => {
               <h2 className="mx-auto mb-6 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl max-sm:text-center">
                 <span className="text-heading-blue">Focal Real Estate:</span> Trusted Property Management and Real Estate Services in Underwood
               </h2>
+             
               <div>
                     <img src="./about_team.jpg" class="float-right mt-4 ml-6 rounded-md" />
                   <p class="mx-auto mb-2 text-md leading-8 text-gray-600 max-sm:text-center text-justify">

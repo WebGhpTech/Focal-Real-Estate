@@ -11,12 +11,25 @@ export default function Property() {
     // console.log(property);
     console.log(slug);
 
-    const searchParams = new URLSearchParams(location.search);
-    const id = searchParams.get("id");
+    // const searchParams = new URLSearchParams(location.search);
+    // const id = searchParams.get("id");
+    const queryString = location.search.substring(1); // Remove the "?"
+    const paramsArray = queryString.split(/[?&]/); // Split on "?" or "&"
+    const params = {};
+
+    paramsArray.forEach(param => {
+        const [key, value] = param.split("=");
+        if (key && value) {
+            params[key] = decodeURIComponent(value);
+        }
+    });
+
+    const id = params.id;
+    const typee = params.status;
     console.log(id);
     useEffect(() => {
         const fetchProperty = async () => {
-            fetch(`https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre?status=settled`)
+            fetch(`https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre?status=${typee}`)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data.items);
@@ -28,7 +41,7 @@ export default function Property() {
         if (!property) {
             fetchProperty();
         }
-    }, [slug]);
+    }, [id]);
 
 
 
@@ -195,9 +208,9 @@ export default function Property() {
                                 {/* <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1> */}
                                 {/* <h3 className="mt-4 font-light tracking-tight text-gray-500 text-md sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3> */}
                                 <h3 className="mt-4 font-light tracking-tight text-gray-500 text-md sm:text-md">{property?.address?.streetNumber} {property?.address?.street}, {property?.address?.state?.name}, {property?.address?.suburb?.name}, {property?.address?.country?.name} {property?.address?.suburb?.postcode}</h3>
-                                <buuton  className="inline-flex items-center justify-center px-2 py-2 mt-3 mb-4 text-sm text-white border border-transparent rounded-lg gap-x-2 font-regular bg-focal-blue">
+                                <button  className="inline-flex items-center justify-center px-2 py-2 mt-3 mb-4 text-sm text-white border border-transparent rounded-lg gap-x-2 font-regular bg-focal-blue">
                                     {status}
-                                </buuton>
+                                </button>
                                 <hr />
                                 <div className="mt-4 mb-4 font-light text-gray-500 text-md">
                                     <img src="/icons/bed.png" className="inline mr-1" /> {bed} Bed

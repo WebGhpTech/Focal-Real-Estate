@@ -19,9 +19,9 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className="mx-auto rounded-lg w-full md:w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
-      <div className='mx-auto w-full flex flex-row'>
-        <div className='mx-auto flex max-sm:flex-col'>
+    <div className="items-center justify-center w-full p-4 mx-auto bg-white border border-gray-300 rounded-lg shadow-md md:w-1/2 max-sm:text-center max-sm:justify-center">
+      <div className='flex flex-row w-full mx-auto'>
+        <div className='flex mx-auto max-sm:flex-col'>
           <div className='mb-6'>
             <label className='block mb-2'>Bedrooms: </label>
             <div className='p-2'>
@@ -51,8 +51,8 @@ const FilterBox = ({ onClose }) => {
           </div>
         </div>
       </div>
-      <div className='mx-auto w-full'>
-        <button className='bg-focal-blue text-white p-2 rounded sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
+      <div className='w-full mx-auto'>
+        <button className='p-2 text-white rounded bg-focal-blue sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
       </div>
     </div>
   )
@@ -140,15 +140,15 @@ const navigateToProperty = (property) => {
   const slug = a.toLowerCase().replace(/ /g, '-')
         .replace(/[^\w-]+/g, '');
   if (property) {
-    navigate(`/property/${slug}`, { state: { property } });
+    navigate(`/property/${slug}?id=${property.id}?status=${property.status}`, { state: { property } });
     // navigate(`/property/${property.id}`, { state: { property } });
   }
 }
 
   return (
-    // <div className="bg-slate-100 py-24 sm:py-32">
-    //   <div className="mx-auto max-w-7xl px-6 items-center lg:px-8">
-    //     <div className="mx-auto max-w-3xl text-center mb-8">
+    // <div className="py-24 bg-slate-100 sm:py-32">
+    //   <div className="items-center px-6 mx-auto max-w-7xl lg:px-8">
+    //     <div className="max-w-3xl mx-auto mb-8 text-center">
     //       <h2 className="text-4xl font-bold text-gray-900">Browse through our properties for rent</h2>
     //     </div>
 
@@ -156,17 +156,17 @@ const navigateToProperty = (property) => {
     //   </div>
     // </div>
 
-    <div className="bg-slate-100 py-24 sm:py-32">
-    <div className="mx-auto max-w-7xl px-6 items-center lg:px-8">
-      <div className="mx-auto max-w-3xl text-center mb-8">
+    <div className="py-24 bg-slate-100 sm:py-32">
+    <div className="items-center px-6 mx-auto max-w-7xl lg:px-8">
+      <div className="max-w-3xl mx-auto mb-8 text-center">
         <h2 className="text-4xl font-bold text-gray-900">Browse through our recently Rent properties</h2>
       </div>
-      <div className="mb-8 mx-auto flex-row justify-center items-center max-sm:flex-col text-center">
-        <p className="inline text-md font-semibold mr-4 max-sm:mb-2">Filters: </p>
+      <div className="flex-row items-center justify-center mx-auto mb-8 text-center max-sm:flex-col">
+        <p className="inline mr-4 font-semibold text-md max-sm:mb-2">Filters: </p>
         <button
           type="button"
           onClick={handleFilter}
-          className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+          className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
         >
           <img src="./icons/bed.png" className="inline" />
           {bedrooms === 0 ? "" : bedrooms} Bedrooms
@@ -174,7 +174,7 @@ const navigateToProperty = (property) => {
         <button
           type="button"
           onClick={handleFilter}
-          className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+          className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
         >
           <img src="./icons/bath.png" className="inline" />
           {bathrooms === 0 ? "" : bathrooms} Bathrooms
@@ -182,7 +182,7 @@ const navigateToProperty = (property) => {
         <button
           type="button"
           onClick={handleFilter}
-          className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+          className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
         >
           <img src="./icons/car.png" className="inline" />
           {carports === 0 ? "" : carports} Car Spaces
@@ -190,7 +190,7 @@ const navigateToProperty = (property) => {
         {/* <button
           type="button"
           onClick={handleFilter}
-          className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+          className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
         >
           <img src="./icons/dollar.png" className="inline" />
           {price === 0 ? "" : price} Price
@@ -201,7 +201,7 @@ const navigateToProperty = (property) => {
       </div>
 
       {/* <PropertyListing page="leased" type="" status="management" pg={1} limit={21} /> */}
-      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
+      <div className="grid justify-center grid-cols-1 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3">
           {properties?.map((property, index) => (
         <div key={index} className="mx-2">
           <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
@@ -209,19 +209,19 @@ const navigateToProperty = (property) => {
             :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
             <div className="p-4 md:p-5 h-44">
               <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
-              <p className="mt-1 text-gray-500 text-sm">{property.displayAddress}</p>
-              <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
+              <p className="mt-1 text-sm text-gray-500">{property.displayAddress}</p>
+              <button className="inline-flex items-center justify-center px-3 py-2 mt-3 text-sm text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 font-regular">
                 {slug.pathname === "/rent" ? "Rental" : property?.status}
                 {/* Rental */}
               </button>
             </div>
-            <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
+            <div className="inline px-4 py-3 bg-white border-t rounded-b-xl md:py-4 md:px-5">
               <img src="./icons/bed.png" className="inline mx-2" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bed} </p>
+              <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.bed} </p>
               <img src="./icons/bath.png" className="inline mx-2" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bath} </p>
+              <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.bath} </p>
               <img src="./icons/car.png" className="inline mx-2" />
-              <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.carports} </p>
+              <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.carports} </p>
             </div>
           </div>
         </div>
@@ -232,14 +232,14 @@ const navigateToProperty = (property) => {
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            className="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md focus:outline-none"
+            className="px-4 py-2 mr-2 text-gray-700 bg-gray-300 rounded-md focus:outline-none"
           >
             Previous
           </button>
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage * itemsPerPage >= totalItems}
-            className="ml-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md focus:outline-none"
+            className="px-4 py-2 ml-2 text-gray-700 bg-gray-300 rounded-md focus:outline-none"
           >
             Next
           </button>

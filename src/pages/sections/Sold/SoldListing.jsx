@@ -141,7 +141,7 @@ const SoldListing = () => {
     const slug = a.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     // const id = property?.id;
     if (property) {
-      navigate(`/property/${slug}?id=${property.id}`, { state: { property } });
+      navigate(`/property/${slug}?id=${property.id}?status=${property.status}`, { state: { property } });
       console.log('property 1',property)
       // navigate(`/property/${property.id}`, { state: { property } });
     }
