@@ -141,6 +141,7 @@ const navigateToProperty = (property) => {
         .replace(/[^\w-]+/g, '');
   if (property) {
     navigate(`/property/${slug}?id=${property.id}?status=${property.status}`, { state: { property } });
+    console.log('property 1',property)
     // navigate(`/property/${property.id}`, { state: { property } });
   }
 }
