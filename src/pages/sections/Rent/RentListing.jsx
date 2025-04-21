@@ -79,7 +79,7 @@ const RentListing = () => {
   
   const fetchProperties = async () => {
   try {
-    let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre';
+    let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre';    
     // let apiUrl = 'https://focalrealestate.com.au/internal_api/framework/api/property-listing';
     // let apiUrl = 'https://focalrealestate.com.au/internal_api/properties.php';
     // let apiUrl = 'http://localhost/auclient/quarantine/internal_api/properties.php';
@@ -103,7 +103,8 @@ const RentListing = () => {
       apiUrl += `?${params.join('&')}`;
     }
 
-    const response = await fetch(`${apiUrl}?${params.join('&')}`); 
+    // const response = await fetch(`${apiUrl}?${params.join('&')}`); 
+    const response = await fetch(`${apiUrl}`); 
     // console.log(response);
     if (!response.ok) {
       throw new Error('Failed to fetch properties');
@@ -206,8 +207,8 @@ const navigateToProperty = (property) => {
           {properties?.map((property, index) => (
         <div key={index} className="mx-2">
           <div className="flex flex-col bg-white border shadow-sm rounded-xl" onClick={() => navigateToProperty(property)}>
-            {property?.photos === undefined || property?.photos === null || property?.photos === "" || !property?.photos ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
-            :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
+            {property?.photos === undefined || property?.photos === null || property?.photos === "" || !property?.photos[0] ? <img className="w-full rounded-t-xl h-[250px] object-cover" src="no-image.jpg" alt="" />
+              :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
             <div className="p-4 md:p-5 h-44">
               <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
               <p className="mt-1 text-sm text-gray-500">{property.displayAddress}</p>
