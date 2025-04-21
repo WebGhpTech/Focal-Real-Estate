@@ -61,7 +61,7 @@ const Footer = () => {
                   QLD 4119, Australia
                 </p>
                 <p className="mt-4 text-xs text-white leading-5">
-                  <Link to="tel:0732086222">(07) 3208 6222</Link> <br /> <Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link>
+                  <Link to="tel:0732086222">(07) 3208 6222</Link> <br /> <Link to="mailto:admin@focalrealestate.com.au">admin@focalrealestate.com.au</Link>
                 </p>
               </div>
               <div className="mt-10 ml-3 md:mt-0">

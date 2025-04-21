@@ -145,7 +145,7 @@ const Terms = () => {
             <p className="mb-8 font-light leading-6 text-md">Please contact us if you have any questions or concerns. Our contact details are as follows:</p>
             <h2 className="mb-3 text-xl font-bold text-focal-blue">Focal Real Estate</h2>
             <p className="mb-8 font-light leading-6 text-md">
-              e: enquiries@focalrealestate.com.au ph: (07) 3208 6222
+              e: admin@focalrealestate.com.au ph: (07) 3208 6222
               <br />
               10C/11-21 Kingston Rd, Underwood QLD 4119, Australia
               <br />

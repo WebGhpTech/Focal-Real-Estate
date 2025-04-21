@@ -23,7 +23,7 @@ const InspectionTimes = () => {
                         <h2 className="text-4xl font-bold text-heading-blue">We're Sorry!</h2>
                         <p className="mt-4 text-xl">There are currently no properties with upcoming inspections listed.</p>
                         <p className="mt-4 text-xl">Feel free to call our office <span className='text-heading-blue'><Link to="tel:0732086222">(07) 3208 6222</Link></span> if you'd like to request an inspection.</p>
-                        <p className="mt-4 text-xl">Alternatively, you can email us: <span className='text-heading-blue'><Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link></span></p>
+                        <p className="mt-4 text-xl">Alternatively, you can email us: <span className='text-heading-blue'><Link to="mailto:admin@focalrealestate.com.au">admin@focalrealestate.com.au</Link></span></p>
                     </div>
                 </div>
             </section>

@@ -67,7 +67,7 @@ const ContactForm = () => {
                     </div>
                     <p className="mt-2 font-bold text-2xl text-gray-900">Email</p>
                     <p className="text-gray-500">
-                      <Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link>
+                      <Link to="mailto:admin@focalrealestate.com.au">admin@focalrealestate.com.au</Link>
                     </p>
                   </dt>
                   <dt className="mt-4  max-sm:ml-0">

@@ -177,8 +177,8 @@ const AppraisalWizard = () => {
                 </p>
                 <p className="text-md text-gray-700 text-center mt-5">
                   Alternatively, email us:{' '}
-                  <a href="mailto:enquiries@focalrealestate.com.au">
-                    <b>enquiries@focalrealestate.com.au</b>
+                  <a href="mailto:admin@focalrealestate.com.au">
+                    <b>admin@focalrealestate.com.au</b>
                   </a>
                 </p>
                 <p className="text-md text-gray-700 text-center mt-5">
