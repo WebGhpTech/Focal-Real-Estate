@@ -4,13 +4,13 @@ const LatestListings = () => {
 
   return (
     <>
-    <div className="py-20 bg-slate-100 sm:py-32">
-      <div className="items-center px-6 mx-auto max-w-7xl lg:px-8">
-        <div className="max-w-3xl mx-auto mb-6 text-center">
-          <span className="inline-flex items-center px-2 py-1 mb-6 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+    <div className="bg-slate-100 py-20 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 items-center lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-6">
+          <span className="mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
             Featured Properties
           </span>
-          <h2 className="text-3xl font-bold text-gray-600 lg:text-5xl animate-on-scroll">Check Out Latest Listings</h2>
+          <h1 className="text-3xl lg:text-5xl font-bold text-gray-600 animate-on-scroll">Check Out Latest Listings</h1>
         </div>
         
         <PropertyListing page="home" type="residential" status="listing" pg={1} limit="12" />

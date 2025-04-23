@@ -2,8 +2,10 @@ import { RentCTA, RentHero, RentListing, Footer } from './sections/Rent';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { useLocation } from 'react-router-dom';
 
 const Rent = () => {
+  const location= useLocation()
   const [pageInformation, setPageInformation] = useState();
     const userdata = JSON.parse(localStorage.getItem('user_data'));
     const page_slug = "properties-for-rent";
@@ -15,6 +17,10 @@ const Rent = () => {
         })
       }
     },[])
+
+    useEffect(() => {
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+    }, [location]);
   return (
     <>
     <Helmet>
@@ -38,40 +44,6 @@ const Rent = () => {
       <meta property="og:url" content={BASE_URL}/>
       <meta property="og:site_name" content="Focal Real Estate"/>
       <meta property="og:type" content="website"/>
-      <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org/",
-              "@type": "BlogPosting",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://focalrealestate.com.au/"
-              },
-              "headline": "Latest Real Estate Insights for Underwood",
-              "image": {
-                "@type": "ImageObject",
-                "url": "https://focalrealestate.com.au/images/blog-featured.jpg",
-                "width": "1200",
-                "height": "630"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Focal Real Estate Team"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Focal Real Estate",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://focalrealestate.com.au/images/logo.png",
-                  "width": "600",
-                  "height": "60"
-                }
-              },
-              "datePublished": "${new Date().toISOString().split('T')[0]}"
-            }
-          `}
-        </script>
     </Helmet>
       <section>
         <RentHero />

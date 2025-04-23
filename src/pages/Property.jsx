@@ -1,72 +1,31 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
-export default function Property() {
-    const { slug } = useParams();
+const Property = () => {
     const location = useLocation();
     const { state } = location;
     const [property, setState] = useState(state?.property);
     // console.log(property);
-    console.log(slug);
-
-    // const searchParams = new URLSearchParams(location.search);
-    // const id = searchParams.get("id");
-    const queryString = location.search.substring(1); // Remove the "?"
-    const paramsArray = queryString.split(/[?&]/); // Split on "?" or "&"
-    const params = {};
-
-    paramsArray.forEach(param => {
-        const [key, value] = param.split("=");
-        if (key && value) {
-            params[key] = decodeURIComponent(value);
-        }
-    });
-
-    const id = params.id;
-    const typee = params.status;
-    console.log(id);
-    useEffect(() => {
-        const fetchProperty = async () => {
-            fetch(`https://focalrealestate.com.au/internal_api/framework/api/property-data-vaultre?status=${typee}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data.items);
-                    const property = data.items.filter((property) => property.id == id);
-                    console.log('property data',property);
-                    setState(...property);
-                });
-        };
-        if (!property) {
-            fetchProperty();
-        }
-    }, [id]);
 
 
-
-    useEffect(() => {
-        if (property) {
-          console.log("Property data loaded:", property);
-        }
-      }, [property]);
+    if (!property) {
+        return <div>No property data available</div>;
+    }
 
     const [messageSent, setMessageSent] = useState('');
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     // const { type, status, headline, images, streetNumber, street, postcode, suburb, address_state, country, description, bedrooms, bathrooms, carports, name, telephone } = property;
-    const { 
-        type, status, heading, streetNumber, street, postcode, 
-        suburb, address_state, country, description, bed, 
-        bath, carports, name, telephone 
-      } = property || {};
+    const { type, status, heading, streetNumber, street, postcode, suburb, address_state, country, description, bed, bath, carports, name, telephone } = property;
 
     const images = property?.photos;
 
     const [title, setTitle] = useState('');
 
-    const newDescription = description?.replaceAll("&#x2022;", "•");
+    const newDescription = description.replaceAll("&#x2022;", "•");
     
 
     const [formData, setFormData] = useState({
@@ -132,7 +91,6 @@ export default function Property() {
     }, []);
 
     return (
-        
         <div>
             <Helmet>
                 <title>{title}-Focal Real Estate</title>
@@ -154,21 +112,21 @@ export default function Property() {
                 <meta property="og:type" content="website"/>
             </Helmet>
             <section>
-                <div className="relative overflow-hidden isolate">
-                    <img src="/leased_header.jpg" alt="" className="absolute inset-0 object-cover w-full h-full -z-10" />
-                    <div className="max-w-2xl py-32 mx-auto sm:py-48 lg:py-55">
+                <div className="relative isolate overflow-hidden">
+                    <img src="/leased_header.jpg" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
+                    <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-55">
                         <div className="text-center">
-                            <h1 className="mt-3 text-5xl font-semibold leading-8 tracking-tight text-white sm:text-5xl">{title}</h1>
+                            <h1 className="mt-3 text-5xl leading-8 font-semibold tracking-tight text-white sm:text-5xl">{title}</h1>
                         </div>
                     </div>
-                    <img src="/bg-graphic-01.png" alt="" className="absolute inset-0 object-cover w-full h-full -z-10" />
+                    <img src="/bg-graphic-01.png" alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />
                 </div>
             </section>
             <section>
-                <div className="relative mb-10 overflow-hidden bg-white isolate">
-                    <div className="flex flex-col px-6 mx-auto max-w-7xl sm:flex-row sm:py-20 lg:px-8 ">
-                        <div className="flex-grow flex-shrink-0 mx-auto mr-20 max-sm:flex-col max-sm:mx-auto">
-                            <div className="relative max-w-5xl mr-20">
+                <div className="mb-10 relative isolate overflow-hidden bg-white">
+                    <div className="mx-auto max-w-7xl flex flex-col sm:flex-row px-6 sm:py-20 lg:px-8 ">
+                        <div className="mx-auto flex-grow flex-shrink-0 max-sm:flex-col max-sm:mx-auto mr-20">
+                            <div className="relative mr-20 max-w-5xl">
                                 <button type="button" onClick={goToPreviousImage} className="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 bg-gray-200">
                                     <span className="text-2xl" aria-hidden="true">
                                         <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -206,45 +164,45 @@ export default function Property() {
                             <div className='mt-5 w-[380px] sm:w-[500px] md:w-[800px]'>
                                 <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{heading}</h1>
                                 {/* <h1 className="text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl">{headline}</h1> */}
-                                {/* <h3 className="mt-4 font-light tracking-tight text-gray-500 text-md sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3> */}
-                                <h3 className="mt-4 font-light tracking-tight text-gray-500 text-md sm:text-md">{property?.address?.streetNumber} {property?.address?.street}, {property?.address?.state?.name}, {property?.address?.suburb?.name}, {property?.address?.country?.name} {property?.address?.suburb?.postcode}</h3>
-                                <button  className="inline-flex items-center justify-center px-2 py-2 mt-3 mb-4 text-sm text-white border border-transparent rounded-lg gap-x-2 font-regular bg-focal-blue">
+                                {/* <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}</h3> */}
+                                <h3 className="mt-4 text-md font-light tracking-tight text-gray-500 sm:text-md">{property?.address?.streetNumber} {property?.address?.street}, {property?.address?.state?.name}, {property?.address?.suburb?.name}, {property?.address?.country?.name} {property?.address?.suburb?.postcode}</h3>
+                                <buuton  className="mt-3 mb-4 py-2 px-2 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-focal-blue text-white">
                                     {status}
-                                </button>
+                                </buuton>
                                 <hr />
-                                <div className="mt-4 mb-4 font-light text-gray-500 text-md">
+                                <div className="mt-4 mb-4 text-gray-500 font-light text-md">
                                     <img src="/icons/bed.png" className="inline mr-1" /> {bed} Bed
                                     {/* <img src="/icons/bed.png" className="inline mr-1" /> {bedrooms} Bed */}
-                                    <img src="/icons/bath.png" className="inline ml-3 mr-1" /> {bath} Bath
-                                    {/* <img src="/icons/bath.png" className="inline ml-3 mr-1" /> {bathrooms} Bath */}
-                                    <img src="/icons/car.png" className="inline ml-3 mr-1" /> {carports} Garage
+                                    <img src="/icons/bath.png" className="inline mr-1 ml-3" /> {bath} Bath
+                                    {/* <img src="/icons/bath.png" className="inline mr-1 ml-3" /> {bathrooms} Bath */}
+                                    <img src="/icons/car.png" className="inline mr-1 ml-3" /> {carports} Garage
                                 </div>
                                 <hr />
-                                <p className="mt-10 mb-10 font-light text-gray-500 text-md">
-                                    {newDescription && newDescription.replaceAll("&#xa3;","£").replaceAll("â‚¬", " ").replaceAll("&euro;","€").replaceAll("Ã"," ").replaceAll("¯¼â"," ")}
+                                <p className="mt-10 mb-10 text-gray-500 font-light text-md">
+                                    {newDescription.replaceAll("&#xa3;","£").replaceAll("â‚¬", " ").replaceAll("&euro;","€").replaceAll("Ã"," ").replaceAll("¯¼â"," ")}
                                 </p>
-                                <div className="flex flex-col mt-5">
+                                <div className="mt-5 flex flex-col">
                                     <div className="-m-1.5 overflow-x-auto">
                                         <div className="p-1.5 min-w-full inline-block align-middle">
                                             <div className="overflow-hidden">
 
                                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                                    <tbody className="flex flex-col gap-3 divide-y divide-gray-200 dark:divide-gray-700 sm:flex-row">
+                                                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700 flex flex-col gap-3 sm:flex-row">
                                                         <tr>
-                                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 bg-gray-100 whitespace-nowrap dark:text-gray-800">Address</td>
-                                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{property?.address?.streetNumber} {property?.address?.street}</td>
+                                                            <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Address</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.streetNumber} {property?.address?.street}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 bg-gray-100 whitespace-nowrap dark:text-gray-800">Suburb</td>
-                                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{property?.address?.suburb?.name}</td>
+                                                            <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Suburb</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.suburb?.name}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 bg-gray-100 whitespace-nowrap dark:text-gray-800">Post Code</td>
-                                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{property?.address?.suburb?.postcode}</td>
+                                                            <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">Post Code</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.suburb?.postcode}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td className="px-6 py-4 text-sm font-medium text-gray-800 bg-gray-100 whitespace-nowrap dark:text-gray-800">State</td>
-                                                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap dark:text-gray-200">{property?.address?.country?.name}</td>
+                                                            <td className="bg-gray-100 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-800">State</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{property?.address?.country?.name}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -252,7 +210,7 @@ export default function Property() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-center mx-auto mt-10 mb-10" style={{ width: '100%', height: '400px' }}>
+                                <div className="mx-auto flex items-center justify-center mt-10 mb-10" style={{ width: '100%', height: '400px' }}>
                                     <iframe width="100%"
                                         height="100%"
                                         allowFullScreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10464.769776254596!2d153.10204664491542!3d-27.60897748948009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b91437fb566385b%3A0xc798107977a9f7c4!2s10c%2F11%20Kingston%20Rd%2C%20Underwood%20QLD%204119%2C%20Australia!5e0!3m2!1sen!2sus!4v1701497542634!5m2!1sen!2sus" frameBorder="0"></iframe>
@@ -261,12 +219,12 @@ export default function Property() {
                         </div>
                         <div>
                         <form className="w-full p-0">
-                            <div className="p-5 border rounded-md">
+                            <div className="border p-5 rounded-md">
                                 <div className="mb-8">
                                     <img src="/philip.jpeg" className='w-20 mb-2' />
-                                    <label className="block text-2xl font-semibold text-focal-blue">
+                                    <label className="block text-focal-blue font-semibold text-2xl">
                                         {name}
-                                    </label><label className="block text-xl font-light text-gray-600">
+                                    </label><label className="block text-gray-600 font-light text-xl">
                                         {telephone}
                                     </label>
                                 </div>
@@ -274,35 +232,35 @@ export default function Property() {
                                     <label htmlFor="name" className="block text-sm">
                                         Name
                                     </label>
-                                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 mt-2 border rounded-md" placeholder="Name" />
+                                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
                                 </div>{' '}
                                 <div className="mb-4">
                                     <label htmlFor="email" className="block text-sm">
                                         Email
                                     </label>
-                                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-2 mt-2 border rounded-md" placeholder="Email" />
+                                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
                                 </div>{' '}
                                 <div className="mb-4">
                                     <label htmlFor="phone" className="block text-sm">
                                         Phone
                                     </label>
-                                    <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full p-2 mt-2 border rounded-md" placeholder="Phone" />
+                                    <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
                                 </div>{' '}
                                 <div className="mb-4">
                                     <label htmlFor="message" className="block text-sm">
                                         Message
                                     </label>
-                                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="w-full p-2 mt-2 border rounded-md">Hi, I'm interested in {streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}, Could you please contact me with more information.
+                                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">Hi, I'm interested in {streetNumber} {street}, {address_state}, {suburb}, {country} {postcode}, Could you please contact me with more information.
                                     </textarea>
                                 </div>
                                 <div className="mb-4">
-                                    <button type="button" onClick={handleSubmit} className="w-full px-4 py-2 text-white rounded bg-focal-blue">
+                                    <button type="button" onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
                                         Send
                                     </button>
                                 </div>
                                 {messageSent && (
                                     <div className="mb-4">
-                                        <p className='font-semibold text-focal-blue text-md'>Your message has been sent successfully!</p>
+                                        <p className='text-focal-blue font-semibold text-md'>Your message has been sent successfully!</p>
                                     </div>
                                 )}
                             </div>
@@ -319,4 +277,4 @@ export default function Property() {
 }
 
 
-// export default Property;
+export default Property;

@@ -39,9 +39,9 @@ const FilterBox = ({ onClose }) => {
   }
 
   return (
-    <div className="items-center justify-center w-full p-4 mx-auto bg-white border border-gray-300 rounded-lg shadow-md md:w-1/2 max-sm:text-center max-sm:justify-center">
-      <div className='flex flex-row w-full mx-auto'>
-        <div className='flex mx-auto max-sm:flex-col'>
+    <div className="mx-auto rounded-lg w-full md:w-1/2 bg-white border border-gray-300 shadow-md p-4 items-center justify-center max-sm:text-center max-sm:justify-center">
+      <div className='mx-auto w-full flex flex-row'>
+        <div className='mx-auto flex max-sm:flex-col'>
           <div className='mb-6'>
             <label className='block mb-2'>Bedrooms: </label>
             <div className='p-2'>
@@ -71,8 +71,8 @@ const FilterBox = ({ onClose }) => {
           </div>
         </div>
       </div>
-      <div className='w-full mx-auto'>
-        <button className='p-2 text-white rounded bg-focal-blue sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
+      <div className='mx-auto w-full'>
+        <button className='bg-focal-blue text-white p-2 rounded sm:w-auto max-sm:w-40' onClick={handleApplyFilter}>Apply Filter</button>
       </div>
     </div>
   )
@@ -178,8 +178,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
     const a = property?.heading?.trim().replace(/\s+/g, " ");
     const slug = a.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
     if (property) {
-      navigate(`/property/${slug}?id=${property.id}?status=${property.status}`, { state: { property } });
-      console.log('property 1',property)
+      navigate(`/property/${slug}`, { state: { property } });
       // navigate(`/property/${property.id}`, { state: { property } });
     }
   }
@@ -226,7 +225,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
   return (
     <div>
       {page === "home" ? (
-        <div className="flex items-center justify-center mx-auto mb-6 animate-on-scroll">
+        <div className="mb-6 mx-auto flex justify-center items-center animate-on-scroll">
           <button type="button" onClick={() => handleTypeChange("residential")} className={`py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-lg ${propertyType === "residential" ? "text-focal-blue" : "text-gray-800"} font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50`} >
             <img src="./icons/dollar.png" className="inline" />
             Buy
@@ -236,12 +235,12 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
             Rent
           </button>
         </div>)
-        : (<div className="flex-row items-center justify-center mx-auto mb-8 text-center max-sm:flex-col">
-          <p className="inline mr-4 font-semibold text-md max-sm:mb-2">Filters: </p>
+        : (<div className="mb-8 mx-auto flex-row justify-center items-center max-sm:flex-col text-center">
+          <p className="inline text-md font-semibold mr-4 max-sm:mb-2">Filters: </p>
           <button
             type="button"
             onClick={handleFilter}
-            className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+            className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
           >
             <img src="./icons/bed.png" className="inline" />
             {bedrooms === 0 ? "" : bedrooms} Bedrooms
@@ -249,7 +248,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
           <button
             type="button"
             onClick={handleFilter}
-            className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+            className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
           >
             <img src="./icons/bath.png" className="inline" />
             {bathrooms === 0 ? "" : bathrooms} Bathrooms
@@ -257,7 +256,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
           <button
             type="button"
             onClick={handleFilter}
-            className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+            className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
           >
             <img src="./icons/car.png" className="inline" />
             {carports === 0 ? "" : carports} Car Spaces
@@ -265,7 +264,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
           {/* <button
             type="button"
             onClick={handleFilter}
-            className="inline-flex items-center px-4 py-3 text-sm font-medium bg-white border border-gray-200 shadow-sm btn-filter gap-x-2 -ms-px first:ms-0 focus:z-10 hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
+            className="btn-filter py-3 px-4 inline-flex items-center gap-x-2 -ms-px first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 bg-white shadow-sm hover:bg-gray-50 disabled:opacity-50 max-sm:mb-2"
           >
             <img src="./icons/dollar.png" className="inline" />
             {price === 0 ? "" : price} Price
@@ -275,7 +274,7 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
 
         </div>
         )}
-      {/* <div className="grid justify-center grid-cols-1 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3"> */}
+      {/* <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center"> */}
         {page == "home" || page==="appraisal"  ? 
 
 
@@ -308,27 +307,27 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
           :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
           <div className="p-4 md:p-5 h-44">
             <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
-            {/* <p className="mt-1 text-sm text-gray-500">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
-            <p className="mt-1 text-sm text-gray-500">{property?.displayAddress}</p>
+            {/* <p className="mt-1 text-gray-500 text-sm">{property.streetNumber} {property.street} {property.address_state} {property.suburb}  {property.country} {property.postcode}</p> */}
+            <p className="mt-1 text-gray-500 text-sm">{property?.displayAddress}</p>
             {/* <p className="mt-3 text-gray-500">{property.description}</p> */}
-            <button className="inline-flex items-center justify-center px-3 py-2 mt-3 text-sm text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 font-regular">
+            <button className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
               {/* {property.status} */}
               {slug.pathname === "/" && property?.status === "management" ? "Rental" : property?.status}
             </button>
           </div>
-          <div className="inline px-4 py-3 bg-white border-t rounded-b-xl md:py-4 md:px-5">
+          <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
             <img src="./icons/bed.png" className="inline mx-2" />
-            <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property.bedrooms} </p>
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bedrooms} </p>
             <img src="./icons/bath.png" className="inline mx-2" />
-            <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property.bathrooms} </p>
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.bathrooms} </p>
             <img src="./icons/car.png" className="inline mx-2" />
-            <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property.carports} </p>
+            <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property.carports} </p>
           </div>
         </div>
       </div>
     )))}
     </Carousel>:
-    <div className="grid justify-center grid-cols-1 gap-4 mb-8 sm:grid-cols-2 md:grid-cols-3">{
+    <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">{
       (
       
         properties?Object.values(properties)?.map((property, index) => (
@@ -338,18 +337,18 @@ const PropertyListing = ({ pg, page, type, status, limit }) => {
               :<img className="w-full rounded-t-xl h-[250px] object-cover" src={property?.photos[0]?.url} alt="" />}
                   <div className="p-4 md:p-5 h-44">
                     <h3 className="text-lg font-bold text-gray-800">{property?.heading}</h3>
-                    <p className="mt-1 text-sm text-gray-500">{property?.displayAddress}</p>
-                    <button  className="inline-flex items-center justify-center px-3 py-2 mt-3 text-sm text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 font-regular">
+                    <p className="mt-1 text-gray-500 text-sm">{property?.displayAddress}</p>
+                    <button  className="mt-3 py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-regular rounded-lg border border-transparent bg-blue-600 text-white">
                       {slug.pathname === "/" && property?.status === "management" ? "Rental" : property?.status}
                     </button>
                   </div>
-                  <div className="inline px-4 py-3 bg-white border-t rounded-b-xl md:py-4 md:px-5">
+                  <div className="bg-white inline border-t rounded-b-xl py-3 px-4 md:py-4 md:px-5">
                     <img src="./icons/bed.png" className="inline" />
-                    <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.bed} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bed} </p>
                     <img src="./icons/bath.png" className="inline" />
-                    <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.bath} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.bath} </p>
                     <img src="./icons/car.png" className="inline" />
-                    <p className="inline mt-1 mr-2 text-sm text-gray-500"> {property?.carports} </p>
+                    <p className="mr-2 mt-1 text-sm text-gray-500 inline"> {property?.carports} </p>
                   </div>
                 </div>
                 
