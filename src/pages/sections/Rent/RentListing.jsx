@@ -247,7 +247,7 @@ const RentListing = () => {
                 {property?.photos === undefined ||
                 property?.photos === null ||
                 property?.photos === "" ||
-                !property?.photos ? (
+                !property?.photos[0] ? (
                   <img
                     className="w-full rounded-t-xl h-[250px] object-cover"
                     src="no-image.jpg"

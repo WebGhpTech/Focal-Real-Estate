@@ -132,7 +132,8 @@ const SoldListing = () => {
         apiUrl += `?${params.join("&")}`;
       }
 
-      const response = await fetch(`${apiUrl}?${params.join("&")}`);
+      // const response = await fetch(`${apiUrl}?${params.join("&")}`);
+      const response = await fetch(`${apiUrl}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch properties");
