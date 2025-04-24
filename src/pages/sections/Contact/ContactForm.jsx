@@ -1,63 +1,74 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ContactForm = () => {
-  const [messageSent, setMessageSent] = useState('');
+  const [messageSent, setMessageSent] = useState("");
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value })
-  }
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch('https://focalrealestate.com.au/internal_api/post.php', {
-      method: 'POST',
+    fetch("https://focalrealestate.com.au/internal_api/post.php", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
-      .then(response => {
+      .then((response) => {
         setMessageSent(true);
         if (response.status === 200) {
           return response.json();
         } else {
-          throw new Error('Failed to send data.');
+          throw new Error("Failed to send data.");
         }
       })
-      .then(responseData => {
+      .then((responseData) => {
         // console.log('Data sent successfully!', responseData);
       })
-      .catch(error => {
-        console.error('Error: ', error);
+      .catch((error) => {
+        console.error("Error: ", error);
       });
-  }
+  };
 
   return (
     <div className="mb-10 relative isolate overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
         <div className="mx-auto lg:mx-0 max-sm:mt-8 px-10 lg:px-0 xl:px-10">
           <div className="max-w-5xl">
-            <span className="mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">CONTACT US</span>
-            <h1 className="mb-6 text-2xl md:text-3xl lg:text-4xl text-gray-900 font-bold">Got a question? Get in touch with our team today</h1>
+            <span className="mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+              CONTACT US
+            </span>
+            <h1 className="mb-6 text-2xl md:text-3xl lg:text-4xl text-gray-900 font-bold">
+              Got a question? Get in touch with our team today
+            </h1>
           </div>
           <div className="mx-auto lg:mx-0 max-sm:mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* <div className="flex max-sm:flex-col max-sm:mx-auto"> */}
+              {/* <div className="flex max-sm:flex-col max-sm:mx-auto"> */}
               <div className="flex flex-col mr-20 max-sm:mx-auto">
                 <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2 mb-5">
-                {/* <div className="mx-auto flex justify-between w-50 mb-5"> */}
+                  {/* <div className="mx-auto flex justify-between w-50 mb-5"> */}
                   <dt className="mt-4 mr-16">
                     <div className="flex h-10 w-10 rounded-full bg-blue-600 items-center justify-center text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -65,14 +76,25 @@ const ContactForm = () => {
                         />
                       </svg>
                     </div>
-                    <p className="mt-2 font-bold text-2xl text-gray-900">Email</p>
+                    <p className="mt-2 font-bold text-2xl text-gray-900">
+                      Email
+                    </p>
                     <p className="text-gray-500">
-                      <Link to="mailto:enquiries@focalrealestate.com.au">enquiries@focalrealestate.com.au</Link>
+                      <Link to="mailto:admin@focalrealestate.com.au">
+                        admin@focalrealestate.com.au
+                      </Link>
                     </p>
                   </dt>
                   <dt className="mt-4  max-sm:ml-0">
                     <div className="flex h-10 w-10 rounded-full bg-blue-600 items-center justify-center text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -80,20 +102,41 @@ const ContactForm = () => {
                         />
                       </svg>
                     </div>
-                    <p className="mt-2 font-bold text-2xl text-gray-900">Phone</p>
-                    <p className="text-gray-500"><Link to="tel:0732086222">(07) 3208 6222</Link></p>
+                    <p className="mt-2 font-bold text-2xl text-gray-900">
+                      Phone
+                    </p>
+                    <p className="text-gray-500">
+                      <Link to="tel:0732086222">(07) 3208 6222</Link>
+                    </p>
                   </dt>
                 </div>
                 <div className="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2 mb-5">
-                {/* <div className="mx-auto flex justify-between w-50 mb-5"> */}
+                  {/* <div className="mx-auto flex justify-between w-50 mb-5"> */}
                   <dt className="mt-4  mr-20 max-sm:ml-0">
                     <div className="flex h-10 w-10 rounded-full bg-blue-600 items-center justify-center text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                        />
                       </svg>
                     </div>
-                    <p className="mt-2 font-bold text-2xl text-gray-900">Office</p>
+                    <p className="mt-2 font-bold text-2xl text-gray-900">
+                      Office
+                    </p>
                     <p className="text-gray-500">
                       10C/11-21 Kingston Rd,
                       <br />
@@ -102,7 +145,14 @@ const ContactForm = () => {
                   </dt>
                   <dt className="mt-4 max-sm:ml-0">
                     <div className="flex h-10 w-10 rounded-full bg-blue-600 items-center justify-center text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -110,7 +160,9 @@ const ContactForm = () => {
                         />
                       </svg>
                     </div>
-                    <p className="mt-2 font-bold text-2xl text-gray-900">Social</p>
+                    <p className="mt-2 font-bold text-2xl text-gray-900">
+                      Social
+                    </p>
                     <div className="mt-4 flex">
                       <div className="mr-3">
                         <Link to="https://facebook.com/focalrealestate">
@@ -119,7 +171,10 @@ const ContactForm = () => {
                       </div>
                       <div className="mr-3">
                         <Link to="https://www.youtube.com/@focalrealestate6312">
-                          <img src="./icons/youtube-svgrepo-com.svg" className="h-6" />
+                          <img
+                            src="./icons/youtube-svgrepo-com.svg"
+                            className="h-6"
+                          />
                         </Link>
                       </div>
                       <div className="mr-3">
@@ -137,41 +192,77 @@ const ContactForm = () => {
                 </div>
               </div>
               <div className="flex-1 flex-col lg:mx-10 mt-5 md:mx-auto">
-              {/* <div className="flex-1 flex-col mx-20 mt-5 max-sm:mx-auto"> */}
+                {/* <div className="flex-1 flex-col mx-20 mt-5 max-sm:mx-auto"> */}
                 <form className="mx-auto">
                   <div className="mb-4">
                     <label htmlFor="name" className="block text-sm">
                       Name
                     </label>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Name" />
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="mt-2 rounded-md w-full p-2 border"
+                      placeholder="Name"
+                    />
                   </div>
                   <div className="mb-4">
                     <label htmlFor="email" className="block text-sm">
                       Email
                     </label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Email" />
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="mt-2 rounded-md w-full p-2 border"
+                      placeholder="Email"
+                    />
                   </div>
                   <div className="mb-4">
                     <label htmlFor="phone" className="block text-sm">
                       Phone
                     </label>
-                    <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="mt-2 rounded-md w-full p-2 border" placeholder="Phone" />
+                    <input
+                      type="text"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="mt-2 rounded-md w-full p-2 border"
+                      placeholder="Phone"
+                    />
                   </div>
                   <div className="mb-4">
                     <label htmlFor="message" className="block text-sm">
                       Message
                     </label>
-                    <textarea id="message" name="message" rows="4" value={formData.message} onChange={handleChange} className="mt-2 rounded-md w-full border p-2">
-                    </textarea>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="mt-2 rounded-md w-full border p-2"
+                    ></textarea>
                   </div>
                   <div className="mb-4">
-                    <button type="button" onClick={handleSubmit} className="bg-focal-blue text-white rounded w-full py-2 px-4">
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="bg-focal-blue text-white rounded w-full py-2 px-4"
+                    >
                       Send
                     </button>
                   </div>
                   {messageSent && (
                     <div className="mb-4">
-                      <p className='text-focal-blue font-semibold text-md'>Your message has been sent successfully!</p>
+                      <p className="text-focal-blue font-semibold text-md">
+                        Your message has been sent successfully!
+                      </p>
                     </div>
                   )}
                 </form>

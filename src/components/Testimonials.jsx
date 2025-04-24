@@ -31,19 +31,19 @@ const Testimonials = () => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <div className="px-6 mx-auto max-w-7xl sm:py-20 lg:px-8">
-        <div className="max-w-3xl mx-auto lg:mx-0 max-sm:mt-8">
-          <div className="justify-center max-w-2xl mx-auto max-sm:text-center">
-            <span className="inline-flex items-center px-2 py-1 mx-auto mb-6 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10">Testimonials</span>
-            <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
+      <div className="mx-auto max-w-7xl px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-3xl lg:mx-0 max-sm:mt-8">
+          <div className="mx-auto max-w-2xl max-sm:text-center justify-center">
+            <span className="mx-auto mb-6 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Testimonials</span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Don't just take our word for it, <span className="text-heading-blue">see what others have to say...</span>
-            </h2>
+            </h1>
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-0 mb-20 max-w-7xl">
-        <div className="items-center max-w-6xl mx-auto">
-          {/* <div className="grid grid-cols-1 gap-10 mb-20 md:grid-cols-1 lg:grid-cols-3 max-sm:mt-10"> */}
+      <div className="mx-auto max-w-7xl mt-0 mb-20">
+        <div className="mx-auto max-w-6xl items-center">
+          {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 mb-20 max-sm:mt-10"> */}
     <Carousel
       arrows={false}
       swipeable={false}
@@ -67,13 +67,13 @@ const Testimonials = () => {
       {/* item start  */}
       <div className="px-2">
           <div className="w-full flex-auto  bg-white rounded-lg px-10 py-2 h-[650px]">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -88,7 +88,7 @@ const Testimonials = () => {
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>I had an outstanding experience with Focal Real Estate! Their team went above and beyond to help me find the perfect property. From the initial search to closing the deal, their expertise and professionalism shone through. They were responsive, attentive, and genuinely cared about my needs.</em>
                   </p>
                 </div>
@@ -97,7 +97,7 @@ const Testimonials = () => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -125,13 +125,13 @@ const Testimonials = () => {
       {/* item start  */}
       <div className="px-2">
           <div className="w-full flex-auto bg-white rounded-lg px-10 py-2 h-[650px]">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -146,7 +146,7 @@ const Testimonials = () => {
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>I had an incredible experience with Jade and the entire team at Focal Real Estate. From the moment I reached out, their professionalism and friendliness stood out. They were extremely knowledgeable and always ready to assist me with any questions or concerns I had. Thanks to their expertise and guidance, I had great outcomes that exceeded my expectations</em>
                   </p>
                 </div>
@@ -155,7 +155,7 @@ const Testimonials = () => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -183,13 +183,13 @@ const Testimonials = () => {
       {/* item start  */}
       <div className="px-2">
           <div className="w-full flex-auto bg-white rounded-lg px-10 py-2 h-[650px]">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -204,7 +204,7 @@ const Testimonials = () => {
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>Phillip was very knowledgable and very helpful in enabling me a buyer, to understand the market.
 Thanks to Phillip, I’m able to go into my first home of hopefully many under a solid price and a good healthy home-life. I’m super happy for the outcome of it all and I really recommend everyone to work with these guys.</em>
                   </p>
@@ -214,7 +214,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -242,13 +242,13 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
       {/* item start  */}
       <div className="px-2">
           <div className="w-full flex-auto bg-white rounded-lg px-10 py-2 h-[650px]">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -263,7 +263,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>Philip and the Focal team took on our property about a year ago and helped us secure a high rental return with fantastic tenants and since then has done a great job with maintaining our property with efficiency and clear communication.</em>
                   </p>
                 </div>
@@ -272,7 +272,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -300,13 +300,13 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
       {/* item start  */}
       <div className="px-2">
           <div className="w-full flex-auto bg-white rounded-lg px-10 py-2 h-[650px]">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -321,7 +321,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>Philip is a very warm and professional agent. He maintained effective communication throughout the process and make you feel at ease. Philip was patient and knowledgeable in helping me understand when I have concerns, especially being a first home buyer. I would fully recommend his service to anyone.</em>
                   </p>
                 </div>
@@ -330,7 +330,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -357,14 +357,14 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
         {/* end start  */}
       {/* item start  */}
       <div className="px-2">
-          <div className="flex-auto w-full h-full px-10 py-2 bg-white rounded-lg">
-              <span className="inline-flex items-center px-2 py-1 mb-10 text-xs font-medium text-blue-700 rounded-md bg-blue-50 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
+          <div className="w-full flex-auto bg-white rounded-lg px-10 py-2  h-full">
+              <span className="mb-10 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 animate-on-scroll">
                 Testimonials
               </span>
 
               <blockquote className="relative max-w-lg mb-10">
                 <svg
-                  className="absolute w-16 h-16 text-gray-100 -top-8 -start-8 sm:h-24 sm:w-24 dark:text-gray-700"
+                  className="absolute -top-8 -start-8 h-16 w-16 text-gray-100 sm:h-24 sm:w-24 dark:text-gray-700"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -379,7 +379,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                 </svg>
 
                 <div className="relative z-10">
-                  <p className="text-2xl text-gray-800 font-regular leading-14 ">
+                  <p className="text-gray-800 text-2xl font-regular leading-14 ">
                     <em>Highly recommend! After trying to buy a house with a different real estate firm, I felt like I wasn’t being looked after correctly. Then I came across Focal Realestate, Phillip was incredible to deal with, helped me secure my first home, guided me through every step of the way and made me feel valued as a client. Will definitely be going back.</em>
                   </p>
                 </div>
@@ -388,7 +388,7 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-10 h-10 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                         alt="Image Description"
                       />
@@ -420,21 +420,21 @@ Thanks to Phillip, I’m able to go into my first home of hopefully many under a
 
 
 
-            {/* <div className="flex flex-col p-10 ml-10 mr-10 bg-white rounded-lg">
-              <p className="text-lg text-gray-900 text-semibold">My property was rented to a quality tenant with zero downtime in between tenants. Very smooth process with no hassles and friendly to deal with. Highly recommended</p>
-              <p className="mt-20 text-sm text-gray-900 text-md text-bold">
+            {/* <div className="flex flex-col bg-white rounded-lg p-10 ml-10 mr-10">
+              <p className="text-lg text-semibold text-gray-900">My property was rented to a quality tenant with zero downtime in between tenants. Very smooth process with no hassles and friendly to deal with. Highly recommended</p>
+              <p className="mt-20 text-md text-sm text-bold text-gray-900">
               Wissam Alayan <br /> <span className="text-gray-400">Google Review</span>
               </p>
             </div>
-            <div className="flex flex-col p-10 ml-10 mr-10 bg-white rounded-lg">
-              <p className="text-lg text-gray-900 text-semibold">The best solution for anyone who wants to work a flexible schedule but still earn a full-time income.</p>
-              <p className="mt-20 text-sm text-gray-900 text-md text-bold">
+            <div className="flex flex-col bg-white rounded-lg p-10 ml-10 mr-10">
+              <p className="text-lg text-semibold text-gray-900">The best solution for anyone who wants to work a flexible schedule but still earn a full-time income.</p>
+              <p className="mt-20 text-md text-sm text-bold text-gray-900">
                 Macauley Herring <br /> <span className="text-gray-400">Google Review</span>
               </p>
             </div>
-            <div className="flex flex-col p-10 ml-10 mr-10 bg-white rounded-lg">
-              <p className="text-lg text-gray-900 text-semibold">You won't regret it. We've seen amazing results already. Thanks guys, keep up the good work!</p>
-              <p className="mt-20 text-sm text-gray-900 text-md text-bold">
+            <div className="flex flex-col bg-white rounded-lg p-10 ml-10 mr-10">
+              <p className="text-lg text-semibold text-gray-900">You won't regret it. We've seen amazing results already. Thanks guys, keep up the good work!</p>
+              <p className="mt-20 text-md text-sm text-bold text-gray-900">
                 Elen Benitez <br /> <span className="text-gray-400">Google Review</span>
               </p>
             </div> */}

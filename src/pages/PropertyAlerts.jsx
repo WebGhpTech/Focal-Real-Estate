@@ -54,7 +54,7 @@ const PropertyAlerts = () => {
       body: JSON.stringify(formData),
     })
       .then((response) => {
-        setMessageSent(true);
+        setMessageSent(true); 
         if (response.status === 200) {
           return response.json();
         } else {
@@ -111,51 +111,17 @@ const PropertyAlerts = () => {
         <meta property="og:url" content={BASE_URL}/>
         <meta property="og:site_name" content="Focal Real Estate"/>
         <meta property="og:type" content="website"/>
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org/",
-              "@type": "BlogPosting",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://focalrealestate.com.au/"
-              },
-              "headline": "Latest Real Estate Insights for Underwood",
-              "image": {
-                "@type": "ImageObject",
-                "url": "https://focalrealestate.com.au/images/blog-featured.jpg",
-                "width": "1200",
-                "height": "630"
-              },
-              "author": {
-                "@type": "Person",
-                "name": "Focal Real Estate Team"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Focal Real Estate",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://focalrealestate.com.au/images/logo.png",
-                  "width": "600",
-                  "height": "60"
-                }
-              },
-              "datePublished": "${new Date().toISOString().split('T')[0]}"
-            }
-          `}
-        </script>
       </Helmet>
       <div>
         <section>
-          <div className="relative overflow-hidden isolate">
+          <div className="relative isolate overflow-hidden">
             <img
               src="./5.png"
               alt=""
-              className="absolute inset-0 object-cover w-full h-full -z-10"
+              className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
 
-            <div className="max-w-2xl py-32 mx-auto sm:py-48 lg:py-55">
+            <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-55">
               <div className="text-center">
                 <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-6xl">
                   Property Alerts
@@ -166,20 +132,20 @@ const PropertyAlerts = () => {
             <img
               src="./bg-graphic-01.png"
               alt=""
-              className="absolute inset-0 object-cover w-full h-full -z-10"
+              className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
           </div>
         </section>
         <section>
-          <div className="relative p-10 mx-auto isolate">
-            <div className="items-center justify-center mx-auto mt-10 mb-10">
-              <h2 className="text-center text-gray-700">
+          <div className="mx-auto relative isolate p-10">
+            <div className="mx-auto mt-10 mb-10 items-center justify-center">
+              <h2 className="text-gray-700 text-center">
                 Simply enter your name and email address to receive property
                 alerts the moment they're available.
               </h2>
             </div>
             <form className="mx-auto">
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="first_name"
                   className="block text-sm text-gray-700"
@@ -193,10 +159,10 @@ const PropertyAlerts = () => {
                   value={formData.first_name}
                   onChange={handleChange}
                   placeholder="First Name"
-                  className="w-full p-2 mt-1 border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md"
                 />
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="last_name"
                   className="block text-sm text-gray-700"
@@ -210,10 +176,10 @@ const PropertyAlerts = () => {
                   value={formData.last_name}
                   onChange={handleChange}
                   placeholder="Last Name"
-                  className="w-full p-2 mt-1 border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md"
                 />
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="email" className="block text-sm text-gray-700">
                   Email
                 </label>
@@ -224,10 +190,10 @@ const PropertyAlerts = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full p-2 mt-1 border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md"
                 />
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label htmlFor="phone" className="block text-sm text-gray-700">
                   Phone
                 </label>
@@ -238,10 +204,10 @@ const PropertyAlerts = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Phone"
-                  className="w-full p-2 mt-1 border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md"
                 />
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="min_bedrooms"
                   className="block text-sm text-gray-700"
@@ -259,13 +225,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMinBedroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="w-full p-2 mt-1"
+                  className="mt-1 p-2 w-full"
                 />
                 <div className="text-xs">
                   <span>{minBedroomRange[0]} bedrooms</span>
                 </div>
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="max_bedrooms"
                   className="block text-sm text-gray-700"
@@ -283,13 +249,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMaxBedroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="w-full p-2 mt-1"
+                  className="mt-1 p-2 w-full"
                 />
                 <div className="text-xs">
                   <span>{maxBedroomRange[0]} bedrooms</span>
                 </div>
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="min_bathrooms"
                   className="block text-sm text-gray-700"
@@ -307,13 +273,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMinBathroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="w-full p-2 mt-1"
+                  className="mt-1 p-2 w-full"
                 />
                 <div className="text-xs">
                   <span>{minBathroomRange[0]} bathrooms</span>
                 </div>
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="max_bathrooms"
                   className="block text-sm text-gray-700"
@@ -331,13 +297,13 @@ const PropertyAlerts = () => {
                   onChange={(e) =>
                     setMaxBathroomRange(e.target.value.split(",").map(Number))
                   }
-                  className="w-full p-2 mt-1"
+                  className="mt-1 p-2 w-full"
                 />
                 <div className="text-xs">
                   <span>{maxBathroomRange[0]} bathrooms</span>
                 </div>
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <label
                   htmlFor="cities_suburbs"
                   className="block text-sm text-gray-700"
@@ -349,7 +315,7 @@ const PropertyAlerts = () => {
                   name="cities_suburbs"
                   value={formData.cities_suburbs}
                   onChange={handleChange}
-                  className="w-full p-2 mt-1 border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md"
                 >
                   <option>Select</option>
                   {/* {cities.map((city, index) => (
@@ -364,18 +330,18 @@ const PropertyAlerts = () => {
                   ))}
                 </select>
               </div>
-              <div className="items-center justify-center max-w-xl mx-auto mb-6">
+              <div className="mx-auto max-w-xl items-center justify-center mb-6">
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="w-full px-4 py-2 text-white rounded bg-focal-blue"
+                  className="bg-focal-blue text-white rounded w-full py-2 px-4"
                 >
                   Send
                 </button>
               </div>
               {messageSent && (
-                <div className="items-center justify-center max-w-xl mx-auto mb-6">
-                  <p className="font-semibold text-focal-blue text-md">
+                <div className="mx-auto max-w-xl items-center justify-center mb-6">
+                  <p className="text-focal-blue font-semibold text-md">
                     Thank you, you will receive property alerts the moment
                     they're available!
                   </p>
